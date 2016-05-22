@@ -5,6 +5,7 @@ public class Command : MonoBehaviour {
 
 	// the command itself
 	public string com;
+    public bool error;
 	// the options for the command
 
 	// paramaters to the command
@@ -15,9 +16,15 @@ public class Command : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public Command(string a)
+    {
+        com = a;
+        error = false;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }

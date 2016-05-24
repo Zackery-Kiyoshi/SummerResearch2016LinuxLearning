@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Command : MonoBehaviour {
+public class Command {
 
 	// the command itself
 	public string com;
     public bool error;
+	public int numParams;
 	// the options for the command
 
 	// paramaters to the command
-
+	public List<string> param = new List<string>();
 	// the function the command calls (???)
 
 	// Use this for initialization
@@ -17,9 +19,10 @@ public class Command : MonoBehaviour {
 	
 	}
 
-    public Command(string a)
+	public Command(string a, int p)
     {
         com = a;
+		numParams = p;
         error = false;
     }
 

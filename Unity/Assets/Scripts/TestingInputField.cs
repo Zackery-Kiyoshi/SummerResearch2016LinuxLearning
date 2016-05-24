@@ -28,6 +28,10 @@ public class TestingInputField : MonoBehaviour {
 
     public void changed(string s)
     {
+		if (text.text == "") {
+			
+		}
+			
 		if(testing) Debug.Log("Text Changed: " + s);
 		if (toPrint.Length > place && Input.anyKeyDown) {
 			message = message + toPrint [place];

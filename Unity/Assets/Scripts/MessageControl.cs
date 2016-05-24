@@ -12,7 +12,9 @@ public class MessageControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		
+		if (active) {
+
+		}
 	}
 
 	public void activate(){

@@ -22,15 +22,19 @@ public class PanelControl : MonoBehaviour {
 	}
 
 	public void ActiveMessage(){
-		curActive = 0;
-		messaging.activate ();
-		terminal.deactivate ();
+		if (curActive != 0) {
+			curActive = 0;
+			messaging.activate ();
+			terminal.deactivate ();
+		}
 	}
 
 	public void ActiveTerminal(){
-		curActive = 1;
-		messaging.deactivate ();
-		terminal.activate ();
+		if (curActive != 1) {
+			curActive = 1;
+			messaging.deactivate ();
+			terminal.activate ();
+		}
 	}
 
 }

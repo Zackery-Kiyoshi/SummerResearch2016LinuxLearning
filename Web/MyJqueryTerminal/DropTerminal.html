@@ -1,0 +1,201 @@
+<!-- -*- mode:javascript -*--->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>First Basic Terminal</title>
+  <meta name="Description" content="This is demonstration of JQuery Terminal Emulator Plugin. To run terminal type tilda on you keyboard."/>
+  <script src="js/jquery-1.7.1.min.js"></script>
+  <script src="js/jquery.mousewheel-min.js"></script>
+  <script src="js/jquery.terminal.min.js"></script>
+  <link href="css/jquery.terminal.css" rel="stylesheet"/>
+<!--[if IE]>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+.tilda {
+    position: absolute;
+}
+</style>
+<script>
+jQuery(document).ready(function($) {
+   $(window).scroll(function() {
+      $('.tilda').each(function() {
+         $(this).css({top: $('body').prop('scrollTop')});
+      });
+   });
+});
+</script>
+<![endif]-->
+<script>
+
+
+String.prototype.strip = function(char) {
+    return this.replace(new RegExp("^" + char + "*"), '').
+        replace(new RegExp(char + "*$"), '');
+}
+
+
+$.extend_if_has = function(desc, source, array) {
+    for (var i=array.length;i--;) {
+        if (typeof source[array[i]] != 'undefined') {
+            desc[array[i]] = source[array[i]];
+        }
+    }
+    return desc;
+};
+
+
+(function($) {
+    $.fn.tilda = function(eval, options) {
+        if ($('body').data('tilda')) {
+            return $('body').data('tilda').terminal;
+        }
+        this.addClass('tilda');
+        options = options || {};
+        eval = eval || function(command, term) {
+            term.echo("you don't set eval for tilda");
+        };
+        var name = "IDontCare";
+        var comp = "NotHere";
+        var path = "~";
+        
+        var settings = {
+            prompt: "[" + name + "@" + comp + " " + path + "]? " ,
+            name: name,
+            height: 500,
+            enabled: false,
+            greetings: 'Welcome ' + name,
+            keypress: function(e) {
+                if (e.which == 96) {
+                    return false;
+                }
+            }
+        };
+        if (options) {
+            $.extend(settings, options);
+        }
+        this.append('<div class="td"></div>');
+        var self = this;
+        self.terminal = this.find('.td').terminal(eval, settings);
+        var focus = false;
+        $(document.documentElement).keypress(function(e) {
+            if (e.which == 96) {
+                self.slideToggle('fast');
+                self.terminal.focus(focus = !focus);
+                /*
+                self.terminal.attr({
+                    scrollTop: self.terminal.attr("scrollHeight")
+                });
+                */
+            }
+        });
+        $('body').data('tilda', this);
+        this.hide();
+        return self;
+    };
+})(jQuery);
+
+//--------------------------------------------------------------------------
+jQuery(document).ready(function($) {
+
+    $('#tilda').tilda(function(command, terminal) {
+        terminal.echo('you type command "' + command + '"');
+        
+        // process commands
+        //need to process command (its just the line)
+        
+        var line = command.split(" ");
+        
+        var cmd = line[0];
+        
+        
+        if(cmd == "pwd"){
+            terminal.echo("pwd is currently not finished");
+        }else if(cmd == "cd"){
+            if(line.length >=2){
+                // path specified
+                terminal.echo("Going to: " + line[1]);
+            }else{
+                terminal.echo("no path specified");
+            }
+            terminal.echo("cd is currently not finished");
+        }else if(cmd == "ls"){
+            var options = [];
+            var lengthOp = 0;
+            for(i=1; i<line.length; i++){
+                if(line[i][0] == '-'){
+                    //option found
+                    for(j=1; j < line[i].length; j++){
+                        options[lengthOp] = line[i][j]
+                        lengthOp++;
+                    }
+                }else{
+                    break
+                }
+            }
+            for(i=0; i<options.length; i++){
+                terminal.echo("option: " + options[i]);
+                if( options[i] == "a"){
+                    
+                }else if( options[i] == "l"){
+                    
+                }else if( options[i] == "h"){
+                    
+                }else{
+                    terminal.echo("the option: '" + options[i] +"' is not recognized");
+                }
+            }
+            
+            terminal.echo("ls is currently not finished");
+            
+            
+        }else{
+            terminal.echo("-bash: " + command + ": command not found (or just not supported)");
+        }
+        
+        
+    });
+});
+
+</script>
+</head>
+<body>
+    <div id="tilda"></div>
+    <h1>This is demo of JQuery Terminal Emulator, type tilda to open terminal</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p> tmp</p>
+    
+</body>
+</html>

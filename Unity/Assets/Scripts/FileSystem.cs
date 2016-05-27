@@ -114,7 +114,7 @@ public class FileSystem {
 
 	// Use this for initialization
 	void Start () {
-		root = new Folder ("~",new List<Folder>(),new List<File>(), "/");
+		root = new Folder ("/",new List<Folder>(),new List<File>(), "/");
 		curFolder = root;
 		curFolder.setParent (curFolder);
 		curPath = "/";

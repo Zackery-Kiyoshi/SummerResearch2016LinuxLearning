@@ -31,6 +31,23 @@ jQuery(document).ready(function($) {
 <![endif]-->
 <script>
 
+    function getPwd (value){
+        var ret;
+        var conn = new XMLHttpRequest();
+        conn.open("GET","FileSystem.php");
+        conn.onload = function(){
+            ret = conn.responseText;
+            if( typeof ret != 'undefined'){
+                console.log("isset == true: '" + ret + "'");
+            }else{
+                
+            }
+        };
+        conn.send();
+                    return ret;
+
+    }
+    
 
 String.prototype.strip = function(char) {
     return this.replace(new RegExp("^" + char + "*"), '').
@@ -113,6 +130,27 @@ jQuery(document).ready(function($) {
         
         
         if(cmd == "pwd"){
+            /*
+            var data = { "action":"test"};
+            var ret = "";
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url:"FileSystem.php",
+                data: data,
+                success: function(text){
+                    ret = text;
+                    terminal.echo("DID IT");
+                    
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }
+            })
+            */
+            
+            terminal.echo("The path: '" + getPwd("pwd")
+ + "'");
             terminal.echo("pwd is currently not finished");
         }else if(cmd == "cd"){
             if(line.length >=2){

@@ -43,6 +43,11 @@ public class Command {
 		options = o;
 	}
 
+	public Command clone(){
+		Command ret = new Command(com,numParams);
+		return ret;
+	}
+
     // Update is called once per frame
     void Update () {
 	

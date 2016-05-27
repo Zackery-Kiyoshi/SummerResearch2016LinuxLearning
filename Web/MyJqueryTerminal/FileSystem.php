@@ -10,6 +10,10 @@ class File {
     public $size;
     public $time;
     
+    public function __construct($n){
+        $name = $n;
+    }
+    
     public function changeContents($newCont){
         $content = $newCont;
     }
@@ -30,8 +34,13 @@ class Folder {
     
     protected $parent;
     
-    public function __construct(){
-        
+    public function __construct($n,$p){
+        $name = $n;
+        $path = $p;
+    }
+    
+    public function __construct($n){
+        $name = $n;
     }
     
     public function addFolder($newFold){
@@ -103,5 +112,56 @@ class Folder {
         }
     }
 }
+
+
+class FileSystem {
+    public $root;
+    public $curFolder;
+    public $test = "TESTING";
+    
+    public function __construct(){
+        $root = new Folder("/","/");
+        $curFolder = $root;
+    }
+    
+    
+    public function getPath(){
+        return $fileSystem->$test;
+        //return $fileSystem->curFolder->name;
+    }
+}
+
+/*
+fileSystem.root.addFile ("FirstTest0","TESTING0");
+		fileSystem.root.addFile ("FirstTest1","TESTING1");
+		fileSystem.root.addFile ("FirstTest2","TESTING2");
+		fileSystem.root.addFile ("FirstTest3","TESTING3");
+
+		fileSystem.root.addFolder ("FirstFolder");
+		fileSystem.root.addFolder ("Downloads");
+		fileSystem.root.addFolder ("Documents");
+*/
+
+var $fileSystem = new FileSystem();
+
+$fileSystem->root.addFile(new File("FirstTest1"));
+$fileSystem->root.addFile(new File("FirstTest2"));
+$fileSystem->root.addFile(new File("FirstTest3"));
+
+$fileSystem->root.addFolder(new Folder("FirstFolder"));
+$fileSystem->root.addFolder(new Folder("Downloads"));
+$fileSystem->root.addFolder(new Folder("Documents"));
+
+/*
+switch($_GET['ret']) { //Switch case for value of action
+    case "pwd": if(!isset($fileSystem)){
+        echo "NO";
+    }
+        else echo "FUCK";
+    default: echo "IT NO THING"
+*/
+
+echo "SOMETHING";
+
 
 ?>

@@ -14,6 +14,7 @@ ls
 
 
 public class TerminalControl : MonoBehaviour {
+	private int testing;
 
 	private bool active;
 
@@ -36,8 +37,13 @@ public class TerminalControl : MonoBehaviour {
 
 	private Text terminalObj;
 
+	private int maxLines;
+	private int charPerLine;
+	private int numLines;
+
 	// Use this for initialization
 	void Start () {
+		testing = -1;
 		active = false;
 
 		//making the file system
@@ -50,6 +56,11 @@ public class TerminalControl : MonoBehaviour {
 		fileSystem.root.addFolder ("FirstFolder");
 		fileSystem.root.addFolder ("Downloads");
 		fileSystem.root.addFolder ("Documents");
+
+		path = fileSystem.root.name;
+		// need to change this so that it will always be correct for the specific resolution
+		maxLines = 13;
+		charPerLine = 28;
 
 		// initialize terminal with username
 		terminalObj = gameObject.transform.Find("Text").gameObject.GetComponent<Text>();
@@ -67,6 +78,7 @@ public class TerminalControl : MonoBehaviour {
 		tmpOpt.Add ("h");
 		cmds.Add(new Command("ls",0, tmpOpt ));
 		cmds.Add(new Command("clear",0));
+		cmds.Add(new Command("exit",0));
 
     }
 	
@@ -93,6 +105,9 @@ public class TerminalControl : MonoBehaviour {
 						curLine += c;
 						curParam += c;
 						terminal += c;
+
+						if (curLine.Length > charPerLine - 19)
+							updateTerminal ();
 					}
                 }
 				terminalObj.text = terminal;
@@ -113,22 +128,25 @@ public class TerminalControl : MonoBehaviour {
 
 		Command curCommand = new Command();
 
+		//calculate lines
+		numLines += (1 + (line.Length + 19) % charPerLine);
+
 		// processes the string[] into command
 		foreach(string a in s){
 			if (progress == 0) {
 				int tmp = -1;
-				Debug.Log (":" + curLine + ":");
+				if(testing >= 1) Debug.Log (":" + curLine + ":");
 				for (int i = 0; i < cmds.Count && (tmp < 0); i++) {
 					if (cmds [i].com == a) {
-						Debug.Log ("ADDED CMD to history: " + cmds [i].com);
+						if(testing >= 1) Debug.Log ("ADDED CMD to history: " + cmds [i].com);
 						tmp = i;
 					}
 				}
 				if (tmp < 0) {
-					curCommand = cmds [0];
+					curCommand = cmds [0].clone();
 					curCommand.error = true;
 				} else {
-					curCommand = cmds [tmp];
+					curCommand = cmds [tmp].clone();
 				}
 				if (tmp < 0) {
 					error = "-bash: " + curLine + ": command not found (or just not supported)";
@@ -139,12 +157,12 @@ public class TerminalControl : MonoBehaviour {
 				if (a != "") {
 					if (a [0] == '-') {
 						for (int i = 1; i < a.Length; i++) {
-							Debug.Log ("ADDing option: " + a [i]);
+							if(testing >= 1) Debug.Log ("ADDing option: " + a [i]);
 							curCommand.options.Add (a [i] + "");
 						}
 						// actuall options happen in processing
 					} else {
-						Debug.Log ("ADDING A PARAM: " + a);
+						if(testing >= 1) Debug.Log ("ADDING A PARAM: " + a);
 						curCommand.param.Add (a);
 					}
 					progress++;
@@ -163,20 +181,22 @@ public class TerminalControl : MonoBehaviour {
 		} else {
 			//Command curCommand = cmdHistory [cmdHistory.Count - 1];
 			// actually do command
+			terminal += "\n";
+
 			if (curCommand == null) {
-				Debug.Log ("curCommand is null");
+				if (testing >= 0)
+					Debug.Log ("curCommand is null");
 			} else if (curCommand.com == "pwd") {
-				terminal += "\n";
-				terminal += fileSystem.curPath;
-				terminal += "\n";
-			}
-			else if (curCommand.com == "cd") {
-				Debug.Log ("ITS PROCESSING CD");
+				terminal += fileSystem.curFolder.path;
+			} else if (curCommand.com == "cd") {
+				if (testing >= 0)
+					Debug.Log ("ITS PROCESSING CD");
 				// check for path
 				if (curCommand.param.Count < 1) {
 					// return to root TODO
 
-					Debug.Log("returning to default location");
+					if (testing >= 0)
+						Debug.Log ("returning to default location");
 				} else {
 					if (fileSystem.checkPath (curCommand.param [0])) {
 						fileSystem.moveTo (curCommand.param [0]);
@@ -186,10 +206,7 @@ public class TerminalControl : MonoBehaviour {
 						terminal += "\n -bash: " + curLine + ": Not a directory";
 					}
 				}
-				terminal += "\n";
-			}
-			else if (curCommand.com == "ls") {
-				terminal += "\n";
+			} else if (curCommand.com == "ls") {
 				terminal += "<color=blue>";
 				for (int i = 0; i < fileSystem.curFolder.contentFolders.Count; i++) {
 					terminal += "[ " + fileSystem.curFolder.contentFolders [i].name + " ]\n";
@@ -198,19 +215,36 @@ public class TerminalControl : MonoBehaviour {
 				for (int i = 0; i < fileSystem.curFolder.contentFiles.Count; i++) {
 					terminal += fileSystem.curFolder.contentFiles [i].name + "\n";
 				}
-				terminal += "\n";
-			}
-			else if (curCommand.com == "clear") {
+			} else if (curCommand.com == "clear") {
 				terminal = "";
+				numLines = 0;
 				//"[" + username + "@" + comp + " " + path + "]$ ";
+			} else if (curCommand.com == "exit") {
+				if(testing>=1)Debug.Log ("Application.Quit ();");
+				//Application.OpenURL ("");
+				Application.Quit ();
+				UnityEditor.EditorApplication.isPlaying = false;
 			}
-			Debug.Log("Doing Command");
+			if(testing >= 1) Debug.Log("Doing Command");
 		}
 		curLine = "";
 		curParam = "";
 		error = "";
 		progress = 0;
 
+		terminal += "\n";
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
+		numLines += 1;
 	}
+
+
+
+	public void updateTerminal(){
+		// when scrolling needs to happen
+
+
+	}
+
+
+
 }

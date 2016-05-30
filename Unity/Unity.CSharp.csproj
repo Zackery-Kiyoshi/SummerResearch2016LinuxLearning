@@ -70,8 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Command.cs" />
-    <Compile Include="Assets\Scripts\FileSystem.cs" />
-    <Compile Include="Assets\Scripts\Message.cs" />
     <Compile Include="Assets\Scripts\MessageControl.cs" />
     <Compile Include="Assets\Scripts\PanelControl.cs" />
     <Compile Include="Assets\Scripts\TerminalControl.cs" />

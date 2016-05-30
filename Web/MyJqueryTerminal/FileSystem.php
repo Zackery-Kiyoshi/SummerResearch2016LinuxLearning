@@ -34,23 +34,18 @@ class Folder {
     
     protected $parent;
     
-    public function __construct($n,$p){
-        $name = $n;
-        $path = $p;
-    }
-    
     public function __construct($n){
         $name = $n;
     }
     
     public function addFolder($newFold){
-        $this->contentFolders.array_push($newFold);
+        array_push($this->contentFolders, $newFold);
         $newFold->path = ($this->path) + ($this->name);
         ($newFold).changeParent($this);
     }
     
     public function addFile($newFile){
-        $this->contentFiles.array_push($newFile);
+        array_push($this->contentFiles, $newFile);
         $newFile->path = ($this->path) + ($this->name);
     }
     
@@ -73,8 +68,8 @@ class Folder {
         $fFile = true;
         $next;
         // check files
-        $max = sizeof(contentFiles)
-        for($i = 0; $i < $max; i++){
+        $max = sizeof(contentFiles);
+        for($i = 0; $i < $max; $i++){
             if($contentFiles[i]->name == $p[0]){
                 $found = true;
                 $fFile = true;                
@@ -83,18 +78,19 @@ class Folder {
         }
         if(!($found)){
             // check folders
-            $1max = sizeof(contentFolders)
-            for($i = 0; $i < $max; i++){
+            $max = sizeof($contentFolders);
+            for($i = 0; $i < $max; $i++){
                 if($contentFolders[i]->name == $p[0]){
                     $found = true;
-                    $next = $contentFolders[i];     break;  
+                    $next = $contentFolders[i];
+                    break;  
                 }
             }
         }
         
         if($found){
             $max = sizeof($p);
-            for($i = 0; $i < $max-1; i++){
+            for($i = 0; $i < $max-1; $i++){
                 $p[i] = $p[i+1];
             }
             unset($p[sizeof($p)-1]);
@@ -119,11 +115,13 @@ class FileSystem {
     public $curFolder;
     public $test = "TESTING";
     
+//    /*
     public function __construct(){
-        $root = new Folder("/","/");
-        $curFolder = $root;
+        $this->root = new Folder("/");
+        $this->root->path = "/";
+        $this->curFolder = $this->root;
     }
-    
+//    */
     
     public function getPath(){
         return $fileSystem->$test;
@@ -142,26 +140,26 @@ fileSystem.root.addFile ("FirstTest0","TESTING0");
 		fileSystem.root.addFolder ("Documents");
 */
 
-var $fileSystem = new FileSystem();
+$fileSystem = new FileSystem();
+$tmpfold = new File("FirstTest1");
+$fileSystem->root->addFile($tmpfold);
+$fileSystem->root->addFile(new File("FirstTest2"));
+$fileSystem->root->addFile(new File("FirstTest3"));
 
-$fileSystem->root.addFile(new File("FirstTest1"));
-$fileSystem->root.addFile(new File("FirstTest2"));
-$fileSystem->root.addFile(new File("FirstTest3"));
+$fileSystem->root->addFolder(new Folder("FirstFolder"));
+$fileSystem->root->addFolder(new Folder("Downloads"));
+$fileSystem->root->addFolder(new Folder("Documents"));
 
-$fileSystem->root.addFolder(new Folder("FirstFolder"));
-$fileSystem->root.addFolder(new Folder("Downloads"));
-$fileSystem->root.addFolder(new Folder("Documents"));
-
-/*
 switch($_GET['ret']) { //Switch case for value of action
-    case "pwd": if(!isset($fileSystem)){
-        echo "NO";
-    }
-        else echo "FUCK";
-    default: echo "IT NO THING"
-*/
-
-echo "SOMETHING";
+    case "pwd": 
+        if(!isset($fileSystem)){
+            echo "NO";
+        }else echo "FUCK";
+        break;
+    default: 
+        echo "IT NO THING";
+}
+//echo "SOMETHING";
 
 
 ?>

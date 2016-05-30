@@ -9,13 +9,17 @@ if (function_exists('xdebug_disable')) {
 class Demo {
   static $login_documentation = "login to the server (return token)";
   public function login($user, $passwd) {
-    if (strcmp($user, 'demo') == 0 && strcmp($passwd, 'demo') == 0) {
-      // If you need to handle more than one user you can create
-      // new token and save it in database
-      // UPDATE users SET token = '$token' WHERE name = '$user'
-      return md5($user . ":" . $passwd);
-    } else {
-      throw new Exception("Wrong Password");
+    if (strcmp($user, 'demo') == 0 ){
+        if(strcmp($passwd, 'demo') == 0) {
+            // If you need to handle more than one user you can create
+            // new token and save it in database
+            // UPDATE users SET token = '$token' WHERE name = '$user'
+            return md5($user . ":" . $passwd);
+        } else {
+            throw new Exception("Wrong Password");
+    }
+  }else{
+        throw new Exception("Wrong Username");
     }
   }
 

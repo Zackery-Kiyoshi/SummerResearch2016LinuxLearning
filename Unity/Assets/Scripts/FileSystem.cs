@@ -10,6 +10,16 @@ public class FileSystem {
 		public List<File> contentFiles;
 		public string path;
 
+		private Folder parent;
+
+		public Folder getParent(){
+			return parent;
+		}
+
+		public void setParent(Folder f){
+			parent = f;
+		}
+
 		public Folder(string s, List<Folder> l, List<File> f, string p){
 			name = s;
 			contentFolders = l;
@@ -19,6 +29,7 @@ public class FileSystem {
 
 		public void addFolder(string s){
 			contentFolders.Add (new Folder(s, new List<Folder>(), new List<File>(), path+name));
+			contentFolders [contentFolders.Count - 1].setParent (this);
 		}
 
 		public void addFile(string s, string c){
@@ -103,14 +114,16 @@ public class FileSystem {
 
 	// Use this for initialization
 	void Start () {
-		root = new Folder ("~",new List<Folder>(),new List<File>(), "/");
+		root = new Folder ("/",new List<Folder>(),new List<File>(), "/");
 		curFolder = root;
+		curFolder.setParent (curFolder);
 		curPath = "/";
 	}
 
 	public FileSystem(){
 		root = new Folder ("/",new List<Folder>(),new List<File>(), "/");
 		curFolder = root;
+		curFolder.setParent (curFolder);
 		curPath = "/";
 	}
 
@@ -131,15 +144,20 @@ public class FileSystem {
 		}
 
 		int i = 0;
+
+		for(int a = 0; a < tmp.Length; a++){
+			Debug.Log("  " + tmp[a]);
+		}
 		while (i<tmp.Length) {
 			bool search = false;
 			if (tmp [i] == "..") {
-				if (tmpFold != root) {
-					Folder newTmpFold = root;
-
-				} else {
-					return false;
-				}
+				Debug.Log ("Found ..");
+				//if (tmpFold != root) {
+					tmpFold = tmpFold.getParent ();
+				//	Debug.Log ("Wasn't root");
+				//} 
+				search = true;
+				i++;
 			} else {
 				for (int j = 0; j < tmpFold.contentFolders.Count; j++) {
 					if (tmpFold.contentFolders [j].name == tmp [i]) {
@@ -166,7 +184,11 @@ public class FileSystem {
 			while (i<tmp.Length) {
 				bool search = false;
 				if (tmp [i] == "..") {
-
+					if (tmpFold != root) {
+						curFolder = tmpFold.getParent ();
+						i++;
+					}
+					i++;
 				} else {
 					for (int j = 0; j < tmpFold.contentFolders.Count; j++) {
 						if (tmpFold.contentFolders [j].name == tmp [i]) {

@@ -41,7 +41,7 @@ class Folder {
     public function addFolder($newFold){
         array_push($this->contentFolders, $newFold);
         $newFold->path = ($this->path) + ($this->name);
-        ($newFold).changeParent($this);
+        $newFold->changeParent($this);
     }
     
     public function addFile($newFile){
@@ -152,13 +152,12 @@ $fileSystem->root->addFolder(new Folder("Documents"));
 
 switch($_GET['ret']) { //Switch case for value of action
     case "pwd": 
-        if(!isset($fileSystem)){
-            echo "NO";
-        }else echo "FUCK";
+        echo "FUCK";
         break;
     default: 
         echo "IT NO THING";
 }
+echo $_GET['ret'];
 //echo "SOMETHING";
 
 

@@ -36,7 +36,10 @@ jQuery(document).ready(function($) {
 
 
 
-
+        var testing = false;
+        var username = "IDontCare";
+        var computer = "NotHere";
+        var path = "/";
 
 
         String.prototype.strip = function(char) {
@@ -66,9 +69,7 @@ jQuery(document).ready(function($) {
                     term.echo("you don't set eval for tilda");
                 };
 
-                var username = "IDontCare";
-                var computer = "NotHere";
-                var path = "/";
+
 
                 var settings = {
                     prompt: "[" + username + "@" + computer + " " + path + "]? ",
@@ -114,7 +115,7 @@ jQuery(document).ready(function($) {
 
 
 
-                terminal.echo('you type command "' + command + '"');
+                if (testing) terminal.echo('you type command "' + command + '"');
 
                 // process commands
                 //need to process command (its just the line)
@@ -122,7 +123,6 @@ jQuery(document).ready(function($) {
                 var line = command.split(" ");
 
                 var cmd = line[0];
-
 
                 if (cmd == "pwd") {
                     //function getPwd(value) {
@@ -133,32 +133,44 @@ jQuery(document).ready(function($) {
                         if (conn.readyState == 4 && conn.status == 200) {
                             ret = conn.responseText;
                             if (typeof ret != 'undefined') {
-                                console.log("isset == true: '" + ret + "'");
+                                if (testing) console.log("isset == true: '" + ret + "'");
                             } else {
 
                             }
-                            terminal.echo("The path: '" + ret + "'");
-                            return ret;
+                            terminal.echo(ret);
+                            //return ret;
                         }
                     };
                     conn.send();
-                    //console.log("return: " + ret);
-                    //return ret;
-                    //}
-                    //getPwd("pwd");
-
-                    //console.log("GETTING VALUE: " + tmp);
-                    //terminal.echo("The path: '" + tmp + "'");
-                    //terminal.echo("pwd is currently not finished");
+                    
                 } else if (cmd == "cd") {
+                    // create what to send in path
+                    var pathToGo = "";
                     if (line.length >= 2) {
                         // path specified
                         terminal.echo("Going to: " + line[1]);
                     } else {
                         terminal.echo("no path specified");
                     }
-                    terminal.echo("[" + $.fn.tilda.name + "@" + $.fn.tilda.comp + " " + $.fn.tilda.path + "/]? ");
-                    terminal.settings().prompt = "[" + $.fn.tilda.name + "@" + $.fn.tilda.comp + " " + $.fn.tilda.path + "/]? ";
+
+                    var ret;
+                    var conn = new XMLHttpRequest();
+                    conn.open("GET", "FileSystem.php?ret=cd&path="+pathToGo);
+                    conn.onreadystatechange = function() {
+                        if (conn.readyState == 4 && conn.status == 200) {
+                            ret = conn.responseText;
+                            if (typeof ret != 'undefined') {
+                                console.log("cd: isset == true: '" + ret + "'");
+                            } else {
+
+                            }
+                            terminal.echo(ret);
+                            //return ret;
+                        }
+                    };
+                    conn.send();
+
+                    terminal.settings().prompt = "[" + username + "@" + computer + " " + path + "/]? ";
                     terminal.echo("cd is currently not finished");
                 } else if (cmd == "ls") {
                     var options = [];
@@ -186,7 +198,27 @@ jQuery(document).ready(function($) {
                             terminal.echo("the option: '" + options[i] + "' is not recognized");
                         }
                     }
-
+                    console.log("PRE");
+                    
+                    var ret;
+                    var conn = new XMLHttpRequest();
+                    conn.open("GET", "FileSystem.php?ret=ls");
+                    conn.onreadystatechange = function() {
+                        if (conn.readyState == 4 && conn.status == 200) {
+                            ret = conn.responseText;
+                            console.log("INSIDE");
+                            if (typeof ret != 'undefined') {
+                                console.log("ls: isset == true: '" + ret + "'");
+                            } else {
+                                console.log("IT NO DO THING");
+                            }
+                            terminal.echo(ret);
+                            //return ret;
+                        }
+                    };
+                    conn.send();
+                    
+                    
                     terminal.echo("ls is currently not finished");
 
 

@@ -1,15 +1,20 @@
 <!-- -*- mode:javascript -*--->
 <!DOCTYPE HTML>
 <html>
-
+<!-- 
+-----------------------------------------------------
+-------------THIS USES THE FILESYSTEM.PHP------------
+-----------------------------------------------------
+-->
 <head>
     <meta charset="utf-8" />
     <title>First Basic Terminal</title>
     <meta name="Description" content="This is demonstration of JQuery Terminal Emulator Plugin. To run terminal type tilda on you keyboard." />
+    <script src="myFileSystem.js"></script>
     <script src="js/jquery-1.7.1.min.js"></script>
     <script src="js/jquery.mousewheel-min.js"></script>
     <script src="js/jquery.terminal.min.js"></script>
-    <sctipt src="myFileSystem.js"></sctipt>
+    
     <link href="css/jquery.terminal.css" rel="stylesheet" />
     <!--[if IE]>
 <style>
@@ -32,15 +37,26 @@ jQuery(document).ready(function($) {
 </script>
 <![endif]-->
     <script>
-        //var fileSystem = fileSystem("IDontCare", "NotHere");
-
-
-
+        var testfile = new File();
+        var myFileSystem = new FileSystem("IDontCare", "NotHere");
+        
+        var tmpFold = new Folder("FirstFolder");
+        tmpFold.add(new Folder("NestedFirstFolder"));
+        tmpFold.add(new File("IS it here"));
+        
+        myFileSystem.root.add(tmpFold);
+        myFileSystem.root.add(new Folder("Downloads"));
+        myFileSystem.root.add(new Folder("Documents"));
+        
+        myFileSystem.root.add(new File("FirstTest1"));
+        myFileSystem.root.add(new File("FirstTest2"));
+        myFileSystem.root.add(new File("FirstTest3"));
+        
         var testing = false;
         var username = "IDontCare";
         var computer = "NotHere";
         var path = "/";
-
+        
 
         String.prototype.strip = function(char) {
             return this.replace(new RegExp("^" + char + "*"), '').
@@ -112,9 +128,6 @@ jQuery(document).ready(function($) {
 
             $('#tilda').tilda(function(command, terminal) {
 
-
-
-
                 if (testing) terminal.echo('you type command "' + command + '"');
 
                 // process commands
@@ -126,52 +139,35 @@ jQuery(document).ready(function($) {
 
                 if (cmd == "pwd") {
                     //function getPwd(value) {
-                    var ret;
-                    var conn = new XMLHttpRequest();
-                    conn.open("GET", "FileSystem.php?ret=pwd");
-                    conn.onreadystatechange = function() {
-                        if (conn.readyState == 4 && conn.status == 200) {
-                            ret = conn.responseText;
-                            if (typeof ret != 'undefined') {
-                                if (testing) console.log("isset == true: '" + ret + "'");
-                            } else {
-
-                            }
-                            terminal.echo(ret);
-                            //return ret;
-                        }
-                    };
-                    conn.send();
+                    var tmp = myFileSystem.path();
+                    terminal.echo( tmp );
                     
                 } else if (cmd == "cd") {
                     // create what to send in path
                     var pathToGo = "";
                     if (line.length >= 2) {
                         // path specified
-                        terminal.echo("Going to: " + line[1]);
+                        //terminal.echo("Going to: " + line[1]);
+                        pathToGo = line[1];
                     } else {
-                        terminal.echo("no path specified");
+                        //terminal.echo("no path specified");
+                        pathToGo = "";
                     }
 
-                    var ret;
-                    var conn = new XMLHttpRequest();
-                    conn.open("GET", "FileSystem.php?ret=cd&path="+pathToGo);
-                    conn.onreadystatechange = function() {
-                        if (conn.readyState == 4 && conn.status == 200) {
-                            ret = conn.responseText;
-                            if (typeof ret != 'undefined') {
-                                console.log("cd: isset == true: '" + ret + "'");
-                            } else {
+                    var validPath = myFileSystem.checkPath(pathToGo);
 
-                            }
-                            terminal.echo(ret);
-                            //return ret;
-                        }
-                    };
-                    conn.send();
-
+                    if(validPath){
+                        terminal.echo("GOOD PATH!!!!");
+                    }else{
+                        terminal.echo( "-bash: cd: help: No such file or directory (" + pathToGo + ")");
+                    }
+                    
                     terminal.settings().prompt = "[" + username + "@" + computer + " " + path + "/]? ";
+                    
                     terminal.echo("cd is currently not finished");
+                    
+                    
+                    
                 } else if (cmd == "ls") {
                     var options = [];
                     var lengthOp = 0;
@@ -198,30 +194,20 @@ jQuery(document).ready(function($) {
                             terminal.echo("the option: '" + options[i] + "' is not recognized");
                         }
                     }
-                    console.log("PRE");
+                    //console.log("PRE");
                     
-                    var ret;
-                    var conn = new XMLHttpRequest();
-                    conn.open("GET", "FileSystem.php?ret=ls");
-                    conn.onreadystatechange = function() {
-                        if (conn.readyState == 4 && conn.status == 200) {
-                            ret = conn.responseText;
-                            console.log("INSIDE");
-                            if (typeof ret != 'undefined') {
-                                console.log("ls: isset == true: '" + ret + "'");
-                            } else {
-                                console.log("IT NO DO THING");
-                            }
-                            terminal.echo(ret);
-                            //return ret;
-                        }
-                    };
-                    conn.send();
+                    var tmpFS = myFileSystem.getContents().split('/');
+                            terminal.echo(tmpFS[0], {
+                                finalize: function(div) {
+                                    div.css("color", "blue");
+                                }
+                            }, tmpFS[1]);
+                            
+                            terminal.echo(tmpFS[1]);
                     
+                    terminal.echo(  );
                     
-                    terminal.echo("ls is currently not finished");
-
-
+                    //terminal.echo("ls is currently not finished");
                 } else {
                     terminal.echo("-bash: " + command + ": command not found (or just not supported)");
                 }

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            {% if request.user.is_authenticated %}<h1>Welcome {{ request.user.first_name }} {{ request.user.last_name }} </h1>
+            {% else %}<a href="{% url django.contrib.auth.login %}">Login</a>{% endif %}
+            <p>Welcome to the "Adventure of Linux"</p>
+        </div>
+        <a href="">To go to the web version</a>
+    </div>
+</div>
+{% endblock %}

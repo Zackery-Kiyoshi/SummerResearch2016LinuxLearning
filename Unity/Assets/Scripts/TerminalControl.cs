@@ -287,7 +287,7 @@ public class TerminalControl : MonoBehaviour {
 				if(testing>=1)Debug.Log ("Application.Quit ();");
 				//Application.OpenURL ("");
 				Application.Quit ();
-				UnityEditor.EditorApplication.isPlaying = false;
+//				UnityEditor.EditorApplication.isPlaying = false;
 			}
 			if(testing >= 1) Debug.Log("Doing Command");
 		}

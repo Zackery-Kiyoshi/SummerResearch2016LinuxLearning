@@ -9,6 +9,12 @@ public class FileSystem {
 		public List<Folder> contentFolders;
 		public List<File> contentFiles;
 		public string path;
+		public bool hidden = false;
+
+		public string owner;
+		public string group;
+		public string size;
+		public string time;
 
 		private Folder parent;
 
@@ -41,6 +47,20 @@ public class FileSystem {
 
 
 			return false;
+		}
+
+		public string printSize(bool h){
+			// TODO
+			if (h) {
+				// human readable
+			}
+			return "";
+		}
+
+		public string printPermissions(){
+			// TODO
+
+			return "";
 		}
 
 		public bool removeFolder(string f){
@@ -90,6 +110,11 @@ public class FileSystem {
 		public string content;
 		public string path;
 
+		public string owner;
+		public string group;
+		public string size;
+		public string time;
+
 		public File(string s, string c, string p){
 			name = s;
 			content = c;
@@ -102,6 +127,20 @@ public class FileSystem {
 
 		public void renameFile(string n){
 			name = n;
+		}
+
+		public string printSize(bool h){
+			// TODO
+			if (h) {
+				// human readable
+			}
+			return "";
+		}
+
+		public string printPermissions(){
+			// TODO
+
+			return "";
 		}
 	}
 

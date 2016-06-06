@@ -59,7 +59,7 @@ public class TerminalControl : MonoBehaviour {
 
 		path = fileSystem.root.name;
 		// need to change this so that it will always be correct for the specific resolution
-		maxLines = 5;
+		maxLines = 10;
 		charPerLine = 28;
 		numLines = 0;
 		// initialize terminal with username
@@ -111,7 +111,7 @@ public class TerminalControl : MonoBehaviour {
 					}
                 }
 				terminalObj.text = terminal;
-				updateTerminal ();
+
 			}
 		}
 	}
@@ -208,17 +208,80 @@ public class TerminalControl : MonoBehaviour {
 					}
 				}
 			} else if (curCommand.com == "ls") {
-				terminal += "<color=blue>";
+
+				bool a = false;
+				bool l = false;
+				bool h = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					Debug.Log (i + ": " + curCommand.options.Count );
+					if (curCommand.options [i].Contains ("a")) {
+						Debug.Log ("Found a");
+						a = true;
+					}
+					if (curCommand.options [i].Contains ("l")) {
+						Debug.Log ("Found l");
+						l = true;
+					}
+					if (curCommand.options [i].Contains ("h")) {
+						Debug.Log ("Found h");
+						h = true;
+					}
+				}
+
+				if (a) {
+					if (l) {
+
+					} else {
+						terminal += "<color=blue> . </color>\n";
+						terminal += "<color=blue> .. </color>\n";
+					}
+				}
+
+				// if no options
 				for (int i = 0; i < fileSystem.curFolder.contentFolders.Count; i++) {
-					terminal += "[ " + fileSystem.curFolder.contentFolders [i].name + " ]\n";
+					if (fileSystem.curFolder.contentFolders [i].hidden && a) {
+						if (l) {
+							terminal += fileSystem.curFolder.contentFolders [i].printPermissions () +
+							" " + fileSystem.curFolder.contentFolders [i].owner +
+							" " + fileSystem.curFolder.contentFolders [i].group +
+							" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
+							" " + fileSystem.curFolder.contentFolders [i].time +
+							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+						} else {
+							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+						}
+					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
+						if (l) {
+							terminal += fileSystem.curFolder.contentFolders [i].printPermissions () +
+								" " + fileSystem.curFolder.contentFolders [i].owner +
+								" " + fileSystem.curFolder.contentFolders [i].group +
+								" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
+								" " + fileSystem.curFolder.contentFolders [i].time +
+								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+						} else {
+							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+						}
+					}
 				}
-				terminal += "</color>";
 				for (int i = 0; i < fileSystem.curFolder.contentFiles.Count; i++) {
-					terminal += fileSystem.curFolder.contentFiles [i].name + "\n";
+					if (l) {
+						terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
+							" " + fileSystem.curFolder.contentFiles [i].owner +
+							" " + fileSystem.curFolder.contentFiles [i].group +
+							" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
+							" " + fileSystem.curFolder.contentFiles [i].time +
+							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
+					} else {
+						terminal += fileSystem.curFolder.contentFiles [i].name + "\n";
+					}
 				}
+
 			} else if (curCommand.com == "clear") {
 				terminal = "";
 				numLines = 0;
+				terminal += "[" + username + "@" + comp + " " + path + "]$ ";
+				return;
 				//"[" + username + "@" + comp + " " + path + "]$ ";
 			} else if (curCommand.com == "exit") {
 				if(testing>=1)Debug.Log ("Application.Quit ();");
@@ -236,6 +299,7 @@ public class TerminalControl : MonoBehaviour {
 		terminal += "\n";
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
 		numLines += 1;
+		updateTerminal ();
 	}
 
 
@@ -244,7 +308,7 @@ public class TerminalControl : MonoBehaviour {
 		// when scrolling needs to happen
 
 		string[] tmp = terminal.Split ('\n');
-		Debug.Log ("updating Terminal??? " + tmp.Length);
+		//Debug.Log ("updating Terminal??? " + tmp.Length);
 		if (tmp.Length > maxLines) {
 			string tmpTerminal = "";
 			int len = tmp.Length - 1;

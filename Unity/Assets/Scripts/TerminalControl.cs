@@ -59,9 +59,9 @@ public class TerminalControl : MonoBehaviour {
 
 		path = fileSystem.root.name;
 		// need to change this so that it will always be correct for the specific resolution
-		maxLines = 13;
+		maxLines = 5;
 		charPerLine = 28;
-
+		numLines = 0;
 		// initialize terminal with username
 		terminalObj = gameObject.transform.Find("Text").gameObject.GetComponent<Text>();
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
@@ -111,6 +111,7 @@ public class TerminalControl : MonoBehaviour {
 					}
                 }
 				terminalObj.text = terminal;
+				updateTerminal ();
 			}
 		}
 	}
@@ -242,7 +243,18 @@ public class TerminalControl : MonoBehaviour {
 	public void updateTerminal(){
 		// when scrolling needs to happen
 
-
+		string[] tmp = terminal.Split ('\n');
+		Debug.Log ("updating Terminal??? " + tmp.Length);
+		if (tmp.Length > maxLines) {
+			string tmpTerminal = "";
+			int len = tmp.Length - 1;
+			for (int i = len-maxLines; i <= len; i++) {
+				//Debug.Log (i +"(" + (len-i) + "): " + tmp [(len - i)]);
+				tmpTerminal += tmp[i] + "\n";
+			}
+			terminal = tmpTerminal;
+			terminalObj.text = terminal;
+		}
 	}
 
 

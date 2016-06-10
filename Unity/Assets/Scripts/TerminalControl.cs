@@ -41,6 +41,11 @@ public class TerminalControl : MonoBehaviour {
 	private int charPerLine;
 	private int numLines;
 
+	private int index = 0;
+	private Command tmpCurCmd = new Command ();
+
+	private int tCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		testing = -1;
@@ -68,9 +73,11 @@ public class TerminalControl : MonoBehaviour {
 		terminalObj.text = terminal;
 
 
+
 		List<string> tmpOpt;
 		// all commands
         cmds.Add(new Command("pwd",0));
+		cmds.Add(new Command("logname",0));
         cmds.Add(new Command("cd",0));
 		tmpOpt = new List<string> ();
 		tmpOpt.Add ("l");
@@ -86,33 +93,93 @@ public class TerminalControl : MonoBehaviour {
 	void Update () {
 		if (active) {
 			if (Input.anyKeyDown) {
-                foreach (char c in Input.inputString)
-                {
-					if (c == ' ') {
-						curLine = curLine + " ";
-						terminal += " ";
-					} else if (c == "\b" [0]) {
-						if (curLine.Length != 0){
-							curLine = curLine.Substring (0, curLine.Length - 1);
-							terminal = terminal.Substring (0, terminal.Length - 1);
-						}
-					} else if (c == "\n" [0] || c == "\r" [0]) {
 
-						processCommand (curLine);
+				// make command to replace current line with a certian command.line
+				if(Input.GetKeyDown( KeyCode.UpArrow)){
+					// cycle up the command history
+					if (index > 0) {
+						index--;
+						// cmdHistory[index]
 
-					} else if (c == "\t" [0]) {
-					} else {
-						curLine += c;
-						curParam += c;
-						terminal += c;
-
-						if (curLine.Length > charPerLine - 19)
-							updateTerminal ();
 					}
-                }
-				terminalObj.text = terminal;
+				} else if(Input.GetKeyDown( KeyCode.DownArrow )){
+					// cycle down the command history
+					if (index < cmdHistory.Count - 1) {
+						index++;
+						// cmdHistory[index]
 
+					} else {
+						// tmpCurCmd
+
+					}
+				}else {
+	                foreach (char c in Input.inputString)
+    	            {
+						if (c == ' ') {
+							curLine = curLine + " ";
+							tmpCurCmd.line = curLine;
+							terminal += " ";
+							tCount = 0;
+						} else if (c == "\b" [0]) {
+							if (curLine.Length != 0){
+								curLine = curLine.Substring (0, curLine.Length - 1);
+								tmpCurCmd.line = curLine;
+								terminal = terminal.Substring (0, terminal.Length - 1);
+								tCount = 0;
+							}
+						} else if (c == "\n" [0] || c == "\r" [0]) {
+							tmpCurCmd = new Command ();
+							tCount = 0;
+							processCommand (curLine);
+						} else if (c == "\t" [0]) {
+							// TODO tab completion
+							if (curLine.Length > 0) {
+								tCount++;
+								string[] tmpL = curLine.Split (new[] { ' ' });
+								string s = tmpL [tmpL.Length - 1];
+
+								List<KeyValuePair<string,string>> posFill = new List<KeyValuePair<string,string>>();
+								if (tmpL.Length == 1) {
+									// search throught cmds
+									for (int i = 0; i < cmds.Count; i++) {
+										bool match = true;
+										for (int j = 0; j < s.Length && match; j++) {
+											if (s [j] != cmds [i].com [j])
+												match = false;
+										}
+										if (match) {
+											posFill.Add (new KeyValuePair<string,string> (cmds [i].com, cmds [i].com.Substring (s.Length - 1)));
+										}
+									}
+								} else {
+									// search throught files/directories
+
+								}
+								if (posFill.Count > 1 && tCount == 2) {
+									// print the results
+
+
+								} else if (posFill.Count == 1) {
+									curLine += posFill [0].Key;
+									terminal += posFill [0].Value;
+								}
+
+							}
+						} else {
+							curLine += c;
+							curParam += c;
+							terminal += c;
+							tmpCurCmd.line = curLine;
+							tCount = 0;
+							if (curLine.Length > charPerLine - 19)
+								updateTerminal ();
+						}
+	                }
+					terminalObj.text = terminal;
+				}
 			}
+		}else{
+			//Debug.Log ("NOT ACTIVE???");
 		}
 	}
 
@@ -170,7 +237,7 @@ public class TerminalControl : MonoBehaviour {
 				}
 			}
 		}
-
+		curCommand.line = curLine;
 		cmdHistory.Add (curCommand);
 		doCommand (curCommand);
 	}
@@ -187,6 +254,8 @@ public class TerminalControl : MonoBehaviour {
 			if (curCommand == null) {
 				if (testing >= 0)
 					Debug.Log ("curCommand is null");
+			} else if (curCommand.com == "logname") {
+				terminal += username;
 			} else if (curCommand.com == "pwd") {
 				terminal += fileSystem.curFolder.path;
 			} else if (curCommand.com == "cd") {
@@ -214,27 +283,39 @@ public class TerminalControl : MonoBehaviour {
 				bool h = false;
 
 				for (int i = 0; i < curCommand.options.Count; i++) {
-					Debug.Log (i + ": " + curCommand.options.Count );
+					//Debug.Log (i + ": " + curCommand.options.Count );
 					if (curCommand.options [i].Contains ("a")) {
-						Debug.Log ("Found a");
+						//Debug.Log ("Found a");
 						a = true;
 					}
 					if (curCommand.options [i].Contains ("l")) {
-						Debug.Log ("Found l");
+						//Debug.Log ("Found l");
 						l = true;
 					}
 					if (curCommand.options [i].Contains ("h")) {
-						Debug.Log ("Found h");
+						//Debug.Log ("Found h");
 						h = true;
 					}
 				}
 
 				if (a) {
 					if (l) {
+						terminal += fileSystem.curFolder.printPermissions () +
+							" " + fileSystem.curFolder.owner +
+							" " + fileSystem.curFolder.group +
+							" " + 4096 +
+							" " + fileSystem.curFolder.time +
+							" <color=blue>" + "." + "</color>\n";
 
+						terminal += fileSystem.curFolder.parent.printPermissions () +
+							" " + fileSystem.curFolder.parent.owner +
+							" " + fileSystem.curFolder.parent.owner +
+							" " + 4096 +
+							" " + "Jun 8 11:27" +
+							" <color=blue>" + ".." + "</color>\n";
 					} else {
-						terminal += "<color=blue> . </color>\n";
-						terminal += "<color=blue> .. </color>\n";
+						terminal += "<color=blue> . </color>   ";
+						terminal += "<color=blue> .. </color>   ";
 					}
 				}
 
@@ -249,7 +330,7 @@ public class TerminalControl : MonoBehaviour {
 							" " + fileSystem.curFolder.contentFolders [i].time +
 							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
-							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
 						}
 					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
 						if (l) {
@@ -260,7 +341,7 @@ public class TerminalControl : MonoBehaviour {
 								" " + fileSystem.curFolder.contentFolders [i].time +
 								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
-							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
 						}
 					}
 				}
@@ -273,7 +354,7 @@ public class TerminalControl : MonoBehaviour {
 							" " + fileSystem.curFolder.contentFiles [i].time +
 							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
 					} else {
-						terminal += fileSystem.curFolder.contentFiles [i].name + "\n";
+						terminal += fileSystem.curFolder.contentFiles [i].name + "   ";
 					}
 				}
 

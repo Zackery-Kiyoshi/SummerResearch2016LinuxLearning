@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
         myFileSystem.root.add(new File("FirstTest1"));
         myFileSystem.root.add(new File("FirstTest2"));
         myFileSystem.root.add(new File("FirstTest3"));
-        
+        myFileSystem.root.name = "";
         var testing = false;
         var username = "IDontCare";
         var computer = "NotHere";
@@ -157,16 +157,19 @@ jQuery(document).ready(function($) {
                     var validPath = myFileSystem.checkPath(pathToGo);
 
                     if(validPath){
-                        terminal.echo("GOOD PATH!!!!");
+                        myFileSystem.changeDir(pathToGo);
+                        tmpPath = pathToGo.split("/");
+                        tmpIndex = Number(tmpPath.length) -1;
+                        path = myFileSystem.curFolder.name;
+                        //console.log(path);
+                        //console.log(terminal.get_prompt());
                     }else{
                         terminal.echo( "-bash: cd: help: No such file or directory (" + pathToGo + ")");
                     }
                     
-                    terminal.settings().prompt = "[" + username + "@" + computer + " " + path + "/]? ";
+                    terminal.set_prompt ("[" + username + "@" + computer + " " + path + "/]? ");
                     
-                    terminal.echo("cd is currently not finished");
-                    
-                    
+                    //terminal.echo("cd is currently finished: but need to change the prompt");
                     
                 } else if (cmd == "ls") {
                     var options = [];
@@ -184,6 +187,9 @@ jQuery(document).ready(function($) {
                     }
                     for (i = 0; i < options.length; i++) {
                         terminal.echo("option: " + options[i]);
+                        var a = false;
+                        var l = false;
+                        var h = false;
                         if (options[i] == "a") {
 
                         } else if (options[i] == "l") {

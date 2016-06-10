@@ -3,18 +3,17 @@ from django.db import models
 # Create your models here.
 
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-
-class UserProfile(models.Model):  
-    user = models.OneToOneField(User)  
-    #other fields here
+     
+class UserProfile(models.Model):
+    user = models.OneToOneField(User,
+                                unique=True,
+                                verbose_name=('user'),
+                                related_name='my_profile')
+    #url = models.URLField()
+    #webLevel = models.IntegerField()
+    home_address = models.TextField()
+    webLevel = models.IntegerField(default=1)
+    unityLevel = models.IntegerField(default=1)
+    f = "FUCK"
     
-    
-    
-    def __str__(self):  
-          return "%s's profile" % self.user  
-
-    def create_user_profile(sender, instance, created, **kwargs):  
-        if created:  
-            profile, created = UserProfile.objects.get_or_create(user=instance)  
-        post_save.connect(create_user_profile, sender=User) 
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

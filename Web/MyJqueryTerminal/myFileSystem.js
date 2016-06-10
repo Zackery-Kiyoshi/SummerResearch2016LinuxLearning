@@ -41,51 +41,67 @@ class Folder {
         }
         return true;
     }
-    
-    checkPath(p){
+
+    checkPath(p, z) {
         //console.log(p.length);
-        if( p.length <= 0 || p[0] != null ) return true;
+        if (p.length >= z) {
+            //console.log(this.name);
+            return true;
+        }
         var found = false;
         var next;
-        
-        for(var j=0; j < this.contentFolders.length; j++){
-            console.log(p[0] == this.contentFolders[j].name);
-            console.log( "'" + p[0] + "' : '" + this.contentFolders[j].name + "'");
-            if(p[0] === this.contentFolders[j].name){
-                found = true;
-                next = this.contentFolders[j];
-                break;
+        if (p[z] == "..") {
+            z++;
+            return this.parent.checkPath(p, z);
+        } else {
+            for (var j = 0; j < this.contentFolders.length; j++) {
+                console.log(p[z] == this.contentFolders[j].name);
+                //console.log( "'" + p[z] + "' : '" + this.contentFolders[j].name + "'");
+                if (p[z] === this.contentFolders[j].name) {
+                    found = true;
+                    next = this.contentFolders[j];
+                    break;
+                }
             }
+
+            if (found) {
+                //console.log(p);
+                //delete p[0];
+                z++;
+                //console.log(p);
+                return next.checkPath(p, z);
+            } else return false
         }
-        
-        if(found){
-            //console.log(p);
-            delete p[0];
-            //console.log(p);
-            return next.checkPath(p);
-        }else return false
     }
-    
-    changeDir(p,cur){
-        if( p.length <= 0 || p[0] != null ) return true;
+
+    changeDir(p, z) {
+        if (p.length <= z) {
+            //console.log("return: " + this.name);
+            return this;
+        }
         var found = false;
         var next;
-        
-        for(var j=0; j < this.contentFolders.length; j++){
-            console.log(p[0] == this.contentFolders[j].name);
-            console.log( "'" + p[0] + "' : '" + this.contentFolders[j].name + "'");
-            if(p[0] === this.contentFolders[j].name){
-                found = true;
-                next = this.contentFolders[j];
-                break;
+        if (p[z] == "..") {
+            z++;
+            return this.parent.changeDir(p, z);
+        } else {
+            for (var j = 0; j < this.contentFolders.length; j++) {
+                //console.log(p[z] == this.contentFolders[j].name);
+                //console.log( "'" + p[z] + "' : '" + this.contentFolders[j].name + "'");
+                if (p[z] == this.contentFolders[j].name) {
+                    found = true;
+                    next = this.contentFolders[j];
+                    break;
+                }
             }
+
+            if (found) {
+                //delete p[0];
+                z++;
+                //cur = next;
+                return next.changeDir(p, z);
+            } else return null;
         }
-        
-        if(found){
-            delete p[0];
-            cur = next;
-            return next.checkPath(p);
-        }else return false
     }
 }
 
@@ -95,7 +111,7 @@ class FileSystem {
         this.root = new Folder("/");
         this.root.path = "/";
         this.curFolder = this.root;
-        
+
         this.username = un;
         this.computer = com;
     }
@@ -104,56 +120,62 @@ class FileSystem {
         console.log("'" + this.curFolder.path + "'");
         return this.curFolder.path;
     }
-    
-    getContents(){
+
+    getContents() {
         var ret = "";
-        
-        for(i=0; i< this.curFolder.contentFolders.length; i++){
-            if(i == 0) ret += this.curFolder.contentFolders[i].name;
+
+        for (i = 0; i < this.curFolder.contentFolders.length; i++) {
+            if (i == 0) ret += this.curFolder.contentFolders[i].name;
             else
                 ret += "\t" + this.curFolder.contentFolders[i].name;
         }
         ret += "/";
-        for(i=0; i< this.curFolder.contentFiles.length; i++){
-            if(i == 0) ret += this.curFolder.contentFiles[i].name;
+        for (i = 0; i < this.curFolder.contentFiles.length; i++) {
+            if (i == 0) ret += this.curFolder.contentFiles[i].name;
             else
                 ret += "\t" + this.curFolder.contentFiles[i].name;
         }
         return ret;
     }
-    
-    checkPath(p){
+
+    checkPath(p) {
         var tmp = p.split("/")
-        if(p[0] == ''){
+        if (p[0] == '') {
             // go to root
             return true
-        }else if(p[0] == '/'){
+        } else if (p[0] == '/') {
             // absolute
-            tmp = tmp.splice(0,1);
-            return this.root.checkPath( tmp );
-        }else{
+            tmp = tmp.splice(0, 1);
+            return this.root.checkPath(tmp, 0);
+        } else {
             // relative
-            return this.curFolder.checkPath( tmp );
+            return this.curFolder.checkPath(tmp, 0);
         }
     }
-    
-    changeDir(p){
+
+    changeDir(p) {
         var tmp = p.split("/")
-        if(p[0] == ''){
+        if (p[0] == '') {
             // go to root
             return true
-        }else if(p[0] == '/'){
+        } else if (p[0] == '/') {
             // absolute
-            tmp = tmp.splice(0,1);
-            return this.root.checkPath( tmp );
-        }else{
+            tmp = tmp.splice(0, 1);
+            var tmpFolder = this.root.changeDir(tmp, 0);
+            this.curFolder = tmpFolder;
+            return;
+        } else {
             // relative
-            return this.curFolder.checkPath( tmp );
+            //console.log(p);
+            var tmpFolder = this.curFolder.changeDir(tmp, 0);
+            //console.log(tmpFolder.name);
+            this.curFolder = tmpFolder;
+            return;
         }
     }
-    
-    currentPath(){
+
+    currentPath() {
         return this.curFolder.name;
     }
-    
+
 }

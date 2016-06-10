@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class LoginsystemConfig(AppConfig):
+class LoginSystemConfig(AppConfig):
     name = 'loginSystem'

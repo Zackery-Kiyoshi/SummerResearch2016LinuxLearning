@@ -27,9 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#AUTH_PROFILE_MODEL = 'loginSystem.UserProfile'
+
 # Application definition
 
 INSTALLED_APPS = [
+    'loginSystem.apps.LoginSystemConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,9 +76,7 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-)
+
 
 WSGI_APPLICATION = 'LinuxLearningAdventure.wsgi.application'
 

@@ -4,282 +4,6 @@ using System.Collections.Generic;
 
 public class FileSystem {
 
-	public class Folder {
-		public string name;
-		public List<Folder> contentFolders;
-		public List<File> contentFiles;
-		public string path;
-		public bool hidden = false;
-
-		public bool[] ownerPermissions = { true, true, false };
-		public bool[] groupPermissions = { true, true, false };
-		public bool[] globalPermissions = { true, false, false };
-
-		public string owner = "root";
-		public string group = "root";
-		public long size = 0;
-		public string time = "Jun 8 11:27";
-
-		public Folder parent;
-
-		public Folder getParent(){
-			return parent;
-		}
-
-		public void setParent(Folder f){
-			parent = f;
-		}
-
-		public Folder(string s, List<Folder> l, List<File> f, string p){
-			name = s;
-			contentFolders = l;
-			contentFiles = f;
-			path = p;
-		}
-
-		public void addFolder(string s){
-			contentFolders.Add (new Folder(s, new List<Folder>(), new List<File>(), path+name));
-			contentFolders [contentFolders.Count - 1].setParent (this);
-		}
-
-		public void addFile(string s, string c){
-			contentFiles.Add (new File(s,c,path+name));
-		}
-
-		public bool moveFile(string f){
-			// TODO
-
-
-			return false;
-		}
-
-		public string printSize(bool h){
-			string ret = "";
-			if (h) {
-				// human readable
-
-				if (size < 1024) {
-					ret += size + "B";
-				}else if(size < 1048576){
-					ret += (size/1024) + "KB";
-				}else if( size < 1073741824	){
-					ret += (size/1048576) + "MB";
-				}else if( size < 1099511627776){
-					ret += (size/1073741824) + "GB";
-				}else{
-					ret += (size/1099511627776) + "TB";
-				}
-
-			} else {
-				ret += size;
-			}
-			return ret;
-		}
-
-		public string printPermissions(){
-			string ret = "d";
-
-			if (ownerPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (ownerPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (ownerPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			if (groupPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (groupPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (groupPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			if (globalPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (globalPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (globalPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			return ret;
-		}
-
-		public bool removeFolder(string f){
-			int tmp = -1;
-			bool found = false;
-			for(int i=0; i< contentFolders.Count && !found; i++){
-				if(contentFolders[i].name == f){
-					tmp = i;
-					found = true;
-				}
-			}
-			if(found){
-				if (contentFolders [tmp].contentFolders.Count == 0 && contentFolders [tmp].contentFiles.Count == 0) {
-					contentFolders.RemoveAt(tmp);
-					return true;
-				} else {
-					Debug.Log ("Can't remove a non empty folder");
-					return false;
-				}
-			}
-			else {
-				Debug.Log("Couldn't find folder named: " + f);
-				return false;
-			}
-		}
-
-		public bool removeFile(string f){
-			bool found = false;
-			for(int i=0; i< contentFiles.Count && !found; i++){
-				if(contentFiles[i].name == f){
-					contentFiles.RemoveAt(i);
-					found = true;
-				}
-			}
-			if(found){
-				return true;
-			}
-			else {
-				Debug.Log("Couldn't find file named: " + f);
-				return false;
-			}
-		}
-	}
-
-	public class File {
-		public string name;
-		public string content;
-		public string path;
-
-		public bool[] ownerPermissions = { true, true, false };
-		public bool[] groupPermissions = { true, true, false };
-		public bool[] globalPermissions = { true, false, false };
-
-		public string owner = "root";
-		public string group = "root";
-		public long size = 0;
-		public string time = "Jun 8 11:27";
-
-		public File(string s, string c, string p){
-			name = s;
-			content = c;
-			path = p;
-		}
-
-
-
-		public void changeFile(string c){
-			content = c;
-		}
-
-		public void renameFile(string n){
-			name = n;
-		}
-
-		public string printSize(bool h){
-			// TODO
-			string ret = "";
-			if (h) {
-				// human readable
-				if (size < 1024) {
-					ret += size + "B";
-				}else if(size < 1048576){
-					ret += (size/1024) + "KB";
-				}else if( size < 1073741824	){
-					ret += (size/1048576) + "MB";
-				}else if( size < 1099511627776){
-					ret += (size/1073741824) + "GB";
-				}else{
-					ret += (size/1099511627776) + "TB";
-				}
-			} else {
-				ret += size;
-			}
-			return ret;
-		}
-
-		public string printPermissions(){
-			// TODO
-			string ret = "-";
-
-			if (ownerPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (ownerPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (ownerPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			if (groupPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (groupPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (groupPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			if (globalPermissions [0]) {
-				ret += "r";
-			} else {
-				ret += "-";
-			}
-			if (globalPermissions [1]) {
-				ret += "w";
-			} else {
-				ret += "-";
-			}
-			if (globalPermissions [2]) {
-				ret += "x";
-			} else {
-				ret += "-";
-			}
-
-			return ret;
-		}
-	}
-
 	public Folder root;
 	public Folder curFolder;
 	public string curPath;
@@ -320,9 +44,12 @@ public class FileSystem {
 
 		int i = 0;
 
+		/*
 		for(int a = 0; a < tmp.Length; a++){
 			Debug.Log("  " + tmp[a]);
 		}
+		*/
+
 		while (i<tmp.Length) {
 			bool search = false;
 			if (tmp [i] == "..") {
@@ -335,9 +62,13 @@ public class FileSystem {
 				i++;
 			} else {
 				for (int j = 0; j < tmpFold.contentFolders.Count; j++) {
+					//Debug.Log ("i: " + i + ", j: " + j);
+					//Debug.Log ("j: " + tmpFold.contentFolders [j].name);
+					//Debug.Log("i: " + tmp [i]);
 					if (tmpFold.contentFolders [j].name == tmp [i]) {
 						search = true;
 						i++;
+						break;
 					}
 				}
 				if (!search)
@@ -353,6 +84,7 @@ public class FileSystem {
 		string[] tmp = p.Split (new[] { '/' });
 
 		if (tmp [0] != "") {
+			
 			//relative directory
 			Folder tmpFold = curFolder;
 			int i = 0;
@@ -370,6 +102,7 @@ public class FileSystem {
 							search = true;
 							curFolder = tmpFold.contentFolders [j];
 							i++;
+							break;
 						}
 					}
 					if (!search)

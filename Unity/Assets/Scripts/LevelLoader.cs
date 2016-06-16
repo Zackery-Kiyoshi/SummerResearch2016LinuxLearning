@@ -1,49 +1,152 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
+public class LevelLoader : MonoBehaviour{
 
+	public string LoadFile;
+	public string description;
 
-public class LevelLoader : MonoBehaviour {
+	TextAsset theText;
+	string[] lines;
+	string[] FileLines;
+	Folder curFolder;
 
-	TextAsset theText = Resources.Load ("Text/TestLevel.txt") as TextAsset;
-	string[] lines = theText.text.Split ('\n');
+	public List<GameObject> level = new List<GameObject>();
+	public FileSystem fs = new FileSystem();
 
-	List<Message> level;
-
-
-
+	private bool loaded = false;
 
 	// Use this for initialization
 	void Start () {
-		
-		for(int i=0; i< lines.Length; i++){
-			string[] tmp = lines [i].Split ('\t');
-			if (lines [i] [0] == 1) {
-				// isPersons message
-				Message tmpMsg = new Message (true, tmp [1]);
-				level.Add (tmpMsg);
-			} else if (lines [i] [0] == 0) {
-				// isAI message
-				Message tmpMsg = new Message (false, tmp [1]);
-				level.Add (tmpMsg);
-			} else if (lines [i] [0] == 'w') {
-				// encode wait for command
-				Command cmd = new Command(tmp[1],0);
-				i++;
-				while (lines [i] [0] == '<') {
-					// encode the 
-					tmp = lines [i].Split ('\t');
-					Message tmpMsg = new Message (false, tmp [2]);
-					tmpMsg.wait = tmp [1];
-					tmpMsg.cmdWait = cmd;
+		load ();
+	}
+
+	public void load(){
+		if (!loaded) {
+			loaded = true;
+			GameObject msg = (GameObject)Resources.Load ("Prefabs/Message");
+
+			theText = Resources.Load ("Text/" + LoadFile) as TextAsset;
+
+			string[] tmpFile = theText.text.Split (new string[]{ "<div>" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+			description = tmpFile [0];
+
+
+			FileLines = tmpFile [1].Split ('\n');
+			curFolder = fs.root;
+
+			for (int i = 0; i < FileLines.Length - 1; i++) {
+				if (FileLines [i] == "") {
+					
+				}
+				else if (FileLines [i] [0] == '{') {
+					// enter subfolder
+					//Debug.Log("enter subfolder");
+					if (curFolder.contentFolders.Count > 0) {
+						curFolder = curFolder.contentFolders [curFolder.contentFolders.Count - 1];
+					}
+				} else if (FileLines [i] [0] == '}') {
+					// exit subfolder
+					//Debug.Log("exit subfolder");
+					if (curFolder.name != "/") {
+						curFolder = curFolder.parent;
+					}
+				} else {
+					//Debug.Log (i + ": " + FileLines [i]);
+
+					// just create new file/folder
+					string[] cur = FileLines [i].Split ('\t');
+					if(cur.Length == 7)
+						curFolder.add (FileLines [i] [0] == 'd', cur [0].Substring (1), cur [1], cur [2], Int32.Parse (cur [3]), cur [4], cur [5], cur [6]);
+				}
+			}
+
+			lines = tmpFile [2].Split ('\n');
+			/*
+		Debug.Log ("Text/" + LoadFile);
+		for (int i = 0; i < lines.Length; i++) {
+			Debug.Log (i + ": " + lines [i]);
+		}
+//		*/
+			for (int i = 0; i < lines.Length; i++) {
+				string[] tmp = lines [i].Split ('\t');
+				if (tmp [0] == "1") {
+					// isPersons message
+					GameObject tmpMsg = (GameObject)Instantiate (msg);
+					//new Message (true, tmp [1]);
+					tmpMsg.GetComponent<Message> ().isPerson = true;
+					tmpMsg.GetComponent<Message> ().message = tmp [1];
+					level.Add (tmpMsg);
+					//tmpMsg.SetActive (false);
+				} else if (tmp [0] == "0") {
+					// isAI message
+					GameObject tmpMsg = (GameObject)Instantiate (msg);
+					//new Message (false, tmp [1]);
+					tmpMsg.GetComponent<Message> ().isPerson = false;
+					tmpMsg.GetComponent<Message> ().message = tmp [1];
+					level.Add (tmpMsg);
+					//tmpMsg.SetActive (false);
+				} else if (tmp [0] == "wait") {
+					// encode wait for command
+					Command cmd = new Command (tmp [1], 0);
+
+					if (tmp [2] != "!~") {
+						string[] a = tmp [2].Split (' ');
+						List<string> t = new List<string> ();
+						foreach (string f in a) {
+							t.Add (f);
+						}
+						List<string> s = new List<string> ();
+						for (int j = 0; j < t.Count; j++) {
+							string tmps = t [j];
+							for (int k = 1; k < tmps.Length; k++) {
+								s.Add ("" + tmps [k]);
+							}
+						}
+						cmd.options = s;
+					}
+
+					if (tmp [3] [0] != '!' && tmp [3] [1] != '~') {
+						string[] a = tmp [3].Split (' ');
+						Debug.Log (tmp [3]);
+						Debug.Log (tmp [3] == "!~");
+						List<string> t = new List<string> ();
+						foreach (string f in a) {
+							t.Add (f);
+						}
+						cmd.param = t;
+					}
+
 					i++;
+					//Debug.Log (i);
+
+					while (lines [i] != "" && i < lines.Length && lines [i] [0] == '<') {
+						//Debug.Log (i + ": " + lines[i]);
+						// encode the 
+						tmp = lines [i].Split ('\t');
+						GameObject tmpMsg = (GameObject)Instantiate (msg);
+						//new Message (false, tmp [2]);
+						tmpMsg.GetComponent<Message> ().isPerson = false;
+						tmpMsg.GetComponent<Message> ().message = tmp [2];
+						tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]) - 1;
+						tmpMsg.GetComponent<Message> ().cmdWait = cmd;
+						level.Add (tmpMsg);
+						//tmpMsg.SetActive (false);
+						i++;
+					}
+					i--;
 				}
 			}
 		}
-
+		// mc.startMsg ();
 	}
-	
+
+
+
 	// Update is called once per frame
 	void Update () {
 	

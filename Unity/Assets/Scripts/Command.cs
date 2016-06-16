@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Command {
 
 	// the command itself
-	public string com;
-	public string line;
+	public string com = "";
+	public string line = "";
     public bool error;
 	public int numParams;
 	// the options for the command

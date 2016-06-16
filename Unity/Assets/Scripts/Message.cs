@@ -8,16 +8,13 @@ public class Message : MonoBehaviour {
 	public string message = "";
 	public bool isPerson = false;
 	public int wait = 0;
-	public Command cmdWait;
-
+	public Command cmdWait = null;
+	public bool finished = false;
 	// width 395
 	// height 560
 
-	private Text status;
+	public Text status;
 	private Text body;
-
-	private string end = "Enter";
-	private string type = "Typing";
 
 	private bool running = false;
 	private const int maxPerLine = 27;
@@ -32,6 +29,8 @@ public class Message : MonoBehaviour {
 	void Start () {
 		status = gameObject.transform.Find ("TypingKey").gameObject.GetComponent<Text> ();
 		body = gameObject.transform.Find ("Text").gameObject.GetComponent<Text> ();
+		//Debug.Log (status);
+		//Debug.Log (body);
 		width = body.GetComponent<RectTransform> ().rect.width;
 
 		body.text = "";
@@ -45,7 +44,13 @@ public class Message : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isPerson && running) {
+		//Debug.Log ( !isPerson +":"+ running +":"+ (wait == 0));
+		if (wait != 0) {
+			gameObject.SetActive (false);
+			//Debug.Log ("HELP!!!");
+		}
+		else if (!isPerson && running ) {
+			gameObject.SetActive (true);
 			if (count == 0) {
 				pressedKey ();
 				count = 10;
@@ -53,6 +58,7 @@ public class Message : MonoBehaviour {
 				count--;
 			}
 		}
+
 	}
 
 	public void pressedKey(){
@@ -70,31 +76,56 @@ public class Message : MonoBehaviour {
 			if ( textWidth >= width) {
 				var t = gameObject.GetComponent<RectTransform> ();
 				t.offsetMin = new Vector2(t.offsetMin.x, t.offsetMin.y-textHeight);
+				t = status.GetComponent<RectTransform> ();
+				t.offsetMin = new Vector2(t.offsetMin.x, t.offsetMin.y-textHeight);
+				t.offsetMax = new Vector2(t.offsetMax.x, t.offsetMax.y-textHeight);
 				textWidth = 0;
 			}
 
 		} else if (index == message.Length) {
-			status.text = end;
+			status.text = "Enter";
 			index++;
 		} else if (index == message.Length + 1) {
-			done ();
+			status.text = "";
+			running = false;
+			finished = true;
 			index++;
 		}else return;
 	}
 
 	public void start(){
+		if (body == null) {
+			status = gameObject.transform.Find ("TypingKey").gameObject.GetComponent<Text> ();
+			body = gameObject.transform.Find ("Text").gameObject.GetComponent<Text> ();
+		}
+		width = body.GetComponent<RectTransform> ().rect.width;
+		if (!isPerson) {
+			body.alignment = TextAnchor.UpperRight;
+			var tmp = 7 * status.GetComponent<RectTransform> ().position.x;
+			status.GetComponent<RectTransform> ().position = new Vector3 (
+				tmp, 
+				status.GetComponent<RectTransform> ().position.y,
+				status.GetComponent<RectTransform> ().position.z);
+		}
 		running = true;
-		status.text = type;
+		status.text = "Typing";
 	}
 
-	public void done(){
-		status.text = "";
-	}
 
-	IEnumerator wait(int i) {
+	public IEnumerator waitSec(int i) {
 		//print(Time.time);
 		yield return new WaitForSeconds(i);
 		//print(Time.time);
 	}
 
+	public float size(){
+		float ret = 0;
+		Font myFont = body.font;  
+		for (int i = 0; i < message.Length; i++) {
+			CharacterInfo characterInfo = new CharacterInfo ();
+			myFont.GetCharacterInfo (message [i], out characterInfo, body.fontSize);
+			ret += characterInfo.advance;
+		}
+		return ret / width;
+	}
 }

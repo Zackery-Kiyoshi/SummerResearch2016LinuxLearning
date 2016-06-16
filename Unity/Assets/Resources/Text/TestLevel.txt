@@ -1,8 +1,29 @@
-0	test
+test
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	test3
+<div>
+0	test1
 1	what????
 0	type pwd
-wait	pwd	0	0
+wait	pwd	!~	!~
 <	2	you fucker PWD
+<	2	JUST DO IT!!!!!!!!!
 1	well...
 0	now type ls
-wait	ls	0	0
+wait	ls	!~	!~
+<	2	you fucker ls
+1	now what?
+0	type ls -l
+wait	ls	-l	!~
+<	2	DO ls -l 
+1	now what??????
+0	leave

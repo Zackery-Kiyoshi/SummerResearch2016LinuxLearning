@@ -46,33 +46,28 @@ public class TerminalControl : MonoBehaviour {
 
 	private int tCount = 0;
 
+	public MessageControl mc;
+
 	// Use this for initialization
 	void Start () {
+		
 		testing = -1;
 		active = false;
 
 		//making the file system
-
-		fileSystem.root.addFile ("FirstTest0","TESTING0");
-		fileSystem.root.addFile ("FirstTest1","TESTING1");
-		fileSystem.root.addFile ("FirstTest2","TESTING2");
-		fileSystem.root.addFile ("FirstTest3","TESTING3");
-
-		fileSystem.root.addFolder ("FirstFolder");
-		fileSystem.root.addFolder ("Downloads");
-		fileSystem.root.addFolder ("Documents");
+		LevelLoader l = gameObject.transform.parent.gameObject.GetComponent<LevelLoader>();
+		l.load ();
+		fileSystem = l.fs;
 
 		path = fileSystem.root.name;
 		// need to change this so that it will always be correct for the specific resolution
-		maxLines = 10;
+		maxLines = 20;
 		charPerLine = 28;
 		numLines = 0;
 		// initialize terminal with username
 		terminalObj = gameObject.transform.Find("Text").gameObject.GetComponent<Text>();
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
 		terminalObj.text = terminal;
-
-
 
 		List<string> tmpOpt;
 		// all commands
@@ -88,7 +83,7 @@ public class TerminalControl : MonoBehaviour {
 		cmds.Add(new Command("exit",0));
 
     }
-	
+
 	// switched from FixedUpdate to fix lag issues
 	void Update () {
 		if (active) {
@@ -192,14 +187,24 @@ public class TerminalControl : MonoBehaviour {
 	}
 
 	public void processCommand(string line){
+
 		string[] s = line.Split (new[] { ' ' });
 
 		Command curCommand = new Command();
 
+		if (curLine == "") {
+			curCommand.line = curLine;
+			cmdHistory.Add (curCommand);
+			doCommand (curCommand);
+			return;
+		}
+
+
 		//calculate lines
-		numLines += (1 + (line.Length + 19) % charPerLine);
+		//numLines += (1 + (line.Length + 19) % charPerLine);
 
 		// processes the string[] into command
+
 		foreach(string a in s){
 			if (progress == 0) {
 				int tmp = -1;
@@ -243,6 +248,7 @@ public class TerminalControl : MonoBehaviour {
 	}
 
 	public void doCommand(Command curCommand){
+		
 		if (error != "") {
 			// error
 			terminal += "\n" + error + "\n";
@@ -381,6 +387,7 @@ public class TerminalControl : MonoBehaviour {
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
 		numLines += 1;
 		updateTerminal ();
+		mc.processCmd (curCommand);
 	}
 
 

@@ -46,16 +46,21 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Command.cs" />
+     <Compile Include="Assets\Scripts\File.cs" />
      <Compile Include="Assets\Scripts\FileSystem.cs" />
+     <Compile Include="Assets\Scripts\Folder.cs" />
      <Compile Include="Assets\Scripts\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\Message.cs" />
      <Compile Include="Assets\Scripts\MessageControl.cs" />
      <Compile Include="Assets\Scripts\MessageImporter.cs" />
      <Compile Include="Assets\Scripts\PanelControl.cs" />
+     <Compile Include="Assets\Scripts\StartDebrifing.cs" />
+     <Compile Include="Assets\Scripts\StartLevel.cs" />
      <Compile Include="Assets\Scripts\TerminalControl.cs" />
      <Compile Include="Assets\Scripts\TestingInputField.cs" />
      <Compile Include="Assets\Scripts\VimControl.cs" />
      <None Include="Assets\Resources\Text\TestLevel.txt" />
+     <None Include="Assets\Resources\Text\TestAITextLevel.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,7 +34,7 @@ public class TerminalControl : MonoBehaviour {
 	public string comp = "DontCare01";
 	public string path = "/";
 
-	private FileSystem fileSystem = new FileSystem (); 
+	private FileSystem fileSystem; 
 
 	private Text terminalObj;
 
@@ -69,19 +70,61 @@ public class TerminalControl : MonoBehaviour {
 		terminal += "[" + username + "@" + comp + " " + path + "]$ ";
 		terminalObj.text = terminal;
 
-		List<string> tmpOpt;
-		// all commands
+
+		// all commands read in from file
+		TextAsset theText = Resources.Load ("Text/Commands") as TextAsset;
+		string[] lines = theText.text.Split ('\n');
+		List<string> tmpOpt = new List<string>();
+//		/*
+		for (int i = 1; i < lines.Length; i++) {
+			Command newCmd = new Command ();
+			// first line is the name
+			//Debug.Log(lines[i]);
+			newCmd.com = lines [i].Trim();
+			i++;
+			// second line is the possible options
+			string[] opts = lines [i].Split (' ');
+			for (int j = 0; j < opts.Length; j++) {
+				tmpOpt.Add (opts [j]);
+			}
+			newCmd.options = tmpOpt;
+			i++;
+			// third line is the number of paramaters
+			newCmd.numParams = Int32.Parse (lines [i]);
+			i++;
+			// fourth line should be <man> 
+			i++;
+			string man = "";
+			bool wloop = true;
+			while ( wloop ) {
+				man += lines [i] + '\n';
+				i++;
+				if (lines [i].Length >= 5 && lines [i].Substring (0, 5) == "<man>") {
+					man = man.Substring (0, man.Length - 1);
+					wloop = false;
+				}
+			}
+			newCmd.man = man;
+
+			//Debug.Log (newCmd.com + " *" + newCmd.options + "* " + newCmd.numParams);
+			//Debug.Log (i + ":" + lines.Length);
+			cmds.Add (newCmd);
+		}
+
+
+		/*
+		// original
         cmds.Add(new Command("pwd",0));
-		cmds.Add(new Command("logname",0));
-        cmds.Add(new Command("cd",0));
+		//cmds.Add(new Command("logname",0));
+        //cmds.Add(new Command("cd",0));
 		tmpOpt = new List<string> ();
 		tmpOpt.Add ("l");
 		tmpOpt.Add ("a");
 		tmpOpt.Add ("h");
 		cmds.Add(new Command("ls",0, tmpOpt ));
-		cmds.Add(new Command("clear",0));
-		cmds.Add(new Command("exit",0));
-
+		//cmds.Add(new Command("clear",0));
+		//cmds.Add(new Command("exit",0));
+		*/
     }
 
 	// switched from FixedUpdate to fix lag issues
@@ -260,7 +303,14 @@ public class TerminalControl : MonoBehaviour {
 			if (curCommand == null) {
 				if (testing >= 0)
 					Debug.Log ("curCommand is null");
-			} else if (curCommand.com == "logname") {
+			} else if (curCommand.com == "man") {
+				if (curCommand.param.Count > 0) {
+					Debug.Log ("man: " + curCommand.param [0]);
+					terminal += curCommand.man;
+				} else {
+					terminal += "\n" + "-bash: man : Invalid paramater to man (or not a command supported)" + "\n";
+				}
+			}else if (curCommand.com == "logname") {
 				terminal += username;
 			} else if (curCommand.com == "pwd") {
 				terminal += fileSystem.curFolder.path;
@@ -287,6 +337,7 @@ public class TerminalControl : MonoBehaviour {
 				bool a = false;
 				bool l = false;
 				bool h = false;
+				bool o1 = false;
 
 				for (int i = 0; i < curCommand.options.Count; i++) {
 					//Debug.Log (i + ": " + curCommand.options.Count );
@@ -301,6 +352,9 @@ public class TerminalControl : MonoBehaviour {
 					if (curCommand.options [i].Contains ("h")) {
 						//Debug.Log ("Found h");
 						h = true;
+					}
+					if (curCommand.options [i].Contains ("1")) {
+						o1 = true;
 					}
 				}
 
@@ -320,8 +374,13 @@ public class TerminalControl : MonoBehaviour {
 							" " + "Jun 8 11:27" +
 							" <color=blue>" + ".." + "</color>\n";
 					} else {
-						terminal += "<color=blue> . </color>   ";
-						terminal += "<color=blue> .. </color>   ";
+						if (o1) {
+							terminal += "<color=blue> . </color> \n";
+							terminal += "<color=blue> .. </color> \n";
+						} else {
+							terminal += "<color=blue> . </color>   ";
+							terminal += "<color=blue> .. </color>   ";
+						}
 					}
 				}
 
@@ -336,7 +395,11 @@ public class TerminalControl : MonoBehaviour {
 							" " + fileSystem.curFolder.contentFolders [i].time +
 							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
-							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
+							if (o1) {
+								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color> \n";
+							} else {
+								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
+							}
 						}
 					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
 						if (l) {
@@ -347,20 +410,45 @@ public class TerminalControl : MonoBehaviour {
 								" " + fileSystem.curFolder.contentFolders [i].time +
 								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
-							terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
+							if (o1) {
+								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color> \n";
+							} else {
+								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>   ";
+							}
 						}
 					}
 				}
 				for (int i = 0; i < fileSystem.curFolder.contentFiles.Count; i++) {
-					if (l) {
-						terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
+					if (fileSystem.curFolder.contentFolders [i].hidden && a) {
+						if (l) {
+							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
 							" " + fileSystem.curFolder.contentFiles [i].owner +
 							" " + fileSystem.curFolder.contentFiles [i].group +
 							" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
 							" " + fileSystem.curFolder.contentFiles [i].time +
 							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
-					} else {
-						terminal += fileSystem.curFolder.contentFiles [i].name + "   ";
+						} else {
+							if (o1) {
+								terminal += fileSystem.curFolder.contentFiles [i].name + " \n";
+							} else {
+								terminal += fileSystem.curFolder.contentFiles [i].name + "   ";
+							}
+						}
+					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
+						if (l) {
+							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
+								" " + fileSystem.curFolder.contentFiles [i].owner +
+								" " + fileSystem.curFolder.contentFiles [i].group +
+								" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
+								" " + fileSystem.curFolder.contentFiles [i].time +
+								" " + fileSystem.curFolder.contentFiles [i].name + "\n";
+						} else {
+							if (o1) {
+								terminal += fileSystem.curFolder.contentFiles [i].name + " \n";
+							} else {
+								terminal += fileSystem.curFolder.contentFiles [i].name + "   ";
+							}
+						}
 					}
 				}
 

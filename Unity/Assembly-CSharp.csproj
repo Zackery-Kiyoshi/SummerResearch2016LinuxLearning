@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\TerminalControl.cs" />
      <Compile Include="Assets\Scripts\TestingInputField.cs" />
      <Compile Include="Assets\Scripts\VimControl.cs" />
+     <None Include="Assets\Resources\Text\TutorialLevel1.txt" />
+     <None Include="Assets\Resources\Text\Commands.txt" />
      <None Include="Assets\Resources\Text\TestLevel.txt" />
      <None Include="Assets\Resources\Text\TestAITextLevel.txt" />
  <Reference Include="UnityEngine.UI">

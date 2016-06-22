@@ -61,7 +61,7 @@ public class LevelLoader : MonoBehaviour{
 					// just create new file/folder
 					string[] cur = FileLines [i].Split ('\t');
 					if(cur.Length == 7)
-						curFolder.add (FileLines [i] [0] == 'd', cur [0].Substring (1), cur [1], cur [2], Int32.Parse (cur [3]), cur [4], cur [5], cur [6]);
+						curFolder.add (FileLines [i] [0] == 'd', cur [0].Substring (1), cur [1], cur [2], Int32.Parse (cur [3]), cur [4], cur [5], Int32.Parse( cur [6])==1, cur[7]);
 				}
 			}
 
@@ -112,8 +112,8 @@ public class LevelLoader : MonoBehaviour{
 
 					if (tmp [3] [0] != '!' && tmp [3] [1] != '~') {
 						string[] a = tmp [3].Split (' ');
-						Debug.Log (tmp [3]);
-						Debug.Log (tmp [3] == "!~");
+						//Debug.Log (tmp [3]);
+						//Debug.Log (tmp [3] == "!~");
 						List<string> t = new List<string> ();
 						foreach (string f in a) {
 							t.Add (f);

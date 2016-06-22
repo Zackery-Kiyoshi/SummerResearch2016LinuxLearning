@@ -5,6 +5,7 @@ public class File  {
     public string name;
     public string content;
     public string path;
+	public bool hidden;
 
     public bool[] ownerPermissions = { true, true, false };
     public bool[] groupPermissions = { true, true, false };

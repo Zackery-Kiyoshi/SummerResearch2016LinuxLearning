@@ -9,6 +9,7 @@ public class Command {
 	public string line = "";
     public bool error;
 	public int numParams;
+	public string man;
 	// the options for the command
 	public List<string> options = new List<string>();
 	// functions to call for specific options (make pair???)
@@ -46,6 +47,10 @@ public class Command {
 
 	public Command clone(){
 		Command ret = new Command(com,numParams);
+		ret.com = com;
+		ret.line = "";
+		ret.numParams = numParams;
+		ret.man = man;
 		return ret;
 	}
 

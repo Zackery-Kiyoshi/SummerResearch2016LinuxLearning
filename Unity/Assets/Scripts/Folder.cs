@@ -46,7 +46,7 @@ public class Folder {
 		contentFiles = new List<File> ();
     }
 
-    public void add(bool f, string per, string o, string g, long s, string t, string n, string c)
+	public void add(bool f, string per, string o, string g, long s, string t, string n,bool h, string c)
     {
 
         if (f)
@@ -62,6 +62,7 @@ public class Folder {
             tmpfold.groupPermissions = new bool[3] { per[3] == 'r', per[4] == 'w', per[5] == 'w' };
             tmpfold.globalPermissions = new bool[3] { per[6] == 'r', per[7] == 'w', per[8] == 'x' };
             tmpfold.path = this.path + name + "/";
+			tmpfold.hidden = h;
             this.contentFolders.Add(tmpfold);
         }
         else
@@ -75,6 +76,7 @@ public class Folder {
             tmpfile.ownerPermissions = new bool[3] { per[0] == 'r', per[1] == 'w', per[2] == 'x' };
             tmpfile.groupPermissions = new bool[3] { per[3] == 'r', per[4] == 'w', per[5] == 'x' };
             tmpfile.globalPermissions = new bool[3] { per[6] == 'r', per[7] == 'w', per[8] == 'x' };
+			tmpfile.hidden = h;
             this.contentFiles.Add(tmpfile);
         }
 

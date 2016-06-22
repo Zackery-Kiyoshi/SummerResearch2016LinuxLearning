@@ -1,0 +1,105 @@
+source: http://linuxcommand.org/superman_pages.php
+cd
+
+0
+<man>
+NAME
+    cd - Change the shell working directory.
+SYNOPSIS
+    cd [-L|-P] [dir]
+DESCRIPTION
+    Change the shell working directory.
+    
+    Change the current directory to DIR.  The default DIR is the value of the HOME shell variable.
+    
+    The variable CDPATH defines the search path for the directory containing DIR.  Alternative directory names in CDPATH are separated by a colon (:). A null directory name is the same as the current directory.  If DIR begins with a slash (/), then CDPATH is not used.
+    
+    If the directory is not found, and the shell option `cdable_vars' is set, the word is assumed to be  a variable name.  If that variable has a value, its value is used for DIR.
+    
+    Exit Status:
+    Returns 0 if the directory is changed; non-zero otherwise.
+<man>
+clear
+
+0
+<man>
+NAME
+       clear - clear the terminal screen
+SYNOPSIS
+       clear
+DESCRIPTION
+       clear clears your screen if this is possible.  It looks in the environment for the terminal type and then in the terminfo database to  figure out how to clear the screen.
+<man>
+exit
+
+0
+<man>
+NAME
+       man - displays info about the command
+SYNOPSIS
+       man CMD
+DESCRIPTION
+       ???
+<man>
+logname
+
+0
+<man>
+NAME
+       logname - print user´s login name
+SYNOPSIS
+       logname [OPTION]
+DESCRIPTION
+       Print the name of the current user.
+<man> 
+ls
+l a h
+0
+<man>
+NAME
+       ls - list directory contents
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+DESCRIPTION
+       List  information  about  the FILEs (the current directory by default). Sort entries alphabetically if none of -cftuSUX nor --sort.
+
+       Mandatory arguments to long options are  mandatory  for  short  options too.
+
+       -a, --all
+              do not hide entries starting with .
+
+       -h, --human-readable
+              print sizes in human readable format (e.g., 1K 234M 2G)
+
+       -l     use a long listing format
+
+       -1     list one file per line
+
+       SIZE may be (or may be an integer optionally followed by) one  of  fol- lowing: kB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T, P, E, Z, Y.
+
+       By default, color is not used to distinguish types of files.   That  is equivalent to using --color=none.  Using the --color option without the optional WHEN argument is equivalent  to  using  --color=always.   With --color=auto,  color  codes  are output only if standard output is con- nected to a terminal (tty).
+<man>
+man
+
+0
+<man>
+NAME
+       man - format and display the on-line manual pages
+SYNOPSIS
+       man name ...
+DESCRIPTION
+       man formats and displays the on-line manual pages.  If you specify section,  man  only looks in that section of the manual.  name is normally the name of the manual page, which is typically the name of a  command, function,  or  file.   However,  if  name contains a slash (/) then man interprets it as a file specification, so that you can do  man  ./foo.5 or even man /cd/foo/bar.1.gz.
+<man>
+pwd
+
+0
+<man>
+NAME
+       pwd - print name of current/working directory
+SYNOPSIS
+       pwd 
+DESCRIPTION
+       NOTE:  your  shell may have its own version of pwd which will supercede the version described here. Please refer to your shell’s  documentation for details about the options it supports.
+
+       Print the full filename of the current working directory.
+<man>

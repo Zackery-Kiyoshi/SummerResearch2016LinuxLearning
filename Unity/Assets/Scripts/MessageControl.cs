@@ -125,7 +125,7 @@ public class MessageControl : MonoBehaviour {
 				//Debug.Log ("is waiting");
 				if (!s.error) {
 					//Debug.Log ("No error");
-					if (waiting.com == s.com) {
+				if (waiting.com.Trim() == s.com.Trim()) {
 						//Debug.Log ("correct command");
 						bool c = true;
 						// need to check paramaters
@@ -133,7 +133,7 @@ public class MessageControl : MonoBehaviour {
 							for (int i = 0; i < waiting.options.Count; i++) {
 								bool tmpC = false;
 								for (int j = 0; j < s.options.Count; j++) {
-									if (waiting.options [i] == s.options [j])
+									if (waiting.options [i].Trim() == s.options [j].Trim())
 										tmpC = true;
 								}
 								c &= tmpC;
@@ -147,7 +147,7 @@ public class MessageControl : MonoBehaviour {
 							for (int i = 0; i < waiting.param.Count; i++) {
 								bool tmpC = false;
 								for (int j = 0; j < s.param.Count; j++) {
-									if (waiting.param [i] == s.param [j])
+									if (waiting.param [i].Trim() == s.param [j].Trim())
 										tmpC = true;
 								}
 								c &= tmpC;
@@ -279,7 +279,7 @@ public class MessageControl : MonoBehaviour {
 
 
 	void finished(){
-		Debug.Log("FINISHED");
+		Debug.Log("FINISHED all messages");
 	}
 
 	void scroll(){
@@ -297,7 +297,16 @@ public class MessageControl : MonoBehaviour {
 				l.level [i].GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [i].GetComponent<RectTransform> ().offsetMin.y + up);
 			}
 			top++;
-			//scroll ();
+			if (l.level [top].GetComponent<RectTransform> ().offsetMax.y < 9) {
+				up = l.level [top].GetComponent<RectTransform> ().rect.height + 20;
+				l.level [top].SetActive (false);
+				for (int i = top; i <= curMsg; i++) {
+					l.level [i].GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [i].GetComponent<RectTransform> ().offsetMax.y + up);
+					l.level [i].GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [i].GetComponent<RectTransform> ().offsetMin.y + up);
+				}
+				top++;
+				scroll ();
+			}
 		}
 
 	}

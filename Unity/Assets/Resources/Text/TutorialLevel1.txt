@@ -1,0 +1,66 @@
+
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the first tutorial
+0	The first command that you will learn is man
+0	What man does is give you information about other commands
+0	Try using man to learn what pwd does
+wait	man	!~	pwd
+<	2	Try 'man pwd'
+0	Although this gives you the information about other commands to some they don't make since, this is why these tutorials exsist
+0	The next command we will go through is pwd
+0	What pwd does is show you the path to the directory that your in
+0	Try using pwd
+wait	pwd	!~	!~
+<	2	try 'pwd'
+0	The next command is called logname which just tells you what user you are logged in as
+0	Try using logname
+wait	logname	!~	!~
+<	2	try 'logname'
+0	This next command is slightly more complicated than the last ones because there are options that you can use
+0	This command is 'ls' which will display the contents of the folder that your in, the different colors denote the type of file
+0	Blue means its a folder
+0	White means its a file
+0	Try using just ls
+wait	ls	!~	!~
+<	2	try 'ls'
+0	The first option I will introduce to you is 'l'
+0	The l standing long this format will tell you most of the information you would want to know about a folder/file
+0	To use the l option after ls you will put a -l separated by a space
+0	Try using ls using the l option
+wait	ls	-l	!~
+<	2	try 'ls -l' 
+0	ls with option 'a' will display hidden files and folders
+0	Try using ls using the a option
+wait	ls	-a	!~
+<	2	try 'ls -a'
+0	The last option is 'h' which will give you human readable sizes rather than just bytes
+0	Try using ls using the h option
+wait	ls	-h	!~
+<	2	try 'ls -h'
+0	This is not very helpfull because you don't see the size
+0	So one thing that you can do with options is combine them
+0	Lets try using ls with both the 'l' and 'h' options
+wait	ls	-l -h	!~
+<	2	try 'ls -l -h'
+0	There are two ways that you could do multiple options: 'ls -l -h' or 'ls -lh' (order doesn't matter in this case but there are times when it does)
+0	The last command you will learn in this tutorial is cd
+0	What cd does is take 
+0	Try using cd to look at whats in FirstFolder
+wait	cd	!~	FirstFolder
+<	2	try 'cd'
+0	Congragulations on finishing your first tutorial
+0	Now leave and start your adventure
+<div>
+This is the first tutorial which will introduce you to some of the basic commands: pwd, ls, cd, logname, clear
+Good luck and have fun

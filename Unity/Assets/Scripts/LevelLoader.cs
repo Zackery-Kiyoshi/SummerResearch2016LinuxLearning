@@ -60,7 +60,8 @@ public class LevelLoader : MonoBehaviour{
 
 					// just create new file/folder
 					string[] cur = FileLines [i].Split ('\t');
-					if(cur.Length == 7)
+					//Debug.Log (FileLines[i] + " : " + cur.Length);
+					if(cur.Length == 8)
 						curFolder.add (FileLines [i] [0] == 'd', cur [0].Substring (1), cur [1], cur [2], Int32.Parse (cur [3]), cur [4], cur [5], Int32.Parse( cur [6])==1, cur[7]);
 				}
 			}

@@ -60,7 +60,7 @@ public class TerminalControl : MonoBehaviour {
 		l.load ();
 		fileSystem = l.fs;
 
-		path = fileSystem.root.name;
+		path = fileSystem.curFolder.name;
 		// need to change this so that it will always be correct for the specific resolution
 		maxLines = 20;
 		charPerLine = 28;
@@ -303,17 +303,12 @@ public class TerminalControl : MonoBehaviour {
 			if (curCommand == null) {
 				if (testing >= 0)
 					Debug.Log ("curCommand is null");
-			} else if (curCommand.com == "man") {
-				if (curCommand.param.Count > 0) {
-					Debug.Log ("man: " + curCommand.param [0]);
-					terminal += curCommand.man;
-				} else {
-					terminal += "\n" + "-bash: man : Invalid paramater to man (or not a command supported)" + "\n";
-				}
-			}else if (curCommand.com == "logname") {
-				terminal += username;
-			} else if (curCommand.com == "pwd") {
-				terminal += fileSystem.curFolder.path;
+			} else if (curCommand.com == "cat") {
+				// TODO
+
+				
+				Debug.Log ("cat");
+				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "cd") {
 				if (testing >= 0)
 					Debug.Log ("ITS PROCESSING CD");
@@ -332,6 +327,145 @@ public class TerminalControl : MonoBehaviour {
 						terminal += "\n -bash: " + curLine + ": Not a directory";
 					}
 				}
+			} else if (curCommand.com == "clear") {
+				terminal = "";
+				numLines = 0;
+				terminal += "[" + username + "@" + comp + " " + path + "]$ ";
+				return;
+				//"[" + username + "@" + comp + " " + path + "]$ ";
+			} else if (curCommand.com == "df") {
+				// TODO
+
+				bool h = false;
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("h")) {
+						h = true;
+					}
+				}
+				Debug.Log ("df");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "du") {
+				// TODO
+
+
+				bool h = false;
+				bool S = false;
+				bool s = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("h")) {
+						h = true;
+					} else if (curCommand.options [i].Contains ("S")) {
+						S = true;
+					} else if (curCommand.options [i].Contains ("s")) {
+						s = true;
+					}
+				}
+
+				Debug.Log ("du");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "echo") {
+				// TODO
+
+
+				bool n = false;
+				bool e = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("n")) {
+						n = true;
+					} else if (curCommand.options [i].Contains ("e")) {
+						e = true;
+					}
+				}
+
+				Debug.Log ("echo");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "exit") {
+				if(testing>=1)Debug.Log ("Application.Quit ();");
+				//Application.OpenURL ("");
+				Application.Quit ();
+				//	UnityEditor.EditorApplication.isPlaying = false;
+			} else if (curCommand.com == "find") {
+				// TODO
+
+
+				bool maxdepth = false;
+				bool mindepth = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("maxdepth")) {
+						maxdepth = true;
+					} else if (curCommand.options [i].Contains ("mindepth")) {
+						mindepth = true;
+					}
+				}
+
+				Debug.Log ("find");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "grep") {
+				// TODO
+
+
+				bool f = false;
+				bool v = false;
+				bool c = false;
+				bool L = false;
+				bool l = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("f")) {
+						f = true;
+					} else if (curCommand.options [i].Contains ("v")) {
+						v = true;
+					} else if (curCommand.options [i].Contains ("c")) {
+						c = true;
+					} else if (curCommand.options [i].Contains ("L")) {
+						L = true;
+					} else if (curCommand.options [i].Contains ("l")) {
+						l = true;
+					}
+				}
+
+				Debug.Log ("grep");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "gzip") {
+				// TODO
+
+				Debug.Log ("gzip");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "gunzip") {
+				// TODO
+
+				Debug.Log ("gunzip");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "head") {
+				// TODO
+
+				
+				bool q = false;
+				bool v = false;
+				bool n = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("q")) {
+						q = true;
+					} else if (curCommand.options [i].Contains ("v")) {
+						v = true;
+					} else if (curCommand.options [i].Contains ("n")) {
+						n = true;
+					}
+				}
+
+				Debug.Log ("head");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "less") {
+				// TODO
+
+				Debug.Log ("less");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "logname") {
+				terminal += username;
 			} else if (curCommand.com == "ls") {
 
 				bool a = false;
@@ -344,16 +478,13 @@ public class TerminalControl : MonoBehaviour {
 					if (curCommand.options [i].Contains ("a")) {
 						//Debug.Log ("Found a");
 						a = true;
-					}
-					if (curCommand.options [i].Contains ("l")) {
+					} else if (curCommand.options [i].Contains ("l")) {
 						//Debug.Log ("Found l");
 						l = true;
-					}
-					if (curCommand.options [i].Contains ("h")) {
+					} else if (curCommand.options [i].Contains ("h")) {
 						//Debug.Log ("Found h");
 						h = true;
-					}
-					if (curCommand.options [i].Contains ("1")) {
+					} else if (curCommand.options [i].Contains ("1")) {
 						o1 = true;
 					}
 				}
@@ -389,11 +520,11 @@ public class TerminalControl : MonoBehaviour {
 					if (fileSystem.curFolder.contentFolders [i].hidden && a) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFolders [i].printPermissions () +
-							" " + fileSystem.curFolder.contentFolders [i].owner +
-							" " + fileSystem.curFolder.contentFolders [i].group +
-							" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
-							" " + fileSystem.curFolder.contentFolders [i].time +
-							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+								" " + fileSystem.curFolder.contentFolders [i].owner +
+								" " + fileSystem.curFolder.contentFolders [i].group +
+								" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
+								" " + fileSystem.curFolder.contentFolders [i].time +
+								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
 							if (o1) {
 								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color> \n";
@@ -419,14 +550,14 @@ public class TerminalControl : MonoBehaviour {
 					}
 				}
 				for (int i = 0; i < fileSystem.curFolder.contentFiles.Count; i++) {
-					if (fileSystem.curFolder.contentFolders [i].hidden && a) {
+					if (fileSystem.curFolder.contentFiles [i].hidden && a) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
-							" " + fileSystem.curFolder.contentFiles [i].owner +
-							" " + fileSystem.curFolder.contentFiles [i].group +
-							" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
-							" " + fileSystem.curFolder.contentFiles [i].time +
-							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
+								" " + fileSystem.curFolder.contentFiles [i].owner +
+								" " + fileSystem.curFolder.contentFiles [i].group +
+								" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
+								" " + fileSystem.curFolder.contentFiles [i].time +
+								" " + fileSystem.curFolder.contentFiles [i].name + "\n";
 						} else {
 							if (o1) {
 								terminal += fileSystem.curFolder.contentFiles [i].name + " \n";
@@ -434,7 +565,7 @@ public class TerminalControl : MonoBehaviour {
 								terminal += fileSystem.curFolder.contentFiles [i].name + "   ";
 							}
 						}
-					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
+					} else if (!fileSystem.curFolder.contentFiles [i].hidden) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
 								" " + fileSystem.curFolder.contentFiles [i].owner +
@@ -452,18 +583,160 @@ public class TerminalControl : MonoBehaviour {
 					}
 				}
 
-			} else if (curCommand.com == "clear") {
-				terminal = "";
-				numLines = 0;
-				terminal += "[" + username + "@" + comp + " " + path + "]$ ";
-				return;
-				//"[" + username + "@" + comp + " " + path + "]$ ";
-			} else if (curCommand.com == "exit") {
-				if(testing>=1)Debug.Log ("Application.Quit ();");
-				//Application.OpenURL ("");
-				Application.Quit ();
-//				UnityEditor.EditorApplication.isPlaying = false;
-			}
+			} else if (curCommand.com == "man") {
+				if (curCommand.param.Count > 0) {
+					Debug.Log ("man: " + curCommand.param [0]);
+					terminal += curCommand.man;
+				} else {
+					terminal += "\n" + "-bash: man : Invalid paramater to man (or not a command supported)" + "\n";
+				}
+			} else if (curCommand.com == "mkdir") {
+				// TODO
+
+
+				bool m = false;
+				bool p = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("m")) {
+						m = true;
+					} else if (curCommand.options [i].Contains ("p")) {
+						p = true;
+					}
+				}
+
+				Debug.Log ("mkdir");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "mv") {
+				// TODO
+
+
+				bool u = false;
+				bool f = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("u")) {
+						u = true;
+					} else if (curCommand.options [i].Contains ("f")) {
+						f = true;
+					}
+				}
+
+				Debug.Log ("mv");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "pwd") {
+				terminal += fileSystem.curFolder.path;
+			} else if (curCommand.com == "quota") {
+				// TODO
+
+				Debug.Log ("quota");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "rm") {
+				// TODO
+
+
+				bool r = false;
+				bool f = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("r")) {
+						r = true;
+					} else if (curCommand.options [i].Contains ("f")) {
+						f = true;
+					}
+				}
+
+				Debug.Log ("rm");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "rmdir") {
+				// TODO
+
+
+				bool p = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("p")) {
+						p = true;
+					} 
+				}
+
+				Debug.Log ("rmdir");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "tail") {
+				// TODO
+
+
+				bool q = false;
+				bool v = false;
+				bool n = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("q")) {
+						q = true;
+					} else if (curCommand.options [i].Contains ("v")) {
+						v = true;
+					} else if (curCommand.options [i].Contains ("n")) {
+						n = true;
+					}
+				}
+
+				Debug.Log ("tail");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "tar") {
+				// TODO
+
+
+				bool c = false;
+				bool x = false;
+				bool z = false;
+				bool f = false;
+				bool v = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("c")) {
+						c = true;
+					} else if (curCommand.options [i].Contains ("x")) {
+						x = true;
+					} else if (curCommand.options [i].Contains ("z")) {
+						z = true;
+					} else if (curCommand.options [i].Contains ("f")) {
+						f = true;
+					} else if (curCommand.options [i].Contains ("v")) {
+						v = true;
+					}
+				}
+
+				Debug.Log ("tar");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "touch") {
+				// TODO
+
+
+				bool r = false;
+				bool t = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if (curCommand.options [i].Contains ("r")) {
+						r = true;
+					} else if (curCommand.options [i].Contains ("t")) {
+						t = true;
+					}
+				}
+
+				Debug.Log ("touch");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "zip") {
+				// TODO
+
+				Debug.Log ("zip");
+				Debug.Log ("Not Functioning yet");
+			} else if (curCommand.com == "unzip") {
+				// TODO
+
+				Debug.Log ("unzip");
+				Debug.Log ("Not Functioning yet");
+			} 
+
 			if(testing >= 1) Debug.Log("Doing Command");
 		}
 		curLine = "";

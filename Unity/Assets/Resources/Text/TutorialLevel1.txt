@@ -62,5 +62,6 @@ wait	cd	!~	FirstFolder
 0	Congragulations on finishing your first tutorial
 0	Now leave and start your adventure
 <div>
+// this should be at the top but is
 This is the first tutorial which will introduce you to some of the basic commands: pwd, ls, cd, logname, clear
 Good luck and have fun

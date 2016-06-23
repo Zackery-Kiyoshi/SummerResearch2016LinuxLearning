@@ -24,6 +24,7 @@ public class PanelControl : MonoBehaviour {
 	public void ActiveMessage(){
 		if (curActive != 0) {
 			curActive = 0;
+			Debug.Log ("Deactivated terminal/Activate message");
 			messaging.activate ();
 			terminal.deactivate ();
 		}
@@ -32,6 +33,7 @@ public class PanelControl : MonoBehaviour {
 	public void ActiveTerminal(){
 		if (curActive != 1) {
 			curActive = 1;
+			Debug.Log ("Deactivated messaging/Activte terminal ");
 			messaging.deactivate ();
 			terminal.activate ();
 		}

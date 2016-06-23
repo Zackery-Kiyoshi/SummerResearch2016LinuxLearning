@@ -1,4 +1,17 @@
 source: http://linuxcommand.org/superman_pages.php
+cat
+
+1
+<man>
+NAME
+       cat - concatenate files and print on the standard output
+SYNOPSIS
+       cat [OPTION] [FILE]...
+DESCRIPTION
+       Concatenate FILE(s), or standard input, to standard output.
+
+       With no FILE, or when FILE is -, read standard input.
+<man>
 cd
 
 0
@@ -30,16 +43,862 @@ SYNOPSIS
 DESCRIPTION
        clear clears your screen if this is possible.  It looks in the environment for the terminal type and then in the terminfo database to  figure out how to clear the screen.
 <man>
+df
+h
+0
+<man>
+NAME
+       df - report filesystem disk space usage
+SYNOPSIS
+       df [OPTION]... [FILE]...
+DESCRIPTION
+       This  manual  page  documents  the  GNU version of df.  df displays the
+       amount of disk space available on the filesystem containing  each  file
+       name  argument.   If  no file name is given, the space available on all
+       currently mounted filesystems is shown.  Disk  space  is  shown  in  1K
+       blocks  by  default, unless the environment variable POSIXLY_CORRECT is
+       set, in which case 512-byte blocks are used.
+
+       If an argument is the absolute file name of a disk device node contain-
+       ing a mounted filesystem, df shows the space available on that filesys-
+       tem rather than on the filesystem containing the device node (which  is
+       always  the root filesystem).  This version of df cannot show the space
+       available on unmounted filesystems, because on most  kinds  of  systems
+       doing  so  requires  very  nonportable intimate knowledge of filesystem
+       structures.
+OPTIONS
+       Show information about the filesystem on which each  FILE  resides,  or
+       all filesystems by default.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -h, --human-readable
+              print sizes in human readable format (e.g., 1K 234M 2G)
+
+       SIZE may be (or may be an integer optionally followed by) one  of  fol-
+       lowing: kB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T,
+       P, E, Z, Y.
+<man>
+du
+h S s
+0
+<man>
+NAME
+       du - estimate file space usage
+SYNOPSIS
+       du [OPTION]... [FILE]...
+DESCRIPTION
+       Summarize disk usage of each FILE, recursively for directories.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -h, --human-readable
+              print sizes in human readable format (e.g., 1K 234M 2G)
+
+       -S, --separate-dirs
+              do not include size of subdirectories
+
+       -s, --summarize
+              display only a total for each argument
+
+       SIZE may be (or may be an integer optionally followed by) one  of  fol-
+       lowing: kB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T,
+       P, E, Z, Y.
+
+<man>
+echo
+n e
+1
+<man>
+NAME
+       echo - display a line of text
+SYNOPSIS
+       echo [OPTION]... [STRING]...
+DESCRIPTION
+       Echo the STRING(s) to standard output.
+
+       -n     do not output the trailing newline
+
+       -e     enable interpretation of the backslash-escaped characters listed
+              below
+       \NNN   the character whose ASCII code is NNN (octal)
+       \\     backslash
+       \a     alert (BEL)
+       \b     backspace
+       \c     suppress trailing newline
+       \f     form feed
+       \n     new line
+       \r     carriage return
+       \t     horizontal tab
+       \v     vertical tab
+<man>
 exit
 
 0
 <man>
 NAME
-       man - displays info about the command
+       exit - leave the game
 SYNOPSIS
        man CMD
 DESCRIPTION
-       ???
+       Allows you to leave the game
+<man>
+find
+maxdepth mindepth
+1
+<man>
+NAME
+       find - search for files in a directory hierarchy
+SYNOPSIS
+       find [path...] [expression]
+DESCRIPTION
+       This  manual page documents the GNU version of find.  GNU find searches
+       the directory tree rooted at each given file  name  by  evaluating  the
+       given  expression  from left to right, according to the rules of prece-
+       dence (see section OPERATORS), until the outcome  is  known  (the  left
+       hand  side  is  false  for and operations, true for or), at which point
+       find moves on to the next file name.
+
+       If you are using find in an environment  where  security  is  important
+       (for example if you are using it to seach directories that are writable
+       by other users), you should read the "Security Considerations"  chapter
+       of the findutils documentation, which is called Finding Files and comes
+       with findutils.   That document also includes a  lot  more  detail  and
+       discussion  than  this  manual  page,  so you may find it a more useful
+       source of information.
+EXPRESSIONS
+       The expression is made up of options (which  affect  overall  operation
+       rather than the processing of a specific file, and always return true),
+       tests (which return a true or false value),  and  actions  (which  have
+       side effects and return a true or false value), all separated by opera-
+       tors.  -and is assumed where the operator is omitted.  If  the  expres-
+       sion  contains no actions other than -prune, -print is performed on all
+       files for which the expression is true.
+   OPTIONS
+       All options always return true.  Except for -follow and -daystart, they
+       always  take  effect, rather than being processed only when their place
+       in the expression is reached.  Therefore, for clarity, it  is  best  to
+       place  them at the beginning of the expression.  A warning is issued if
+       you don’t do this.
+<man>
+grep
+f v c L l
+1
+<man>
+NAME
+       grep - print lines matching a pattern
+SYNOPSIS
+       grep [options] PATTERN [FILE...]
+       grep [options] [-e PATTERN | -f FILE] [FILE...]
+DESCRIPTION
+       Grep  searches the named input FILEs (or standard input if no files are
+       named, or the file name - is given) for lines containing a match to the
+       given PATTERN.  By default, grep prints the matching lines.
+
+       In addition, two variant programs egrep and fgrep are available.  Egrep
+       is the same as grep -E.  Fgrep is the same as grep -F.
+OPTIONS
+       -c
+              Suppress normal output; instead print a count of matching  lines
+              for  each  input  file.  With the -v, --invert-match option (see
+              below), count non-matching lines.
+
+       -f FILE, --file=FILE
+              Obtain  patterns  from  FILE, one per line.  The empty file con-
+              tains zero patterns, and therefore matches nothing.
+
+       -L
+              Suppress normal output; instead print the  name  of  each  input
+              file from which no output would normally have been printed.  The
+              scanning will stop on the first match.
+
+       -l
+              Suppress normal output; instead print the  name  of  each  input
+              file  from  which  output would normally have been printed.  The
+              scanning will stop on the first match.
+      
+       -v, --invert-match
+              Invert the sense of matching, to select non-matching lines.
+REGULAR EXPRESSIONS
+       A  regular  expression  is  a  pattern that describes a set of strings.
+       Regular expressions are constructed analogously to  arithmetic  expres-
+       sions, by using various operators to combine smaller expressions.
+
+       Grep  understands  two different versions of regular expression syntax:
+       “basic” and “extended.”  In GNU grep, there is no difference in  avail-
+       able  functionality  using  either  syntax.   In other implementations,
+       basic regular expressions are less powerful.  The following description
+       applies  to extended regular expressions; differences for basic regular
+       expressions are summarized afterwards.
+
+       The fundamental building blocks are the regular expressions that  match
+       a single character.  Most characters, including all letters and digits,
+       are regular expressions that match themselves.  Any metacharacter  with
+       special meaning may be quoted by preceding it with a backslash.
+
+       A  bracket  expression is a list of characters enclosed by [ and ].  It
+       matches any single character in that list; if the  first  character  of
+       the  list is the caret ^ then it matches any character not in the list.
+       For example, the regular expression  [0123456789]  matches  any  single
+       digit.
+
+       Within a bracket expression, a range expression consists of two charac-
+       ters separated by a hyphen.  It matches any single character that sorts
+       between  the  two  characters,  inclusive, using the locale’s collating
+       sequence and character set.  For example,  in  the  default  C  locale,
+       [a-d] is equivalent to [abcd].  Many locales sort characters in dictio-
+       nary order, and in these locales [a-d] is typically not  equivalent  to
+       [abcd];  it  might  be equivalent to [aBbCcDd], for example.  To obtain
+       the traditional interpretation of bracket expressions, you can use  the
+       C locale by setting the LC_ALL environment variable to the value C.
+
+       Finally,  certain  named  classes  of  characters are predefined within
+       bracket expressions, as follows.  Their names are self explanatory, and
+       they   are   [:alnum:],  [:alpha:],  [:cntrl:],  [:digit:],  [:graph:],
+       [:lower:], [:print:], [:punct:], [:space:], [:upper:], and  [:xdigit:].
+       For  example,  [[:alnum:]]  means  [0-9A-Za-z],  except the latter form
+       depends upon the C locale and the ASCII character encoding, whereas the
+       former  is  independent  of  locale  and character set.  (Note that the
+       brackets in these class names are part of the symbolic names, and  must
+       be  included  in addition to the brackets delimiting the bracket list.)
+       Most metacharacters  lose  their  special  meaning  inside  lists.   To
+       include  a literal ] place it first in the list.  Similarly, to include
+       a literal ^ place it anywhere but first.  Finally, to include a literal
+       - place it last.
+
+       The period .  matches any single character.  The symbol \w is a synonym
+       for [[:alnum:]] and \W is a synonym for [^[:alnum]].
+
+       The caret ^ and the dollar sign $ are metacharacters that  respectively
+       match the empty string at the beginning and end of a line.  The symbols
+       \< and \> respectively match the empty string at the beginning and  end
+       of  a  word.   The  symbol \b matches the empty string at the edge of a
+       word, and \B matches the empty string provided it’s not at the edge  of
+       a word.
+
+       A regular expression may be followed by one of several repetition oper-
+       ators:
+       ?      The preceding item is optional and matched at most once.
+       *      The preceding item will be matched zero or more times.
+       +      The preceding item will be matched one or more times.
+       {n}    The preceding item is matched exactly n times.
+       {n,}   The preceding item is matched n or more times.
+       {n,m}  The preceding item is matched at least n  times,  but  not  more
+              than m times.
+
+       Two  regular  expressions  may  be  concatenated; the resulting regular
+       expression matches any string formed by  concatenating  two  substrings
+       that respectively match the concatenated subexpressions.
+
+       Two  regular  expressions  may  be  joined by the infix operator |; the
+       resulting regular expression matches any string matching either  subex-
+       pression.
+
+       Repetition  takes  precedence  over  concatenation, which in turn takes
+       precedence over alternation.  A whole subexpression may be enclosed  in
+       parentheses to override these precedence rules.
+
+       The  backreference \n, where n is a single digit, matches the substring
+       previously matched by the nth parenthesized subexpression of the  regu-
+       lar expression.
+
+       In  basic  regular  expressions the metacharacters ?, +, {, |, (, and )
+       lose their special meaning; instead use the  backslashed  versions  \?,
+       \+, \{, \|, \(, and \).
+
+       Traditional  egrep  did not support the { metacharacter, and some egrep
+       implementations support \{ instead, so portable scripts should avoid  {
+       in egrep patterns and should use [{] to match a literal {.
+
+       GNU  egrep  attempts to support traditional usage by assuming that { is
+       not special if it would be the start of an invalid interval  specifica-
+       tion.   For example, the shell command egrep �����{1����� searches for the two-
+       character string {1 instead of reporting a syntax error in the  regular
+       expression.  POSIX.2 allows this behavior as an extension, but portable
+       scripts should avoid it.
+<man>
+gzip
+
+1
+<man>
+NAME
+       gzip, gunzip - compress or expand files
+SYNOPSIS
+       gzip [ name ...  ]
+       gunzip [ name ...  ]
+DESCRIPTION
+       Gzip  reduces  the  size  of  the  named  files using Lempel-Ziv coding
+       (LZ77).  Whenever possible, each file  is  replaced  by  one  with  the
+       extension .gz, while keeping the same ownership modes, access and modi-
+       fication times.  (The default extension is -gz for VMS,  z  for  MSDOS,
+       OS/2  FAT, Windows NT FAT and Atari.)  If no files are specified, or if
+       a file name is "-", the standard input is compressed  to  the  standard
+       output.  Gzip will only attempt to compress regular files.  In particu-
+       lar, it will ignore symbolic links.
+
+       If the compressed file name is too long for its file system, gzip trun-
+       cates  it.   Gzip  attempts to truncate only the parts of the file name
+       longer than 3 characters.  (A part is delimited by dots.) If  the  name
+       consists  of  small  parts  only,  the longest parts are truncated. For
+       example, if file names are limited to 14 characters, gzip.msdos.exe  is
+       compressed to gzi.msd.exe.gz.  Names are not truncated on systems which
+       do not have a limit on file name length.
+
+       By default, gzip keeps the original file name and timestamp in the com-
+       pressed  file.  These  are used when decompressing the file with the -N
+       option. This is useful when the compressed file name was  truncated  or
+       when the time stamp was not preserved after a file transfer.
+
+       Compressed  files  can be restored to their original form using gzip -d
+       or gunzip or zcat.  If the original name saved in the  compressed  file
+       is not suitable for its file system, a new name is constructed from the
+       original one to make it legal.
+
+       gunzip takes a list of files on its command line and replaces each file
+       whose  name  ends with .gz, -gz, .z, -z, _z or .Z and which begins with
+       the correct magic number with an uncompressed file without the original
+       extension.  gunzip also recognizes the special extensions .tgz and .taz
+       as shorthands for .tar.gz and .tar.Z respectively.   When  compressing,
+       gzip  uses the .tgz extension if necessary instead of truncating a file
+       with a .tar extension.
+
+       gunzip can currently decompress files created by gzip,  zip,  compress,
+       compress  -H  or pack.  The detection of the input format is automatic.
+       When using the first two formats, gunzip checks a 32 bit CRC. For pack,
+       gunzip checks the uncompressed length. The standard compress format was
+       not designed to allow consistency checks. However gunzip  is  sometimes
+       able  to detect a bad .Z file. If you get an error when uncompressing a
+       .Z file, do not assume that the .Z file is correct simply  because  the
+       standard  uncompress  does  not complain. This generally means that the
+       standard uncompress does not check its  input,  and  happily  generates
+       garbage  output.   The  SCO compress -H format (lzh compression method)
+       does not include a CRC but also allows some consistency checks.
+
+       Files created by zip can be uncompressed by gzip only if  they  have  a
+       single  member  compressed with the ’deflation’ method. This feature is
+       only intended to help conversion of tar.zip files to the tar.gz format.
+       To  extract  a zip file with a single member, use a command like gunzip
+       <foo.zip or gunzip -S .zip foo.zip.  To extract zip files with  several
+       members, use unzip instead of gunzip.
+
+       zcat  is  identical  to  gunzip  -c.   (On  some  systems,  zcat may be
+       installed as gzcat to preserve the original link  to  compress.)   zcat
+       uncompresses either a list of files on the command line or its standard
+       input and writes the uncompressed data on standard output.   zcat  will
+       uncompress files that have the correct magic number whether they have a
+       .gz suffix or not.
+
+       Gzip uses the Lempel-Ziv algorithm used in zip and PKZIP.   The  amount
+       of  compression  obtained depends on the size of the input and the dis-
+       tribution of common substrings.  Typically, text such as source code or
+       English  is  reduced  by  60-70%.  Compression is generally much better
+       than that achieved by LZW (as used in  compress),  Huffman  coding  (as
+       used in pack), or adaptive Huffman coding (compact).
+
+       Compression  is  always  performed,  even  if  the  compressed  file is
+       slightly larger than the original. The worst case expansion  is  a  few
+       bytes  for  the  gzip  file header, plus 5 bytes every 32K block, or an
+       expansion ratio of 0.015% for large files. Note that the actual  number
+       of  used  disk blocks almost never increases.  gzip preserves the mode,
+       ownership and timestamps of files when compressing or decompressing.
+
+       The gzip file format is specified in P. Deutsch, GZIP file format spec-
+       ification version 4.3, <ftp://ftp.isi.edu/in-notes/rfc1952.txt>, Inter-
+       net RFC 1952 (May 1996).  The zip deflation format is specified  in  P.
+       Deutsch,  DEFLATE  Compressed  Data  Format  Specification version 1.3,
+       <ftp://ftp.isi.edu/in-notes/rfc1951.txt>, Internet RFC 1951 (May 1996).
+<man>
+gunzip
+
+1
+<man>
+NAME
+       gzip, gunzip - compress or expand files
+SYNOPSIS
+       gzip [ name ...  ]
+       gunzip [ name ...  ]
+DESCRIPTION
+       Gzip  reduces  the  size  of  the  named  files using Lempel-Ziv coding
+       (LZ77).  Whenever possible, each file  is  replaced  by  one  with  the
+       extension .gz, while keeping the same ownership modes, access and modi-
+       fication times.  (The default extension is -gz for VMS,  z  for  MSDOS,
+       OS/2  FAT, Windows NT FAT and Atari.)  If no files are specified, or if
+       a file name is "-", the standard input is compressed  to  the  standard
+       output.  Gzip will only attempt to compress regular files.  In particu-
+       lar, it will ignore symbolic links.
+
+       If the compressed file name is too long for its file system, gzip trun-
+       cates  it.   Gzip  attempts to truncate only the parts of the file name
+       longer than 3 characters.  (A part is delimited by dots.) If  the  name
+       consists  of  small  parts  only,  the longest parts are truncated. For
+       example, if file names are limited to 14 characters, gzip.msdos.exe  is
+       compressed to gzi.msd.exe.gz.  Names are not truncated on systems which
+       do not have a limit on file name length.
+
+       By default, gzip keeps the original file name and timestamp in the com-
+       pressed  file.  These  are used when decompressing the file with the -N
+       option. This is useful when the compressed file name was  truncated  or
+       when the time stamp was not preserved after a file transfer.
+
+       Compressed  files  can be restored to their original form using gzip -d
+       or gunzip or zcat.  If the original name saved in the  compressed  file
+       is not suitable for its file system, a new name is constructed from the
+       original one to make it legal.
+
+       gunzip takes a list of files on its command line and replaces each file
+       whose  name  ends with .gz, -gz, .z, -z, _z or .Z and which begins with
+       the correct magic number with an uncompressed file without the original
+       extension.  gunzip also recognizes the special extensions .tgz and .taz
+       as shorthands for .tar.gz and .tar.Z respectively.   When  compressing,
+       gzip  uses the .tgz extension if necessary instead of truncating a file
+       with a .tar extension.
+
+       gunzip can currently decompress files created by gzip,  zip,  compress,
+       compress  -H  or pack.  The detection of the input format is automatic.
+       When using the first two formats, gunzip checks a 32 bit CRC. For pack,
+       gunzip checks the uncompressed length. The standard compress format was
+       not designed to allow consistency checks. However gunzip  is  sometimes
+       able  to detect a bad .Z file. If you get an error when uncompressing a
+       .Z file, do not assume that the .Z file is correct simply  because  the
+       standard  uncompress  does  not complain. This generally means that the
+       standard uncompress does not check its  input,  and  happily  generates
+       garbage  output.   The  SCO compress -H format (lzh compression method)
+       does not include a CRC but also allows some consistency checks.
+
+       Files created by zip can be uncompressed by gzip only if  they  have  a
+       single  member  compressed with the ’deflation’ method. This feature is
+       only intended to help conversion of tar.zip files to the tar.gz format.
+       To  extract  a zip file with a single member, use a command like gunzip
+       <foo.zip or gunzip -S .zip foo.zip.  To extract zip files with  several
+       members, use unzip instead of gunzip.
+
+       zcat  is  identical  to  gunzip  -c.   (On  some  systems,  zcat may be
+       installed as gzcat to preserve the original link  to  compress.)   zcat
+       uncompresses either a list of files on the command line or its standard
+       input and writes the uncompressed data on standard output.   zcat  will
+       uncompress files that have the correct magic number whether they have a
+       .gz suffix or not.
+
+       Gzip uses the Lempel-Ziv algorithm used in zip and PKZIP.   The  amount
+       of  compression  obtained depends on the size of the input and the dis-
+       tribution of common substrings.  Typically, text such as source code or
+       English  is  reduced  by  60-70%.  Compression is generally much better
+       than that achieved by LZW (as used in  compress),  Huffman  coding  (as
+       used in pack), or adaptive Huffman coding (compact).
+
+       Compression  is  always  performed,  even  if  the  compressed  file is
+       slightly larger than the original. The worst case expansion  is  a  few
+       bytes  for  the  gzip  file header, plus 5 bytes every 32K block, or an
+       expansion ratio of 0.015% for large files. Note that the actual  number
+       of  used  disk blocks almost never increases.  gzip preserves the mode,
+       ownership and timestamps of files when compressing or decompressing.
+
+       The gzip file format is specified in P. Deutsch, GZIP file format spec-
+       ification version 4.3, <ftp://ftp.isi.edu/in-notes/rfc1952.txt>, Inter-
+       net RFC 1952 (May 1996).  The zip deflation format is specified  in  P.
+       Deutsch,  DEFLATE  Compressed  Data  Format  Specification version 1.3,
+       <ftp://ftp.isi.edu/in-notes/rfc1951.txt>, Internet RFC 1951 (May 1996).
+<man>
+head
+q v n
+1
+<man>
+NAME
+       head - output the first part of files
+SYNOPSIS
+       head [OPTION]... [FILE]...
+DESCRIPTION
+       Print  the  first  10 lines of each FILE to standard output.  With more
+       than one FILE, precede each with a header giving the file  name.   With
+       no FILE, or when FILE is -, read standard input.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -n, --lines=[-]N
+              print  the first N lines instead of the first 10; with the lead-
+              ing ‘-’, print all but the last N lines of each file
+
+       -q, --quiet, --silent
+              never print headers giving file names
+
+       -v, --verbose
+              always print headers giving file names
+
+       N may have a multiplier suffix: b 512, k 1024, m 1024*1024.
+<man>
+less
+
+1
+<man>
+NAME
+       less - opposite of more
+SYNOPSIS
+       less [filename]...
+DESCRIPTION
+       Less is a program similar to more (1), but which allows backward  move-
+       ment in the file as well as forward movement.  Also, less does not have
+       to read the entire input file before  starting,  so  with  large  input
+       files  it  starts  up  faster than text editors like vi (1).  Less uses
+       termcap (or terminfo on some systems), so it can run on  a  variety  of
+       terminals.   There is even limited support for hardcopy terminals.  (On
+       a hardcopy terminal, lines which should be printed at the  top  of  the
+       screen are prefixed with a caret.)
+
+       Commands  are based on both more and vi.  Commands may be preceded by a
+       decimal number, called N in the descriptions below.  The number is used
+       by some commands, as indicated.
+COMMANDS
+       In  the following descriptions, ^X means control-X.  ESC stands for the
+       ESCAPE  key;  for  example  ESC-v  means  the  two  character  sequence
+       "ESCAPE", then "v".
+
+       h or H Help:  display  a  summary of these commands.  If you forget all
+              the other commands, remember this one.
+
+       SPACE or ^V or f or ^F
+              Scroll forward N  lines,  default  one  window  (see  option  -z
+              below).   If  N  is  more  than  the screen size, only the final
+              screenful is displayed.  Warning: some systems use ^V as a  spe-
+              cial literalization character.
+
+       z      Like  SPACE,  but  if  N is specified, it becomes the new window
+              size.
+
+       ESC-SPACE
+              Like SPACE, but scrolls a full screenful,  even  if  it  reaches
+              end-of-file in the process.
+
+       RETURN or ^N or e or ^E or j or ^J
+              Scroll  forward N lines, default 1.  The entire N lines are dis-
+              played, even if N is more than the screen size.
+
+       d or ^D
+              Scroll forward N lines, default one half of the screen size.  If
+              N  is specified, it becomes the new default for subsequent d and
+              u commands.
+
+       b or ^B or ESC-v
+              Scroll backward N lines,  default  one  window  (see  option  -z
+              below).   If  N  is  more  than  the screen size, only the final
+              screenful is displayed.
+
+       w      Like ESC-v, but if N is specified, it  becomes  the  new  window
+              size.
+
+       y or ^Y or ^P or k or ^K
+              Scroll backward N lines, default 1.  The entire N lines are dis-
+              played, even if N is more than the screen size.   Warning:  some
+              systems use ^Y as a special job control character.
+
+       u or ^U
+              Scroll  backward  N  lines, default one half of the screen size.
+              If N is specified, it becomes the new default for  subsequent  d
+              and u commands.
+
+       ESC-) or RIGHTARROW
+              Scroll  horizontally right N characters, default half the screen
+              width (see the -# option).  If  a  number  N  is  specified,  it
+              becomes  the  default  for  future RIGHTARROW and LEFTARROW com-
+              mands.  While the text is scrolled, it acts  as  though  the  -S
+              option (chop lines) were in effect.
+
+       ESC-( or LEFTARROW
+              Scroll  horizontally  left N characters, default half the screen
+              width (see the -# option).  If  a  number  N  is  specified,  it
+              becomes  the  default  for  future RIGHTARROW and LEFTARROW com-
+              mands.
+
+       r or ^R or ^L
+              Repaint the screen.
+
+       R      Repaint the screen, discarding any buffered  input.   Useful  if
+              the file is changing while it is being viewed.
+
+       F      Scroll  forward, and keep trying to read when the end of file is
+              reached.  Normally this command would be used  when  already  at
+              the  end of the file.  It is a way to monitor the tail of a file
+              which is growing while it is being  viewed.   (The  behavior  is
+              similar to the "tail -f" command.)
+
+       g or < or ESC-<
+              Go to line N in the file, default 1 (beginning of file).  (Warn-
+              ing: this may be slow if N is large.)
+
+       G or > or ESC->
+              Go to line N in the file, default the end of the  file.   (Warn-
+              ing:  this  may  be slow if N is large, or if N is not specified
+              and standard input, rather than a file, is being read.)
+
+       p or % Go to a position N percent into the file.  N should be between 0
+              and 100.
+
+       {      If a left curly bracket appears in the top line displayed on the
+              screen, the { command  will  go  to  the  matching  right  curly
+              bracket.   The matching right curly bracket is positioned on the
+              bottom line of the screen.  If there is more than one left curly
+              bracket  on  the top line, a number N may be used to specify the
+              N-th bracket on the line.
+
+       }      If a right curly bracket appears in the bottom line displayed on
+              the  screen,  the  }  command will go to the matching left curly
+              bracket.  The matching left curly bracket is positioned  on  the
+              top  line  of the screen.  If there is more than one right curly
+              bracket on the top line, a number N may be used to  specify  the
+              N-th bracket on the line.
+
+       (      Like {, but applies to parentheses rather than curly brackets.
+
+       )      Like }, but applies to parentheses rather than curly brackets.
+
+       [      Like  {, but applies to square brackets rather than curly brack-
+              ets.
+
+       ]      Like }, but applies to square brackets rather than curly  brack-
+              ets.
+
+       ESC-^F Followed  by two characters, acts like {, but uses the two char-
+              acters as open and close brackets, respectively.   For  example,
+              "ESC  ^F < >" could be used to go forward to the > which matches
+              the < in the top displayed line.
+
+       ESC-^B Followed by two characters, acts like }, but uses the two  char-
+              acters  as  open and close brackets, respectively.  For example,
+              "ESC ^B < >" could be used to go backward to the < which matches
+              the > in the bottom displayed line.
+
+       m      Followed  by  any  lowercase  letter, marks the current position
+              with that letter.
+
+       ’      (Single quote.)  Followed by any lowercase  letter,  returns  to
+              the position which was previously marked with that letter.  Fol-
+              lowed by another single quote, returns to the position at  which
+              the last "large" movement command was executed.  Followed by a ^
+              or $, jumps to the beginning or end of  the  file  respectively.
+              Marks  are  preserved when a new file is examined, so the ’ com-
+              mand can be used to switch between input files.
+
+       ^X^X   Same as single quote.
+
+       /pattern
+              Search forward in the file for the N-th line containing the pat-
+              tern.  N defaults to 1.  The pattern is a regular expression, as
+              recognized by the regular expression library  supplied  by  your
+              system.  The search starts at the second line displayed (but see
+              the -a and -j options, which change this).
+
+              Certain characters are special if entered at  the  beginning  of
+              the  pattern;  they modify the type of search rather than become
+              part of the pattern:
+
+              ^N or !
+                     Search for lines which do NOT match the pattern.
+
+              ^E or *
+                     Search multiple files.  That is, if  the  search  reaches
+                     the  END of the current file without finding a match, the
+                     search continues in the next file  in  the  command  line
+                     list.
+
+              ^F or @
+                     Begin  the  search at the first line of the FIRST file in
+                     the command line list, regardless of  what  is  currently
+                     displayed  on  the screen or the settings of the -a or -j
+                     options.
+
+              ^K     Highlight any text which matches the pattern on the  cur-
+                     rent screen, but don’t move to the first match (KEEP cur-
+                     rent position).
+
+              ^R     Don’t interpret regular expression  metacharacters;  that
+                     is, do a simple textual comparison.
+
+       ?pattern
+              Search  backward  in  the  file for the N-th line containing the
+              pattern.  The search starts at the line immediately  before  the
+              top line displayed.
+
+              Certain characters are special as in the / command:
+
+              ^N or !
+                     Search for lines which do NOT match the pattern.
+
+              ^E or *
+                     Search  multiple  files.   That is, if the search reaches
+                     the beginning of  the  current  file  without  finding  a
+                     match,  the  search continues in the previous file in the
+                     command line list.
+
+              ^F or @
+                     Begin the search at the last line of the last file in the
+                     command  line  list, regardless of what is currently dis-
+                     played on the screen or the settings  of  the  -a  or  -j
+                     options.
+
+              ^K     As in forward searches.
+
+              ^R     As in forward searches.
+
+       ESC-/pattern
+              Same as "/*".
+
+       ESC-?pattern
+              Same as "?*".
+
+       n      Repeat  previous  search, for N-th line containing the last pat-
+              tern.  If the previous search was modified by ^N, the search  is
+              made  for the N-th line NOT containing the pattern.  If the pre-
+              vious search was modified by ^E, the  search  continues  in  the
+              next  (or  previous)  file if not satisfied in the current file.
+              If the previous search was modified by ^R, the  search  is  done
+              without  using  regular  expressions.  There is no effect if the
+              previous search was modified by ^F or ^K.
+
+       N      Repeat previous search, but in the reverse direction.
+
+       ESC-n  Repeat previous  search,  but  crossing  file  boundaries.   The
+              effect is as if the previous search were modified by *.
+
+       ESC-N  Repeat  previous search, but in the reverse direction and cross-
+              ing file boundaries.
+
+       ESC-u  Undo search highlighting.   Turn  off  highlighting  of  strings
+              matching the current search pattern.  If highlighting is already
+              off because of a previous ESC-u command, turn highlighting  back
+              on.   Any  search  command  will also turn highlighting back on.
+              (Highlighting can also be disabled by toggling the -G option; in
+              that case search commands do not turn highlighting back on.)
+
+       :e [filename]
+              Examine  a  new file.  If the filename is missing, the "current"
+              file (see the :n and :p commands below) from the list  of  files
+              in  the  command line is re-examined.  A percent sign (%) in the
+              filename is replaced by the name of the current file.   A  pound
+              sign  (#)  is  replaced  by  the name of the previously examined
+              file.   However,  two  consecutive  percent  signs  are   simply
+              replaced with a single percent sign.  This allows you to enter a
+              filename that contains a percent sign in the  name.   Similarly,
+              two  consecutive  pound  signs  are replaced with a single pound
+              sign.  The filename is inserted into the command  line  list  of
+              files  so  that it can be seen by subsequent :n and :p commands.
+              If the filename consists of several files, they are all inserted
+              into  the  list  of files and the first one is examined.  If the
+              filename contains one or more spaces, the entire filename should
+              be enclosed in double quotes (also see the -" option).
+
+       ^X^V or E
+              Same  as :e.  Warning: some systems use ^V as a special literal-
+              ization character.  On such systems, you may not be able to  use
+              ^V.
+
+       :n     Examine  the next file (from the list of files given in the com-
+              mand line).  If a number N is specified, the N-th next  file  is
+              examined.
+
+       :p     Examine the previous file in the command line list.  If a number
+              N is specified, the N-th previous file is examined.
+
+       :x     Examine the first file in the command line list.  If a number  N
+              is specified, the N-th file in the list is examined.
+
+       :d     Remove the current file from the list of files.
+
+       t      Go  to the next tag, if there were more than one matches for the
+              current tag.  See the -t option for more details about tags.
+
+       T      Go to the previous tag, if there were more than one matches  for
+              the current tag.
+
+       = or ^G or :f
+              Prints  some  information about the file being viewed, including
+              its name and the line number and byte offset of the bottom  line
+              being  displayed.  If possible, it also prints the length of the
+              file, the number of lines in the file and  the  percent  of  the
+              file above the last displayed line.
+
+       -      Followed  by one of the command line option letters (see OPTIONS
+              below), this will change the setting of that option and print  a
+              message  describing  the  new  setting.   If a ^P (CONTROL-P) is
+              entered immediately after the dash, the setting of the option is
+              changed  but  no message is printed.  If the option letter has a
+              numeric value (such as -b or -h), or a string value (such as  -P
+              or  -t), a new value may be entered after the option letter.  If
+              no new value is entered, a message describing the  current  set-
+              ting is printed and nothing is changed.
+
+       --     Like  the  -  command, but takes a long option name (see OPTIONS
+              below) rather than a  single  option  letter.   You  must  press
+              RETURN after typing the option name.  A ^P immediately after the
+              second dash suppresses printing of a message describing the  new
+              setting, as in the - command.
+
+       -+     Followed  by  one  of  the command line option letters this will
+              reset the option to its default  setting  and  print  a  message
+              describing  the  new  setting.  (The "-+X" command does the same
+              thing as "-+X" on the command line.)  This  does  not  work  for
+              string-valued options.
+
+       --+    Like  the -+ command, but takes a long option name rather than a
+              single option letter.
+
+       -!     Followed by one of the command line option  letters,  this  will
+              reset  the  option  to the "opposite" of its default setting and
+              print a message describing the new setting.  This does not  work
+              for numeric or string-valued options.
+
+       --!    Like  the -! command, but takes a long option name rather than a
+              single option letter.
+
+       _      (Underscore.)  Followed by one of the command line  option  let-
+              ters,  this  will print a message describing the current setting
+              of that option.  The setting of the option is not changed.
+
+       __     (Double underscore.)  Like the _ (underscore) command, but takes
+              a long option name rather than a single option letter.  You must
+              press RETURN after typing the option name.
+
+       +cmd   Causes the specified cmd to be executed each time a new file  is
+              examined.  For example, +G causes less to initially display each
+              file starting at the end rather than the beginning.
+
+       V      Prints the version number of less being run.
+
+       q or Q or :q or :Q or ZZ
+              Exits less.
+
+       The following four commands may or may not be valid, depending on  your
+       particular installation.
+
+
+       v      Invokes  an  editor  to edit the current file being viewed.  The
+              editor is taken from the environment variable VISUAL if defined,
+              or  EDITOR if VISUAL is not defined, or defaults to "vi" if nei-
+              ther VISUAL nor EDITOR is defined.  See also the  discussion  of
+              LESSEDIT under the section on PROMPTS below.
+
+       ! shell-command
+              Invokes  a shell to run the shell-command given.  A percent sign
+              (%) in the command is replaced by the name of the current  file.
+              A pound sign (#) is replaced by the name of the previously exam-
+              ined file.  "!!" repeats the last shell command.   "!"  with  no
+              shell  command  simply  invokes  a  shell.  On Unix systems, the
+              shell is taken from the environment variable SHELL, or  defaults
+              to  "sh".   On  MS-DOS and OS/2 systems, the shell is the normal
+              command processor.
+
+       | <m> shell-command
+              <m> represents any mark letter.  Pipes a section  of  the  input
+              file  to the given shell command.  The section of the file to be
+              piped is between the first line on the current  screen  and  the
+              position  marked by the letter.  <m> may also be ^ or $ to indi-
+              cate beginning or end of file respectively.  If <m> is . or new-
+              line, the current screen is piped.
+
+       s filename
+              Save  the  input  to  a file.  This only works if the input is a
+              pipe, not an ordinary file.
 <man>
 logname
 
@@ -90,6 +949,49 @@ SYNOPSIS
 DESCRIPTION
        man formats and displays the on-line manual pages.  If you specify section,  man  only looks in that section of the manual.  name is normally the name of the manual page, which is typically the name of a  command, function,  or  file.   However,  if  name contains a slash (/) then man interprets it as a file specification, so that you can do  man  ./foo.5 or even man /cd/foo/bar.1.gz.
 <man>
+mkdir
+m p
+1
+<man>
+NAME
+       mkdir - make directories
+SYNOPSIS
+       mkdir [OPTION] DIRECTORY...
+DESCRIPTION
+       Create the DIRECTORY(ies), if they do not already exist.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -m, --mode=MODE
+              set permission mode (as in chmod), not rwxrwxrwx - umask
+
+       -p, --parents
+              no error if existing, make parent directories as needed
+<man>
+mv
+u f
+2
+<man>
+NAME
+       mv - move (rename) files
+SYNOPSIS
+       mv [OPTION]... SOURCE DEST
+       mv [OPTION]... SOURCE... DIRECTORY
+       mv [OPTION]... --target-directory=DIRECTORY SOURCE...
+DESCRIPTION
+       Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -f, --force
+              do not prompt before overwriting (equivalent to --reply=yes)
+
+       -u, --update
+              move  only  when  the  SOURCE file is newer than the destination
+              file or when the destination file is missing
+<man>
 pwd
 
 0
@@ -102,4 +1004,396 @@ DESCRIPTION
        NOTE:  your  shell may have its own version of pwd which will supercede the version described here. Please refer to your shell’s  documentation for details about the options it supports.
 
        Print the full filename of the current working directory.
+<man>
+quota
+
+0
+<man>
+NAME
+       quota - display disk usage and limits
+SYNOPSIS
+       quota [ -F format-name ] [ -guvsil | q ]
+       quota [ -F format-name ] [ -uvsil | q ] user...
+       quota [ -F format-name ] [ -gvsil | q ] group...
+DESCRIPTION
+       quota  displays users’ disk usage and limits.  By default only the user
+       quotas are printed.
+
+       quota reports the quotas of all the filesystems  listed  in  /etc/mtab.
+       For  filesystems  that are NFS-mounted a call to the rpc.rquotad on the
+       server machine is performed to get the information.
+<man>
+rm
+r f
+1
+<man>
+NAME
+       rm - remove files or directories
+SYNOPSIS
+       rm [OPTION]... FILE...
+DESCRIPTION
+       This  manual  page  documents  the  GNU version of rm.  rm removes each
+       specified file.  By default, it does not remove directories.
+
+       If a file is unwritable, the standard input is a tty,  and  the  -f  or
+       --force  option is not given, rm prompts the user for whether to remove
+       the file.  If the response does not begin with ‘y’ or ‘Y’, the file  is
+       skipped.
+OPTIONS
+       Remove (unlink) the FILE(s).
+
+       -f, --force
+              ignore nonexistent files, never prompt
+
+       -r
+              remove the contents of directories recursively
+
+       To remove a file whose name starts with a ‘-’, for example ‘-foo’,  use
+       this command:
+
+              rm ./-foo
+
+       Note  that  if  you  use rm to remove a file, it is usually possible to
+       recover the contents of that file.  If you want more assurance that the
+       contents are truly unrecoverable, consider using shred.
+<man>
+rmdir
+p
+1
+<man>
+NAME
+       rmdir - remove empty directories
+SYNOPSIS
+       rmdir [OPTION]... DIRECTORY...
+DESCRIPTION
+       Remove the DIRECTORY(ies), if they are empty.
+
+       -p
+              remove DIRECTORY, then try to remove each directory component of
+              that  path  name.   E.g.,  ‘rmdir -p a/b/c’ is similar to ‘rmdir
+              a/b/c a/b a’.
+<man>
+tail
+q v n
+1
+<man>
+NAME
+       tail - output the last part of files
+SYNOPSIS
+       tail [OPTION]... [FILE]...
+DESCRIPTION
+
+       Print  the  last  10  lines of each FILE to standard output.  With more
+       than one FILE, precede each with a header giving the file  name.   With
+       no FILE, or when FILE is -, read standard input.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -n, --lines=N
+              output the last N lines, instead of the last 10
+
+       -q, --quiet, --silent
+              never output headers giving file names
+
+       -v, --verbose
+              always output headers giving file names
+
+       If the first character of N (the number of bytes or lines)  is  a  ‘+’,
+       print  beginning  with the Nth item from the start of each file, other-
+       wise, print the last N items in the file.  N may have a multiplier suf-
+       fix: b 512, k 1024, m 1024*1024.
+
+       With  --follow  (-f),  tail  defaults to following the file descriptor,
+       which means that even if a tail’ed file is renamed, tail will  continue
+       to  track  its  end.   This  default behavior is not desirable when you
+       really want to track the actual name of the file, not the file descrip-
+       tor (e.g., log rotation).  Use --follow=name in that case.  That causes
+       tail to track the named file by reopening it periodically to see if  it
+       has been removed and recreated by some other program.
+<man>
+tar
+c x z f v
+1
+<man>
+NAME
+       tar - The GNU version of the tar archiving utility
+SYNOPSIS
+       tar <operation> [options]
+
+       Operations:
+       [-]A --catenate --concatenate
+       [-]c --create
+       [-]d --diff --compare
+       [-]r --append
+       [-]t --list
+       [-]u --update
+       [-]x --extract --get
+       --delete
+
+       Common Options:
+       -C, --directory DIR
+       -f, --file F
+       -j, --bzip2
+       -p, --preserve-permissions
+       -v, --verbose
+       -z, --gzip
+DESCRIPTION
+       This manual page documents the GNU version of tar, an archiving program
+       designed to store and extract files from an archive  file  known  as  a
+       tarfile.   A  tarfile  may be made on a tape drive, however, it is also
+       common to write a tarfile to a normal file.  The first argument to  tar
+       must be one of the options Acdrtux, followed by any optional functions.
+       The final arguments to tar are the names of the  files  or  directories
+       which  should  be archived.  The use of a directory name always implies
+       that the subdirectories below should be included in the archive.
+EXAMPLES
+       tar -xvf foo.tar
+              verbosely extract foo.tar
+
+       tar -xzf foo.tar.gz
+              extract gzipped foo.tar.gz
+
+       tar -cjf foo.tar.bz2 bar/
+              create  bzipped  tar  archive  of  the  directory   bar   called
+              foo.tar.bz2
+
+       tar -xjf foo.tar.bz2 -C bar/
+              extract bzipped foo.tar.bz2 after changing directory to bar
+
+       tar -xzf foo.tar.gz blah.txt
+              extract the file blah.txt from foo.tar.bz2
+FUNCTION LETTERS
+       One of the following options must be used:
+
+       -c, --create
+              create a new archive
+
+       -x, --extract, --get
+              extract files from an archive
+COMMON OPTIONS
+
+       -f, --file [HOSTNAME:]F
+              use archive file or device F (default "-", meaning stdin/stdout)
+
+       -v, --verbose
+              verbosely list files processed
+
+       -z, --gzip, --ungzip
+              filter the archive through gzip
+<man>
+touch
+r t
+1
+<man>
+NAME
+       touch - change file timestamps
+SYNOPSIS
+       touch [OPTION]... FILE...
+DESCRIPTION
+       Update  the  access  and modification times of each FILE to the current
+       time.
+
+       Mandatory arguments to long options are  mandatory  for  short  options
+       too.
+
+       -r, --reference=FILE
+              use this file’s times instead of current time
+
+       -t STAMP
+              use [[CC]YY]MMDDhhmm[.ss] instead of current time
+
+       Note that the -d and -t options accept different time-date formats.
+<man>
+zip
+
+1
+<man>
+NAME
+       zip - package and compress (archive) files
+SYNOPSIS
+       zip   [-aABcdDeEfFghjklLmoqrRSTuvVwXyz!@$]   [-b path]    [-n suffixes]
+       [-t mmddyyyy] [-tt mmddyyyy] [ zipfile [ file1 file2 ...]] [-xi list]
+
+       zipcloak [-dhL] [-b path] zipfile
+
+       zipnote [-hwL] [-b path] zipfile
+
+       zipsplit [-hiLpst] [-n size] [-b path] zipfile
+DESCRIPTION
+       zip  is  a compression and file packaging utility for Unix, VMS, MSDOS,
+       OS/2, Windows NT, Minix, Atari and Macintosh, Amiga and Acorn RISC  OS.
+
+       It  is  analogous to a combination of the UNIX commands tar(1) and com-
+       press(1) and is compatible with PKZIP (Phil Katz’s ZIP for  MSDOS  sys-
+       tems).
+
+       A  companion  program  (unzip(1L)),  unpacks zip archives.  The zip and
+       unzip(1L) programs can work with archives produced by PKZIP, and  PKZIP
+       and PKUNZIP can work with archives produced by zip.  zip version 2.3 is
+       compatible with PKZIP 2.04.  Note  that  PKUNZIP  1.10  cannot  extract
+       files  produced by PKZIP 2.04 or zip 2.3. You must use PKUNZIP 2.04g or
+       unzip 5.0p1 (or later versions) to extract them.
+
+       For a brief help on zip and unzip,  run  each  without  specifying  any
+       parameters on the command line.
+
+       The  program  is  useful for packaging a set of files for distribution;
+       for archiving files; and for saving disk space by temporarily compress-
+       ing unused files or directories.
+
+       The  zip  program  puts  one or more compressed files into a single zip
+       archive, along with information about the files (name, path, date, time
+       of  last modification, protection, and check information to verify file
+       integrity).  An entire directory structure can be  packed  into  a  zip
+       archive  with  a  single command.  Compression ratios of 2:1 to 3:1 are
+       common for text files.  zip has one compression method (deflation)  and
+       can  also  store  files without compression.  zip automatically chooses
+       the better of the two for each file to be compressed.
+
+       When given the name of an existing zip archive, zip will replace  iden-
+       tically  named entries in the zip archive or add entries for new names.
+       For example, if foo.zip exists and contains  foo/file1  and  foo/file2,
+       and the directory foo contains the files foo/file1 and foo/file3, then:
+
+              zip -r foo foo
+
+       will replace foo/file1 in foo.zip and add foo/file3 to foo.zip.   After
+       this,  foo.zip  contains  foo/file1,  foo/file2,  and  foo/file3,  with
+       foo/file2 unchanged from before.
+
+       If the file list is specified as -@, [Not on MacOS] zip takes the  list
+       of  input  files  from  standard input.  Under UNIX, this option can be
+       used to powerful effect in conjunction with the find(1)  command.   For
+       example, to archive all the C source files in the current directory and
+       its subdirectories:
+
+              find . -name "*.[ch]" -print | zip source -@
+
+       (note that the pattern must be quoted to keep the shell from  expanding
+       it).  zip will also accept a single dash ("-") as the zip file name, in
+       which case it will write the zip file to standard output, allowing  the
+       output to be piped to another program. For example:
+
+              zip -r - . | dd of=/dev/nrst0 obs=16k
+
+       would  write the zip output directly to a tape with the specified block
+       size for the purpose of backing up the current directory.
+
+       zip also accepts a single dash ("-") as the name of a file to  be  com-
+       pressed,  in  which  case  it  will  read the file from standard input,
+       allowing zip to take input from another program. For example:
+
+              tar cf - . | zip backup -
+
+       would compress the output of the tar command for the purpose of backing
+       up  the  current  directory. This generally produces better compression
+       than the previous example using the -r option,  because  zip  can  take
+       advantage of redundancy between files. The backup can be restored using
+       the command
+
+              unzip -p backup | tar xf -
+
+       When no zip file name is given and stdout is not a terminal,  zip  acts
+       as  a filter, compressing standard input to standard output.  For exam-
+       ple,
+
+              tar cf - . | zip | dd of=/dev/nrst0 obs=16k
+
+       is equivalent to
+
+              tar cf - . | zip - - | dd of=/dev/nrst0 obs=16k
+
+       zip archives created in this manner can be extracted with  the  program
+       funzip  which  is  provided in the unzip package, or by gunzip which is
+       provided in the gzip package. For example:
+
+       dd if=/dev/nrst0  ibs=16k | funzip | tar xvf -
+
+       When changing an existing zip archive, zip will write a temporary  file
+       with the new contents, and only replace the old one when the process of
+       creating the new version has been completed without error.
+
+       If the name of the zip archive  does  not  contain  an  extension,  the
+       extension  .zip  is  added.  If  the name already contains an extension
+       other than .zip the existing extension is kept unchanged.
+<man>
+unzip
+
+1
+<man>
+NAME
+       unzip - list, test and extract compressed files in a ZIP archive
+SYNOPSIS
+       unzip   [-Z]   [-cflptuvz[abjnoqsCLMVX$/:]]   file[.zip]  [file(s) ...]
+       [-x xfile(s) ...] [-d exdir]
+DESCRIPTION
+       unzip will list, test, or extract files from a  ZIP  archive,  commonly
+       found  on MS-DOS systems.  The default behavior (with no options) is to
+       extract into the current directory (and subdirectories  below  it)  all
+       files  from  the  specified ZIP archive.  A companion program, zip(1L),
+       creates ZIP archives; both programs are compatible with  archives  cre-
+       ated  by  PKWARE’s  PKZIP and PKUNZIP for MS-DOS, but in many cases the
+       program options or default behaviors differ.
+ARGUMENTS
+       file[.zip]
+              Path of the ZIP archive(s).  If  the  file  specification  is  a
+              wildcard, each matching file is processed in an order determined
+              by the operating system (or file system).  Only the filename can
+              be a wildcard; the path itself cannot.  Wildcard expressions are
+              similar to those supported in commonly  used  Unix  shells  (sh,
+              ksh, csh) and may contain:
+
+              *      matches a sequence of 0 or more characters
+
+              ?      matches exactly 1 character
+
+              [...]  matches  any  single character found inside the brackets;
+                     ranges are specified by a beginning character, a  hyphen,
+                     and  an  ending  character.  If an exclamation point or a
+                     caret (‘!’ or ‘^’) follows the  left  bracket,  then  the
+                     range  of  characters within the brackets is complemented
+                     (that is,  anything  except  the  characters  inside  the
+                     brackets is considered a match).
+
+              (Be  sure  to quote any character that might otherwise be inter-
+              preted or modified by the operating system,  particularly  under
+              Unix  and  VMS.)   If no matches are found, the specification is
+              assumed to be a literal filename; and if that  also  fails,  the
+              suffix  .zip  is  appended.  Note that self-extracting ZIP files
+              are supported, as with any other ZIP archive; just  specify  the
+              .exe suffix (if any) explicitly.
+
+       [file(s)]
+              An  optional  list of archive members to be processed, separated
+              by spaces.  (VMS versions  compiled  with  VMSCLI  defined  must
+              delimit  files  with  commas instead.  See -v in OPTIONS below.)
+              Regular expressions (wildcards) may be used  to  match  multiple
+              members;  see  above.   Again, be sure to quote expressions that
+              would otherwise be expanded or modified by the operating system.
+
+       [-x xfile(s)]
+              An optional list of archive members to be excluded from process-
+              ing.   Since  wildcard  characters  match  directory  separators
+              (‘/’),  this option may be used to exclude any files that are in
+              subdirectories.  For example, ‘‘unzip foo *.[ch] -x */*’’  would
+              extract  all  C  source files in the main directory, but none in
+              any subdirectories.  Without the -x option, all C  source  files
+              in all directories within the zipfile would be extracted.
+
+       [-d exdir]
+              An  optional  directory  to which to extract files.  By default,
+              all files and subdirectories are recreated in the current direc-
+              tory;  the -d option allows extraction in an arbitrary directory
+              (always assuming one has permission to write to the  directory).
+              This  option  need not appear at the end of the command line; it
+              is also accepted before the zipfile specification (with the nor-
+              mal  options),  immediately  after the zipfile specification, or
+              between the file(s) and the -x option.  The option and directory
+              may  be  concatenated  without any white space between them, but
+              note that this may cause normal shell behavior to be suppressed.
+              In  particular,  ‘‘-d ~’’  (tilde)  is expanded by Unix C shells
+              into the name of the  user’s  home  directory,  but  ‘‘-d~’’  is
+              treated  as  a  literal subdirectory ‘‘~’’ of the current direc-
+              tory.
 <man>

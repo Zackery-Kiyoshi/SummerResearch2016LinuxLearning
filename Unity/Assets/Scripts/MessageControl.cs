@@ -95,11 +95,12 @@ public class MessageControl : MonoBehaviour {
 					tmp.start ();
 
 					//msgs.Add (tMsg);
+				} else {
+					curMsg++;
 				}
 			}
 
-
-		} else if (curMsg == l.level.Count) {
+		} else if (curMsg >= l.level.Count) {
 			finished ();
 		}
 
@@ -268,9 +269,6 @@ public class MessageControl : MonoBehaviour {
 							}
 						}
 					}
-				} else {
-					// end
-					finished ();
 				}
 			//}
 		}

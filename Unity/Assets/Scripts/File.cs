@@ -3,9 +3,9 @@ using System.Collections;
 
 public class File  {
     public string name;
-    public string content;
+    public string content = "";
     public string path;
-	public bool hidden;
+	public bool hidden = false;
 
     public bool[] ownerPermissions = { true, true, false };
     public bool[] groupPermissions = { true, true, false };

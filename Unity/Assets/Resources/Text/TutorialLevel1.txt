@@ -1,4 +1,5 @@
-
+This is the first tutorial which will introduce you to some of the basic commands: pwd, ls, cd, logname, clear
+Good luck and have fun.
 <div>
 drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
 {
@@ -63,5 +64,3 @@ wait	cd	!~	FirstFolder
 0	Now leave and start your adventure
 <div>
 // this should be at the top but is
-This is the first tutorial which will introduce you to some of the basic commands: pwd, ls, cd, logname, clear
-Good luck and have fun

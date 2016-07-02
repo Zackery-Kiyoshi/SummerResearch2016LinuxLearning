@@ -86,6 +86,7 @@ public class Folder {
     {
         contentFolders.Add(new Folder(s, new List<Folder>(), new List<File>(), path + name));
         contentFolders[contentFolders.Count - 1].setParent(this);
+		//Debug.Log (contentFolders [contentFolders.Count - 1].parent.name);
     }
 
     public void addFile(string s, string c)

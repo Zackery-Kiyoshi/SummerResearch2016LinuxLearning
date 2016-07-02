@@ -32,6 +32,12 @@ DESCRIPTION
     Exit Status:
     Returns 0 if the directory is changed; non-zero otherwise.
 <man>
+chmod
+R
+2
+<man>
+
+<man>
 clear
 
 0
@@ -109,7 +115,7 @@ DESCRIPTION
 
 <man>
 echo
-n e
+n
 1
 <man>
 NAME
@@ -970,7 +976,7 @@ DESCRIPTION
               no error if existing, make parent directories as needed
 <man>
 mv
-u f
+u
 2
 <man>
 NAME

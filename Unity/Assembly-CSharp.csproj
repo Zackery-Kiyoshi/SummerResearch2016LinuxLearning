@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\MessageControl.cs" />
      <Compile Include="Assets\Scripts\MessageImporter.cs" />
      <Compile Include="Assets\Scripts\PanelControl.cs" />
+     <Compile Include="Assets\Scripts\SSHLoader.cs" />
      <Compile Include="Assets\Scripts\StartDebrifing.cs" />
      <Compile Include="Assets\Scripts\StartLevel.cs" />
      <Compile Include="Assets\Scripts\TerminalControl.cs" />

@@ -1079,6 +1079,18 @@ DESCRIPTION
               that  path  name.   E.g.,  ‘rmdir -p a/b/c’ is similar to ‘rmdir
               a/b/c a/b a’.
 <man>
+ssh
+p
+1
+<man>
+
+<man>
+sshopt
+
+0
+<man>
+this is a custom linux command which shows you your possible computers you can acces and the username/port to use to access them
+<man>
 tail
 q v n
 1

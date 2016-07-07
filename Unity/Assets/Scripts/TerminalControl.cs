@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ public class TerminalControl : MonoBehaviour {
 	public string comp = "DontCare01";
 	public string path = "/";
 
-	private FileSystem fileSystem; 
+	public FileSystem fileSystem; 
 
 	private Text terminalObj;
 
@@ -54,12 +55,15 @@ public class TerminalControl : MonoBehaviour {
 	private int tCount = 0;
 
 	public MessageControl mc;
+	public sshController sshc;
 
 	// Use this for initialization
 	void Start () {
-		
+
 		testing = -1;
 		active = false;
+
+		sshc = GameObject.Find ("sshController").GetComponent<sshController> ();
 
 		//making the file system
 		LevelLoader l = gameObject.transform.parent.gameObject.GetComponent<LevelLoader>();
@@ -356,8 +360,8 @@ public class TerminalControl : MonoBehaviour {
 
 				if (invalid != -1) {
 					terminal += "";
-				} else{
-					string[] tret = ret.Split ('`','\n');
+				} else {
+					string[] tret = ret.Split ('`', '\n');
 					for (int i = 0; i < tret.Length; i++) {
 						terminal += tret [i] + '\n';
 					}
@@ -399,7 +403,7 @@ public class TerminalControl : MonoBehaviour {
 				string tmpPrem = "";
 
 				for (int i = 0; i < curCommand.param.Count; i++) {
-					if (curCommand.param[i] != "") {
+					if (curCommand.param [i] != "") {
 						if (System.Char.IsNumber (curCommand.param [i] [curCommand.param [i].Length - 1])) {
 							if (R) {
 								tmpPrem = curCommand.param [i].Split (' ') [1];
@@ -407,8 +411,8 @@ public class TerminalControl : MonoBehaviour {
 								tmpPrem = curCommand.param [i];
 						
 						} else if (curCommand.param [i].Contains ("-") ||
-						        curCommand.param [i].Contains ("+") ||
-						        curCommand.param [i].Contains ("=")) {
+						           curCommand.param [i].Contains ("+") ||
+						           curCommand.param [i].Contains ("=")) {
 
 							if (R) {
 								tmpPrem = curCommand.param [i].Split (' ') [1];
@@ -432,18 +436,18 @@ public class TerminalControl : MonoBehaviour {
 						if (R) {
 							string perm = fileSystem.parsePerms (tmpPrem);
 							fileSystem.changePerms (pa, perm);
-							List<Folder> toCh = new List<Folder> {fileSystem.getFold (pa)};
+							List<Folder> toCh = new List<Folder> { fileSystem.getFold (pa) };
 							int i = 0;
 
 							while (i < toCh.Count) {
 								Folder tmpRoot = toCh [i];
 
 								for (int j = 0; j < tmpRoot.contentFiles.Count; j++) {
-									fileSystem.changePerms (pa + "/" + tmpRoot.contentFiles[j].name, perm);
+									fileSystem.changePerms (pa + "/" + tmpRoot.contentFiles [j].name, perm);
 								}
 								for (int j = 0; j < tmpRoot.contentFolders.Count; j++) {
-									fileSystem.changePerms (pa + "/" + tmpRoot.contentFolders[j].name, perm);
-									toCh.Add(tmpRoot.contentFolders[j]);
+									fileSystem.changePerms (pa + "/" + tmpRoot.contentFolders [j].name, perm);
+									toCh.Add (tmpRoot.contentFolders [j]);
 								}
 
 								i++;
@@ -459,16 +463,17 @@ public class TerminalControl : MonoBehaviour {
 					}
 				} else {
 					
-					terminal += "chmod: missing operand after `" + tmpPrem +"'";
+					terminal += "chmod: missing operand after `" + tmpPrem + "'";
 				}
 				Debug.Log ("chmod");
 				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "clear") {
 				terminal = "";
+				nline = true;
 				numLines = 0;
 				curWidth = preWidth;
-				terminal += "[" + username + "@" + comp + " " + path + "]$ ";
-				return;
+				//terminal += "[" + username + "@" + comp + " " + path + "]$ ";
+				//return;
 				//"[" + username + "@" + comp + " " + path + "]$ ";
 			} else if (curCommand.com == "df") {
 				// TODO
@@ -515,15 +520,16 @@ public class TerminalControl : MonoBehaviour {
 				string ret = "";
 
 				for (int i = 0; i < curCommand.param.Count; i++) {
-					if (n && i==0) {
-						ret += curCommand.param [i].Substring (4, curCommand.param [i].Length-4) + " ";
-					}
-					else ret += curCommand.param [i] + " ";
+					if (n && i == 0) {
+						ret += curCommand.param [i].Substring (4, curCommand.param [i].Length - 4) + " ";
+					} else
+						ret += curCommand.param [i] + " ";
 				}
 				terminal += ret;
 
 			} else if (curCommand.com == "exit") {
-				if(testing>=1)Debug.Log ("Application.Quit ();");
+				if (testing >= 1)
+					Debug.Log ("Application.Quit ();");
 				//Application.OpenURL ("");
 				Application.Quit ();
 				//	UnityEditor.EditorApplication.isPlaying = false;
@@ -609,12 +615,12 @@ public class TerminalControl : MonoBehaviour {
 						lines = Int32.Parse (curCommand.param [i].Substring (4, curCommand.param [i].Length - 4));
 					} else if (v && curCommand.param [i].Contains ("-v")) {
 						Debug.Log ("Here");
-							pa = curCommand.param [i].Substring (3, curCommand.param [i].Length - 3);
-							Debug.Log ("Here!!!!!!!!!!!");
-							if (fileSystem.checkPath (pa, true)) {
-								ret = fileSystem.getContent (pa);
-							}
-							Debug.Log ("v: " + pa);
+						pa = curCommand.param [i].Substring (3, curCommand.param [i].Length - 3);
+						Debug.Log ("Here!!!!!!!!!!!");
+						if (fileSystem.checkPath (pa, true)) {
+							ret = fileSystem.getContent (pa);
+						}
+						Debug.Log ("v: " + pa);
 					} else {
 						pa = curCommand.param [i];
 					}
@@ -624,11 +630,11 @@ public class TerminalControl : MonoBehaviour {
 					lines = 10;
 				}
 				if (!fileSystem.checkPath (pa, true)) {
-					terminal += "head: cannot open `" + pa +"' for reading: No such file or directory";
-				} else{
+					terminal += "head: cannot open `" + pa + "' for reading: No such file or directory";
+				} else {
 
 					if (v) {
-						terminal += "==> " + pa.Split('/')[pa.Split('/').Length-1]  +" <== \n";
+						terminal += "==> " + pa.Split ('/') [pa.Split ('/').Length - 1] + " <== \n";
 					}
 
 					string[] tret = ret.Split ('`');
@@ -676,18 +682,18 @@ public class TerminalControl : MonoBehaviour {
 				if (a) {
 					if (l) {
 						terminal += fileSystem.curFolder.printPermissions () +
-							" " + fileSystem.curFolder.owner +
-							" " + fileSystem.curFolder.group +
-							" " + 4096 +
-							" " + fileSystem.curFolder.time +
-							" <color=blue>" + "." + "</color>\n";
+						" " + fileSystem.curFolder.owner +
+						" " + fileSystem.curFolder.group +
+						" " + 4096 +
+						" " + fileSystem.curFolder.time +
+						" <color=blue>" + "." + "</color>\n";
 
 						terminal += fileSystem.curFolder.parent.printPermissions () +
-							" " + fileSystem.curFolder.parent.owner +
-							" " + fileSystem.curFolder.parent.owner +
-							" " + 4096 +
-							" " + "Jun 8 11:27" +
-							" <color=blue>" + ".." + "</color>\n";
+						" " + fileSystem.curFolder.parent.owner +
+						" " + fileSystem.curFolder.parent.owner +
+						" " + 4096 +
+						" " + "Jun 8 11:27" +
+						" <color=blue>" + ".." + "</color>\n";
 					} else {
 						if (o1) {
 							terminal += "<color=blue> . </color> \n";
@@ -701,15 +707,15 @@ public class TerminalControl : MonoBehaviour {
 
 				// if no options
 				for (int i = 0; i < fileSystem.curFolder.contentFolders.Count; i++) {
-					Debug.Log (i + ": " + fileSystem.curFolder.contentFolders [i].name);
+					//Debug.Log (i + ": " + fileSystem.curFolder.contentFolders [i].name);
 					if (fileSystem.curFolder.contentFolders [i].hidden && a) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFolders [i].printPermissions () +
-								" " + fileSystem.curFolder.contentFolders [i].owner +
-								" " + fileSystem.curFolder.contentFolders [i].group +
-								" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
-								" " + fileSystem.curFolder.contentFolders [i].time +
-								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+							" " + fileSystem.curFolder.contentFolders [i].owner +
+							" " + fileSystem.curFolder.contentFolders [i].group +
+							" " + fileSystem.curFolder.contentFolders [i].printSize (h) +
+							" " + fileSystem.curFolder.contentFolders [i].time +
+							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
 							if (o1) {
 								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color> \n";
@@ -720,11 +726,11 @@ public class TerminalControl : MonoBehaviour {
 					} else if (!fileSystem.curFolder.contentFolders [i].hidden) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFolders [i].printPermissions () +
-								" " + fileSystem.curFolder.contentFolders [i].owner +
-								" " + fileSystem.curFolder.contentFolders [i].group +
-								" " + fileSystem.curFolder.contentFolders [i].printSize(h) +
-								" " + fileSystem.curFolder.contentFolders [i].time +
-								" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
+							" " + fileSystem.curFolder.contentFolders [i].owner +
+							" " + fileSystem.curFolder.contentFolders [i].group +
+							" " + fileSystem.curFolder.contentFolders [i].printSize (h) +
+							" " + fileSystem.curFolder.contentFolders [i].time +
+							" <color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color>\n";
 						} else {
 							if (o1) {
 								terminal += "<color=blue>" + fileSystem.curFolder.contentFolders [i].name + "</color> \n";
@@ -738,11 +744,11 @@ public class TerminalControl : MonoBehaviour {
 					if (fileSystem.curFolder.contentFiles [i].hidden && a) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
-								" " + fileSystem.curFolder.contentFiles [i].owner +
-								" " + fileSystem.curFolder.contentFiles [i].group +
-								" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
-								" " + fileSystem.curFolder.contentFiles [i].time +
-								" " + fileSystem.curFolder.contentFiles [i].name + "\n";
+							" " + fileSystem.curFolder.contentFiles [i].owner +
+							" " + fileSystem.curFolder.contentFiles [i].group +
+							" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
+							" " + fileSystem.curFolder.contentFiles [i].time +
+							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
 						} else {
 							if (o1) {
 								terminal += fileSystem.curFolder.contentFiles [i].name + " \n";
@@ -753,11 +759,11 @@ public class TerminalControl : MonoBehaviour {
 					} else if (!fileSystem.curFolder.contentFiles [i].hidden) {
 						if (l) {
 							terminal += fileSystem.curFolder.contentFiles [i].printPermissions () +
-								" " + fileSystem.curFolder.contentFiles [i].owner +
-								" " + fileSystem.curFolder.contentFiles [i].group +
-								" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
-								" " + fileSystem.curFolder.contentFiles [i].time +
-								" " + fileSystem.curFolder.contentFiles [i].name + "\n";
+							" " + fileSystem.curFolder.contentFiles [i].owner +
+							" " + fileSystem.curFolder.contentFiles [i].group +
+							" " + fileSystem.curFolder.contentFiles [i].printSize (h) +
+							" " + fileSystem.curFolder.contentFiles [i].time +
+							" " + fileSystem.curFolder.contentFiles [i].name + "\n";
 						} else {
 							if (o1) {
 								terminal += fileSystem.curFolder.contentFiles [i].name + " \n";
@@ -776,8 +782,6 @@ public class TerminalControl : MonoBehaviour {
 					terminal += "\n" + "-bash: man : Invalid paramater to man (or not a command supported)" + "\n";
 				}
 			} else if (curCommand.com == "mkdir") {
-				// TODO
-
 				bool m = false;
 				bool p = false;
 				string perm;
@@ -799,16 +803,17 @@ public class TerminalControl : MonoBehaviour {
 					int pindex = 0;
 
 					for (int i = 0; i < curCommand.param.Count; i++) {
-						if ( (curCommand.param [i].Contains ("-") ||
+						if ((curCommand.param [i].Contains ("-") ||
 						    curCommand.param [i].Contains ("+") ||
-							curCommand.param [i].Contains ("=") ) && 
-							!curCommand.param [i].Contains("p") ){
+						    curCommand.param [i].Contains ("=")) &&
+						    !curCommand.param [i].Contains ("p")) {
 							pindex = i;
 						} else {
-							if ( curCommand.param [i].Length >3 && curCommand.param [i].Substring (0, 3) == "--p") {
+							if (curCommand.param [i].Length > 3 && curCommand.param [i].Substring (0, 3) == "--p") {
 								pa = curCommand.param [i].Substring (3, curCommand.param [i].Length - 3);
 
-							} else pa = curCommand.param [i];
+							} else
+								pa = curCommand.param [i];
 							//Debug.Log ("param: " + pa);
 						}
 					}
@@ -823,16 +828,17 @@ public class TerminalControl : MonoBehaviour {
 						}
 						tmpP = tmpP.Substring (0, tmpP.Length - 1);
 
-						if (tmpP == "" || fileSystem.checkPath (tmpP,false)) {
+						if (tmpP == "" || fileSystem.checkPath (tmpP.Trim (), false)) {
 							// make the new folder;
 							fileSystem.add (pa, false);
 							if (m) {
 								// change the permissions
 
 								perm = fileSystem.parsePerms (curCommand.param [pindex]);
-								fileSystem.changePerms(pa,perm);
+								fileSystem.changePerms (pa, perm);
 							}
 						} else if (p) {
+							Debug.Log ("P");
 							// make missing directories
 							string p2 = "";
 							string use = "";
@@ -844,7 +850,7 @@ public class TerminalControl : MonoBehaviour {
 									if (m) {
 										// change the permissions
 										perm = fileSystem.parsePerms (curCommand.param [pindex]);
-										fileSystem.changePerms (use, perm);
+										fileSystem.changePerms (use.Trim (), perm);
 									}
 								}
 							}
@@ -855,12 +861,13 @@ public class TerminalControl : MonoBehaviour {
 
 					} else {
 						tmpP = pa;
-						fileSystem.add (pa, false);
+						Debug.Log ("else " + t.Length + ":" + pa);
+						fileSystem.add (pa.Trim (), false);
 						if (m) {
 							// change the permissions
 
 							perm = fileSystem.parsePerms (curCommand.param [pindex]);
-							fileSystem.changePerms(pa,perm);
+							fileSystem.changePerms (pa, perm);
 						}
 					}
 
@@ -880,11 +887,11 @@ public class TerminalControl : MonoBehaviour {
 				string toMv = "";
 
 				for (int i = 0; i < curCommand.param.Count; i++) {
-					if (curCommand.param [i].Contains("-u") || curCommand.param [i].Contains("-f")) {
+					if (curCommand.param [i].Contains ("-u") || curCommand.param [i].Contains ("-f")) {
 						if (toMv == "")
-							toMv = curCommand.param [i].Split(' ')[1];
+							toMv = curCommand.param [i].Split (' ') [1];
 						else
-							pa = curCommand.param [i].Split(' ')[1];
+							pa = curCommand.param [i].Split (' ') [1];
 					} else {
 						if (toMv == "")
 							toMv = curCommand.param [i];
@@ -912,7 +919,7 @@ public class TerminalControl : MonoBehaviour {
 							}
 						}
 
-						Folder fl = fileSystem.getFold(pa);
+						Folder fl = fileSystem.getFold (pa);
 						File fil = null;
 
 						for (int i = 0; i < fl.contentFiles.Count; i++) {
@@ -922,10 +929,10 @@ public class TerminalControl : MonoBehaviour {
 						}
 						if (fil != null) {
 							if (!mvfl) {
-								terminal += "mv: cannot overwrite non-directory `" + pa+"/"+tmp [tmp.Length - 1].Trim () + "' with directory `" + toMv + "'";
+								terminal += "mv: cannot overwrite non-directory `" + pa + "/" + tmp [tmp.Length - 1].Trim () + "' with directory `" + toMv + "'";
 							} else if (u) {
 								// only replace if newer
-								if (compTime(fil.time,m.time)){
+								if (compTime (fil.time, m.time)) {
 									fileSystem.moveF (toMv, pa);
 								} 
 							} else {
@@ -941,10 +948,10 @@ public class TerminalControl : MonoBehaviour {
 
 						if (fol != null) {
 							if (mvfl) {
-								terminal += "mv: cannot overwrite non-directory `" + pa+"/"+tmp [tmp.Length - 1].Trim () +"' with directory `" + toMv +"'";
+								terminal += "mv: cannot overwrite non-directory `" + pa + "/" + tmp [tmp.Length - 1].Trim () + "' with directory `" + toMv + "'";
 							} else if (u) {
 								// only replace if newer
-								if (compTime(fil.time,mF.time)){
+								if (compTime (fil.time, mF.time)) {
 									fileSystem.moveF (toMv, pa);
 								} 
 							} else {
@@ -958,7 +965,7 @@ public class TerminalControl : MonoBehaviour {
 					} else {
 						// invalid pa
 						if (pa.Split (' ').Length > 1) {
-							terminal += "mv: cannot stat`"+pa+"' No such file or directory";
+							terminal += "mv: cannot stat`" + pa + "' No such file or directory";
 						} else {
 							// rename
 
@@ -967,7 +974,7 @@ public class TerminalControl : MonoBehaviour {
 					}
 				} else {
 					// invalid toMv
-					terminal += "mv: cannot stat`"+toMv+"' No such file or directory";
+					terminal += "mv: cannot stat`" + toMv + "' No such file or directory";
 				}
 				Debug.Log ("mv");
 				Debug.Log ("Not Functioning yet");
@@ -977,7 +984,7 @@ public class TerminalControl : MonoBehaviour {
 				// TODO
 
 				terminal += "Disk quotas for user " + username + "(uid 31416):" + '\n';
-				terminal += '\t' +"Filesystem" + '\t' + "blocks" + '\t' + "quota" + '\t' + "limit" + '\t' + "grace" + '\t' + "files" + '\t' + '\n';
+				terminal += '\t' + "Filesystem" + '\t' + "blocks" + '\t' + "quota" + '\t' + "limit" + '\t' + "grace" + '\t' + "files" + '\t' + '\n';
 				terminal += '\t' + "F" + '\t' + "b" + '\t' + "q" + '\t' + "l" + '\t' + "g" + '\t' + "f" + '\n';
 
 				Debug.Log ("quota");
@@ -999,10 +1006,9 @@ public class TerminalControl : MonoBehaviour {
 
 				string pa = curCommand.param [0];
 				if (r && f) {
-					pa = curCommand.param [0].Substring(5);
-				}
-				else if (curCommand.param [0].Contains ("-r") || curCommand.param [0].Contains ("-f")) {
-					pa = curCommand.param [0].Substring(3);
+					pa = curCommand.param [0].Substring (5);
+				} else if (curCommand.param [0].Contains ("-r") || curCommand.param [0].Contains ("-f")) {
+					pa = curCommand.param [0].Substring (3);
 				}
 
 				if (f) {
@@ -1019,6 +1025,7 @@ public class TerminalControl : MonoBehaviour {
 						int i = 0;
 
 						while (i < toCh.Count) {
+							Debug.Log (i + ", " + toCh.Count);
 							Folder tmpRoot = toCh [i];
 
 							for (int j = 0; j < tmpRoot.contentFiles.Count; j++) {
@@ -1031,7 +1038,7 @@ public class TerminalControl : MonoBehaviour {
 							i++;
 						}
 
-						for (int j = i; j > 0; j--) {
+						for (int j = i - 1; j > 0; j--) {
 							Debug.Log ("remove: " + toCh [j].name);
 							fileSystem.rem (toCh [j].path, false, f);
 						}
@@ -1054,17 +1061,17 @@ public class TerminalControl : MonoBehaviour {
 
 				string pa = curCommand.param [0];
 				if (curCommand.param [0].Contains ("-p")) {
-					pa = curCommand.param [0].Substring(4);
+					pa = curCommand.param [0].Substring (4);
 				}
 
-				if (fileSystem.checkPath (pa,false)) {
+				if (fileSystem.checkPath (pa, false)) {
 					if (p) {
 //						/*
 						// remove empty parent directories
 						Folder ck = fileSystem.getParent (pa);
 						fileSystem.rem (pa, false, true);
 						string[] tmp = pa.Split ('/');
-						int i = tmp.Length-1;
+						int i = tmp.Length - 1;
 
 
 						while (ck != null) {
@@ -1077,7 +1084,7 @@ public class TerminalControl : MonoBehaviour {
 									t += tmp [k] + "/";
 								}
 								t = t.Substring (0, t.Length - 1);
-								Debug.Log(ck.path + ":" + t);
+								Debug.Log (ck.path + ":" + t);
 								fileSystem.rem (t, false, true);
 								ck = tmpck;
 							} else {
@@ -1093,6 +1100,95 @@ public class TerminalControl : MonoBehaviour {
 					// bad path
 					terminal += "rmdir: failed to remove `" + pa + "': No such file or directory\n";
 				}
+			} else if (curCommand.com == "ssh") {
+				// TODO
+				string scene = "";
+				string port = "";
+				string[] param = new string[0];
+
+				bool p = false;
+
+				for (int i = 0; i < curCommand.options.Count; i++) {
+					if(curCommand.options[i].Contains("p")){
+						p = true;
+					}
+				}
+
+				// get the paramater
+				for (int i = 0; i < curCommand.param.Count; i++) {
+					if (p && curCommand.param [i].Substring (0, 2) == "-p") {
+						port = curCommand.param [i].Substring (2);
+					} else if(param[i] == "") {
+						param = curCommand.param [i].Split('@');
+					}
+					Debug.Log (curCommand.param [i]);
+
+				}
+
+				string user = "";
+				string c = "";
+
+				if (param.Length > 1) {
+					// there is a username
+					user = param[0];
+					c = param [1];
+				} else {
+					c = param [0];
+				}
+
+				bool ssh = false;
+
+				if (p) {
+					
+
+				} else {
+					// don't check port
+
+				}
+
+				if(ssh && scene != "")
+					SceneManager.LoadScene (scene);
+
+
+
+
+				Debug.Log ("ssh");
+				Debug.Log ("Not Functioning yet");
+			}else if (curCommand.com == "sshopt") {
+
+				if (sshc.curLevel < sshc.numTutLevels) {
+					// still in tutorial
+					//need to check if done with current level
+
+					terminal += sshc.curLevels[sshc.curLevel].port + '\t' + sshc.curLevels [sshc.curLevel].username + '\t' + sshc.curLevels [sshc.curLevel].comp;
+				} else {
+					// out of tutorial level
+
+					if (SceneManager.GetActiveScene().name == sshc.hubName) {
+						// if in main menu (show all possible options)
+						for (int i = sshc.hubNum; i < sshc.curLevels.Count; i++) {
+							terminal += sshc.curLevels[i].port + '\t' + sshc.curLevels [i].username + '\t' + sshc.curLevels [i].comp;
+							if (i != sshc.curLevels.Count - 1) {
+								terminal += '\n';
+							}
+						}
+					} else {
+						// check if in tutorial
+						if (sshc.curLevel < sshc.hubNum) {
+							Debug.Log ("in tutorial");
+						} else {
+							// if not show only hub
+							Debug.Log (sshc.curLevel + ":" +sshc.hubNum + " : " + sshc.curLevels.Count);
+							terminal += sshc.allLevels [sshc.hubNum].port + '\t' + sshc.allLevels [sshc.hubNum].username + '\t' + sshc.allLevels [sshc.hubNum].comp;
+							// if done with level show the next level
+							if (mc.f) {
+								terminal += '\n' + sshc.curLevels [sshc.curLevel].port + '\t' + sshc.curLevels [sshc.curLevel].username + '\t' + sshc.curLevels [sshc.curLevel].comp;
+							}
+						}
+					}
+				}
+				Debug.Log ("sshopt");
+				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "tail") {
 
 				bool q = false;
@@ -1297,8 +1393,25 @@ public class TerminalControl : MonoBehaviour {
 					fileSystem.setTime (fl, time);
 				} else {
 					// create file
-					fileSystem.add(fl,true);
-					fileSystem.setTime (fl, time);
+
+					string[] tmpsp = fl.Split ('/');
+					if (tmpsp.Length < 2) {
+						string tmppar = "";
+						for (int i = 0; i < tmpsp.Length - 2; i++) {
+							tmppar += tmpsp [i] + "/";
+						}
+						tmppar = tmppar.Substring (0, tmppar.Length - 1);
+						if (fileSystem.checkPath (tmppar, false)) {
+							Debug.Log ("Adding: " + fl);
+							fileSystem.add (fl, true);
+							fileSystem.setTime (fl, time);
+						} else {
+							Debug.Log ("Invalid path");
+						}
+					} else {
+						fileSystem.add (fl, true);
+						fileSystem.setTime (fl, time);
+					}
 					//Debug.Log("File doesn't exist");
 				}
 				//Debug.Log ("time to set: " + time);

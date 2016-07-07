@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Message : MonoBehaviour {
 
@@ -8,7 +9,8 @@ public class Message : MonoBehaviour {
 	public string message = "";
 	public bool isPerson = false;
 	public int wait = 0;
-	public Command cmdWait = null;
+	public List<Command> cmdWait = null;
+	public string fsWait = null;
 	public bool finished = false;
 	// width 395
 	// height 560

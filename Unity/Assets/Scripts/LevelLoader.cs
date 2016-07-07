@@ -93,35 +93,40 @@ public class LevelLoader : MonoBehaviour{
 					//tmpMsg.SetActive (false);
 				} else if (tmp [0] == "wait") {
 					// encode wait for command
-					Command cmd = new Command (tmp [1], 0);
+					List<Command> cmds = new List<Command> ();
 
-					if (tmp [2] != "!~") {
-						string[] a = tmp [2].Split (' ');
-						List<string> t = new List<string> ();
-						foreach (string f in a) {
-							t.Add (f);
-						}
-						List<string> s = new List<string> ();
-						for (int j = 0; j < t.Count; j++) {
-							string tmps = t [j];
-							for (int k = 1; k < tmps.Length; k++) {
-								s.Add ("" + tmps [k]);
+					for (int q = 1; q < tmp.Length; q++) {
+
+						Command cmd = new Command (tmp [q], 0);
+						q++;
+						if (tmp [q] != "!~") {
+							string[] a = tmp [q].Split (' ');
+							List<string> t = new List<string> ();
+							foreach (string f in a) {
+								t.Add (f);
 							}
+							List<string> s = new List<string> ();
+							for (int j = 0; j < t.Count; j++) {
+								string tmps = t [j];
+								for (int k = 1; k < tmps.Length; k++) {
+									s.Add ("" + tmps [k]);
+								}
+							}
+							cmd.options = s;
 						}
-						cmd.options = s;
-					}
-
-					if (tmp [3] [0] != '!' && tmp [3] [1] != '~') {
-						string[] a = tmp [3].Split (' ');
-						//Debug.Log (tmp [3]);
-						//Debug.Log (tmp [3] == "!~");
-						List<string> t = new List<string> ();
-						foreach (string f in a) {
-							t.Add (f);
+						q++;
+						if (tmp [q] [0] != '!' && tmp [q] [1] != '~') {
+							string[] a = tmp [q].Split (' ');
+							//Debug.Log (tmp [3]);
+							//Debug.Log (tmp [3] == "!~");
+							List<string> t = new List<string> ();
+							foreach (string f in a) {
+								t.Add (f);
+							}
+							cmd.param = t;
 						}
-						cmd.param = t;
+						cmds.Add (cmd);
 					}
-
 					i++;
 					//Debug.Log (i);
 
@@ -134,7 +139,25 @@ public class LevelLoader : MonoBehaviour{
 						tmpMsg.GetComponent<Message> ().isPerson = false;
 						tmpMsg.GetComponent<Message> ().message = tmp [2];
 						tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]) - 1;
-						tmpMsg.GetComponent<Message> ().cmdWait = cmd;
+						tmpMsg.GetComponent<Message> ().cmdWait = cmds;
+						level.Add (tmpMsg);
+						//tmpMsg.SetActive (false);
+						i++;
+					}
+					i--;
+				} else if (tmp [0] == "waitfs") {
+					string cmds = tmp [1];
+					i++;
+					while (lines [i] != "" && i < lines.Length && lines [i] [0] == '<') {
+						//Debug.Log (i + ": " + lines[i]);
+						// encode the 
+						tmp = lines [i].Split ('\t');
+						GameObject tmpMsg = (GameObject)Instantiate (msg);
+						//new Message (false, tmp [2]);
+						tmpMsg.GetComponent<Message> ().isPerson = false;
+						tmpMsg.GetComponent<Message> ().message = tmp [2];
+						tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]) - 1;
+						tmpMsg.GetComponent<Message> ().fsWait = cmds;
 						level.Add (tmpMsg);
 						//tmpMsg.SetActive (false);
 						i++;

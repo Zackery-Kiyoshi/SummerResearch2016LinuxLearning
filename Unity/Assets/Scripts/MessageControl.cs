@@ -16,9 +16,11 @@ public class MessageControl : MonoBehaviour {
 	//private float preHeight = 0;
 
 	GameObject msg;
-	private Command waiting = null;
+	private List<Command> waiting = null;
 
 	private int top = 0;
+
+	public bool f = false;
 
 	//List<GameObject> msgs = new List<GameObject>();
 
@@ -101,7 +103,9 @@ public class MessageControl : MonoBehaviour {
 			}
 
 		} else if (curMsg >= l.level.Count) {
-			finished ();
+			if (!f) {
+				finished ();
+			}
 		}
 
 	}
@@ -117,83 +121,176 @@ public class MessageControl : MonoBehaviour {
 	// need function to decrement waiting for commands
 
 	public void processCmd(Command s){
-		GameObject tMsg = l.level [curMsg];
-		Message msg = tMsg.GetComponent<Message> ();
-		//Debug.Log (msg.cmdWait.com +":"+s.com + "> ");
-		//Debug.Log (msg.cmdWait.com == s.com);
-		//if(msg.finished || msg.wait > 0){
+		if (!f) {
+			GameObject tMsg = l.level [curMsg];
+			Message msg = tMsg.GetComponent<Message> ();
+			bool done = false;
+			//Debug.Log (msg.cmdWait.com +":"+s.com + "> ");
+			//Debug.Log (msg.cmdWait.com == s.com);
+			//if(msg.finished || msg.wait > 0){
 			if (msg.wait > 0) {
 				//Debug.Log ("is waiting");
-				if (!s.error) {
-					//Debug.Log ("No error");
-				if (waiting.com.Trim() == s.com.Trim()) {
-						//Debug.Log ("correct command");
-						bool c = true;
-						// need to check paramaters
-						if (waiting.options.Count != 0) {
-							for (int i = 0; i < waiting.options.Count; i++) {
-								bool tmpC = false;
-								for (int j = 0; j < s.options.Count; j++) {
-									if (waiting.options [i].Trim() == s.options [j].Trim())
-										tmpC = true;
+
+				if (msg.cmdWait != null) {
+					// waiting for cmd
+					for (int k = 0; k < waiting.Count || !done; k++) {
+						if (!s.error) {
+							//Debug.Log ("No error");
+							if (waiting [k].com.Trim () == s.com.Trim ()) {
+								//Debug.Log ("correct command");
+								bool c = true;
+								// need to check paramaters
+								if (waiting [k].options.Count != 0) {
+									for (int i = 0; i < waiting [k].options.Count; i++) {
+										bool tmpC = false;
+										for (int j = 0; j < s.options.Count; j++) {
+											if (waiting [k].options [i].Trim () == s.options [j].Trim ())
+												tmpC = true;
+										}
+										c &= tmpC;
+									}
+								} else
+									c = true;
+								//Debug.Log ("options: " + c);
+
+								// need to check options
+								if (waiting [k].param.Count != 0) {
+									for (int i = 0; i < waiting [k].param.Count; i++) {
+										bool tmpC = false;
+										for (int j = 0; j < s.param.Count; j++) {
+											if (waiting [k].param [i].Trim () == s.param [j].Trim ())
+												tmpC = true;
+										}
+										c &= tmpC;
+									}
+								} else
+									c &= true;
+								//Debug.Log ("Params: " + c);
+
+								if (c) {
+									// correct cmd
+									Debug.Log ("THEY DID IT");
+									done = true;
+									//Debug.Log (curMsg + ": " + l.level.Count);
+									int tmpMsgIndex = curMsg - 1;
+									while (l.level [curMsg].GetComponent<Message> ().cmdWait == waiting && curMsg < l.level.Count) {
+										curMsg++;
+										//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
+									}
+									GameObject m = l.level [curMsg];
+									m.transform.SetParent (gameObject.transform);
+									// need to place
+									float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
+
+									m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+									m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
+									m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
+									size -= preHeight;
+									Message tmp = m.GetComponent<Message> ();
+									if (tmp.wait != 0) {
+										waiting = tmp.cmdWait;
+									} else
+										waiting = null;
+									tmp.waitSec (5);
+									tmp.start ();
+
+								} else {
+									msg.wait -= 1;
 								}
-								c &= tmpC;
 							}
-						} else
-							c = true;
-						//Debug.Log ("options: " + c);
-
-						// need to check options
-						if (waiting.param.Count != 0) {
-							for (int i = 0; i < waiting.param.Count; i++) {
-								bool tmpC = false;
-								for (int j = 0; j < s.param.Count; j++) {
-									if (waiting.param [i].Trim() == s.param [j].Trim())
-										tmpC = true;
-								}
-								c &= tmpC;
-							}
-						} else
-							c &= true;
-						//Debug.Log ("Params: " + c);
-
-						if (c) {
-							// correct cmd
-							Debug.Log ("THEY DID IT");
-							//Debug.Log (curMsg + ": " + l.level.Count);
-							int tmpMsgIndex = curMsg - 1;
-							while (l.level [curMsg].GetComponent<Message> ().cmdWait != null && curMsg < l.level.Count) {
-								curMsg++;
-								//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
-							}
-							GameObject m = l.level [curMsg];
-							m.transform.SetParent (gameObject.transform);
-							// need to place
-							float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
-
-							m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
-							m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
-							m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
-							size -= preHeight;
-							Message tmp = m.GetComponent<Message> ();
-							if (tmp.wait != 0) {
-								waiting = tmp.cmdWait;
-							} else
-								waiting = null;
-							tmp.waitSec (5);
-							tmp.start ();
-
 						} else {
 							msg.wait -= 1;
 						}
 					}
 				} else {
-					msg.wait -= 1;
+					// wait fs stuff
+					bool c = true;
+
+					// parsing the 
+					string cur = l.level [curMsg].GetComponent<Message> ().fsWait;
+					string[] spCur = cur.Split ('\t');
+					string[] path;
+					FileSystem fs = tc.fileSystem;
+
+					if (spCur [0] == "curFolder") {
+						// travers the path to get to curfolder
+
+						// check the curfolder
+
+					} else if (spCur [0] == "rm") {
+						for (int i = 1; i < spCur.Length; i++) {
+							path = spCur [i].Split ('/');
+							// traverse path to see if the file/folder dont exist
+
+						}
+
+					} else if (spCur [0] == "add") {
+						for (int i = 1; i < spCur.Length && c; i++) {
+							path = spCur [i].Split ('/');
+							// traverse path to see if the file/folder exist
+							Folder curFold = fs.root;
+							for (int j = 0; j < path.Length - 1 && c; j++) {
+								bool search = false;
+								for (int k = 0; k < curFold.contentFolders.Count && !search; k++) {
+									if (curFold.contentFolders [k].name.Trim () == path [j].Trim ()) {
+										search = true;
+										curFold = curFold.contentFolders [k];
+									}
+								}
+								if (!search) {
+									c = false;
+								}
+							}
+							// check for the actual new file/folder that 
+							if (c) {
+								bool search = false;
+
+
+
+								if (!search) {
+									c = false;
+								}
+							}
+						}
+
+					}
+
+
+					if (c) {
+						// correct cmd
+						Debug.Log ("THEY DID IT");
+						done = true;
+						//Debug.Log (curMsg + ": " + l.level.Count);
+						int tmpMsgIndex = curMsg - 1;
+						while (l.level [curMsg].GetComponent<Message> ().fsWait == cur && curMsg < l.level.Count) {
+							curMsg++;
+							//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
+						}
+						GameObject m = l.level [curMsg];
+						m.transform.SetParent (gameObject.transform);
+						// need to place
+						float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
+
+						m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+						m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
+						m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
+						size -= preHeight;
+						Message tmp = m.GetComponent<Message> ();
+						if (tmp.wait != 0) {
+							waiting = tmp.cmdWait;
+						} else
+							waiting = null;
+						tmp.waitSec (5);
+						tmp.start ();
+
+					} else {
+						msg.wait -= 1;
+					}
 				}
 			} else {
 				//Debug.Log ("waiting == 0");
 				tMsg.SetActive (true);
-			if (curMsg + 1 < l.level.Count && tMsg.GetComponent<Message>().finished) {
+				if (curMsg + 1 < l.level.Count && tMsg.GetComponent<Message> ().finished) {
 					if (l.level [curMsg + 1].GetComponent<Message> ().cmdWait != null || waiting == null) {
 						//Debug.Log ("next msg is waiting as well");
 						curMsg++;
@@ -211,73 +308,76 @@ public class MessageControl : MonoBehaviour {
 						tmp.start ();
 					} else {
 						// check that the command is correct
-						if (waiting.com == s.com) {
-							//Debug.Log ("correct command");
-							bool c = true;
-							// need to check paramaters
-							if (waiting.options.Count != 0) {
-								for (int i = 0; i < waiting.options.Count; i++) {
-									bool tmpC = false;
-									for (int j = 0; j < s.options.Count; j++) {
-										if (waiting.options [i] == s.options [j])
-											tmpC = true;
-									}
-									c &= tmpC;
-								}
-							} else
-								c = true;
-							// need to check options
-							if (waiting.param.Count != 0) {
-								for (int i = 0; i < waiting.param.Count; i++) {
-									bool tmpC = false;
-									for (int j = 0; j < s.param.Count; j++) {
-										if (waiting.param [i] == s.param [j])
-											tmpC = true;
-									}
-									c &= tmpC;
-								}
-							} else
-								c &= true;
-							//Debug.Log ("HERE" + c);
 
-							if (c) {
-								// correct cmd
-								Debug.Log ("THEY DID IT");
-								//Debug.Log (curMsg + ": " + l.level.Count);
-								int tmpMsgIndex = curMsg - 1;
-								while (l.level [curMsg].GetComponent<Message> ().cmdWait != null && curMsg < l.level.Count) {
-									curMsg++;
-									//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
-								}
-								GameObject m = l.level [curMsg];
-								m.transform.SetParent (gameObject.transform);
-								// need to place
-								float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
-
-								m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
-								m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
-								m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
-								size -= preHeight;
-								Message tmp = m.GetComponent<Message> ();
-								if (tmp.wait != 0) {
-									waiting = tmp.cmdWait;
+						for (int k = 0; k < waiting.Count; k++) {
+							if (waiting [k].com == s.com) {
+								//Debug.Log ("correct command");
+								bool c = true;
+								// need to check paramaters
+								if (waiting [k].options.Count != 0) {
+									for (int i = 0; i < waiting [k].options.Count; i++) {
+										bool tmpC = false;
+										for (int j = 0; j < s.options.Count; j++) {
+											if (waiting [k].options [i] == s.options [j])
+												tmpC = true;
+										}
+										c &= tmpC;
+									}
 								} else
-									waiting = null;
-								tmp.waitSec (5);
-								tmp.start ();
+									c = true;
+								// need to check options
+								if (waiting [k].param.Count != 0) {
+									for (int i = 0; i < waiting [k].param.Count; i++) {
+										bool tmpC = false;
+										for (int j = 0; j < s.param.Count; j++) {
+											if (waiting [k].param [i] == s.param [j])
+												tmpC = true;
+										}
+										c &= tmpC;
+									}
+								} else
+									c &= true;
+								//Debug.Log ("HERE" + c);
 
+								if (c) {
+									// correct cmd
+									Debug.Log ("THEY DID IT");
+									//Debug.Log (curMsg + ": " + l.level.Count);
+									int tmpMsgIndex = curMsg - 1;
+									while (l.level [curMsg].GetComponent<Message> ().cmdWait != null && curMsg < l.level.Count) {
+										curMsg++;
+										//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
+									}
+									GameObject m = l.level [curMsg];
+									m.transform.SetParent (gameObject.transform);
+									// need to place
+									float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
+
+									m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+									m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
+									m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
+									size -= preHeight;
+									Message tmp = m.GetComponent<Message> ();
+									if (tmp.wait != 0) {
+										waiting = tmp.cmdWait;
+									} else
+										waiting = null;
+									tmp.waitSec (5);
+									tmp.start ();
+
+								}
 							}
 						}
 					}
 				}
-			//}
+			}
 		}
-
 	}
 
 
 	void finished(){
 		Debug.Log("FINISHED all messages");
+		f = true;
 	}
 
 	void scroll(){

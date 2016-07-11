@@ -1,0 +1,24 @@
+﻿
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome
+<div>
+0	So now that you know how to ssh as a user there is one last detail about ssh you should know
+0	As you may know computers have many different ports that the internet can use to access a computer
+0	Well these ports are what we use to ssh into a computer
+0	So this leads me to the '-p' option for ssh
+0	It works like all of the other options you have learned so far, so after the '-p' you put the port number separated by a space
+0	To make this easier for you I have made a file that will update when you have a new computer that you can ssh to with all of the details you need
+0	This file will always be placed in the root of the filesystems directories
+0	It is a tab separated file which has: port '\t' username '\t' computer
+0	When your done with this message the log file should be updated

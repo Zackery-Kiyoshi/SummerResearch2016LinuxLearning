@@ -63,10 +63,13 @@
      <None Include="Assets\Resources\Text\TutorialLevel1.txt" />
      <None Include="Assets\Resources\Text\TutorialPt1.txt" />
      <None Include="Assets\Resources\Text\Commands.txt" />
+     <None Include="Assets\Resources\Text\TutorialPt4.txt" />
      <None Include="Assets\Resources\Text\TutorialPt2.txt" />
+     <None Include="Assets\Resources\Text\TutorialPt3.txt" />
      <None Include="Assets\Resources\Text\ssh.txt" />
      <None Include="Assets\Resources\Text\TestLevel.txt" />
      <None Include="Assets\Resources\Text\TestAITextLevel.txt" />
+     <None Include="Assets\Resources\Text\hub.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

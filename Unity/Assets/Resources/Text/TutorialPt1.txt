@@ -11,5 +11,11 @@ drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
 <div>
-0	test1
-0	Done!!!
+0	Welcome
+<div>
+1	Hello???
+0	Now lets learn how we can go to another computer, and no it does not require getting up and moving
+0	This command is called 'ssh' it stands for Secure Shell
+0	This command does take an argument which is the computer that you want to connect to
+0	I have created a new system for you to go to called 'fun' so try using ssh to access fun
+0	The command should look like 'ssh fun'

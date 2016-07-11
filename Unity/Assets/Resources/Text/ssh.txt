@@ -1,5 +1,8 @@
 ﻿username	port	computer	level name
-!~	!~	fun	PreLevel1
-newUser	!~	fun	PreLevel2
-newUser	1234	fun	PreLevel3
+!~	!~	!~	PreLevel1
+!~	!~	fun	PreLevel2
+newUser	!~	fun	PreLevel3
+newUser	1234	fun	PreLevel4
 !~	!~	hub	MainMenu
+!~	!~	FirstTest	Level1
+nextLevel	!~	FirstTest	Level2

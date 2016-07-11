@@ -1115,14 +1115,16 @@ public class TerminalControl : MonoBehaviour {
 				}
 
 				// get the paramater
+				Debug.Log("Test");
 				for (int i = 0; i < curCommand.param.Count; i++) {
-					if (p && curCommand.param [i].Substring (0, 2) == "-p") {
-						port = curCommand.param [i].Substring (2);
-					} else if(param[i] == "") {
+					Debug.Log(i + ": " + curCommand.param [i] );
+					if (p && curCommand.param [i].Substring (0, 3) == "--p") {
+						port = curCommand.param [i].Substring (4);
+						Debug.Log (port);
+					} else if(curCommand.param[i] != "") {
 						param = curCommand.param [i].Split('@');
 					}
-					Debug.Log (curCommand.param [i]);
-
+					//Debug.Log (curCommand.param [i]);
 				}
 
 				string user = "";
@@ -1130,25 +1132,45 @@ public class TerminalControl : MonoBehaviour {
 
 				if (param.Length > 1) {
 					// there is a username
+					for (int i = 0; i < param.Length; i++) {
+						Debug.Log (i + ": " + param [i]);
+					}
 					user = param[0];
 					c = param [1];
 				} else {
 					c = param [0];
 				}
 
+				//Debug.Log ("u: '" + user + "'");
+				//Debug.Log ("c: '" + c + "'");
+
 				bool ssh = false;
-
-				if (p) {
-					
-
-				} else {
-					// don't check port
+				for (int i = 0; i < sshc.curLevels.Count; i++) {
+					if (p) {
+						if (c == sshc.curLevels [i].comp && user == sshc.curLevels[i].username && port == sshc.curLevels[i].port) {
+							//Debug.Log ("FOUND: " + c);
+							scene = sshc.curLevels [i].levelN;
+							ssh = true;
+						}
+						Debug.Log ( "-p " + sshc.curLevels[i].port + " " + sshc.curLevels [i].username + "@" + sshc.curLevels [i].comp );
+						Debug.Log ( "-p " + port + " " + user + "@" + c );
+					} else {
+						// don't check port
+						if (c == sshc.curLevels [i].comp && user == sshc.curLevels[i].username) {
+							//Debug.Log ("FOUND: " + c);
+							scene = sshc.curLevels [i].levelN;
+							ssh = true;
+						}
+					}
 
 				}
 
-				if(ssh && scene != "")
-					SceneManager.LoadScene (scene);
 
+				if (ssh && scene != "") {
+					SceneManager.LoadScene (scene);
+				} else {
+					//Debug.Log ("NO Change");
+				}
 
 
 
@@ -1176,13 +1198,16 @@ public class TerminalControl : MonoBehaviour {
 						// check if in tutorial
 						if (sshc.curLevel < sshc.hubNum) {
 							Debug.Log ("in tutorial");
+							if (mc.f) {
+								terminal += sshc.allLevels [sshc.curLevel-1].port + '\t' + sshc.allLevels [sshc.curLevel-1].username + '\t' + sshc.allLevels [sshc.curLevel-1].comp;
+							}
 						} else {
 							// if not show only hub
 							Debug.Log (sshc.curLevel + ":" +sshc.hubNum + " : " + sshc.curLevels.Count);
 							terminal += sshc.allLevels [sshc.hubNum].port + '\t' + sshc.allLevels [sshc.hubNum].username + '\t' + sshc.allLevels [sshc.hubNum].comp;
 							// if done with level show the next level
 							if (mc.f) {
-								terminal += '\n' + sshc.curLevels [sshc.curLevel].port + '\t' + sshc.curLevels [sshc.curLevel].username + '\t' + sshc.curLevels [sshc.curLevel].comp;
+								terminal += '\n' + sshc.allLevels [sshc.curLevel].port + '\t' + sshc.allLevels [sshc.curLevel].username + '\t' + sshc.allLevels [sshc.curLevel].comp;
 							}
 						}
 					}

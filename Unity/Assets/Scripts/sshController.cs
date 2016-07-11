@@ -8,7 +8,7 @@ public class sshController : MonoBehaviour {
 
 	public class level{
 		public string username = "";
-		public string port = "-1";
+		public string port = "";
 		public string comp = "";
 		public string levelN = "";
 
@@ -26,7 +26,7 @@ public class sshController : MonoBehaviour {
 	public string hubName = "hub";
 	public int numTutLevels = 0;
 
-	public int hubNum = 0;
+	public int hubNum = -1;
 
 	public int curLevel = 0;
 	public string save = "";
@@ -53,6 +53,8 @@ public class sshController : MonoBehaviour {
 				tmpport = tmp [1].Trim();
 			allLevels.Add( new level(tmpuser, tmpport, tmp[2].Trim(), tmp[3].Trim()) );
 			if(testing > 0)Debug.Log (tmpuser +","+ tmpport +","+ tmp[2] +","+ tmp[3]);
+			if (tmp [2].Trim () == hubName)
+				hubNum = i;
 		}
 
 	}
@@ -63,7 +65,8 @@ public class sshController : MonoBehaviour {
 	}
 
 	public void newGame(){
-		SceneManager.LoadScene (allLevels [curLevel].levelN);
+		curLevel++;
+		SceneManager.LoadScene (allLevels [curLevel-1].levelN);
 	}
 
 
@@ -79,11 +82,26 @@ public class sshController : MonoBehaviour {
 	}
 
 	public void nextLevel(){
-		curLevel++;
+
+
+		if (curLevel < hubNum) {
+			curLevels = new List<level> ();
+			curLevels.Add (allLevels [curLevel]);
+			curLevel++;
+		} else {
+			curLevels.Add (allLevels[curLevel]);
+			curLevel++;
+		}
+
+		if (curLevel > allLevels.Count) {
+			curLevel--;
+			if (curLevel < hubNum)
+				curLevels.Clear ();
+		}
+
+
 
 		// add the new scene to curlevels
-
-
 	}
 
 

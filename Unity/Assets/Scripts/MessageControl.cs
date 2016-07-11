@@ -37,7 +37,7 @@ public class MessageControl : MonoBehaviour {
 	public void startMsg(){
 		GameObject tmpMsg = l.level[curMsg] ;
 		tmpMsg.transform.SetParent(gameObject.transform);
-
+		tc = GameObject.Find ("TerminalPanel").GetComponent<TerminalControl>();
 		// need to place
 		tmpMsg.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 		tmpMsg.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, -9);
@@ -103,7 +103,8 @@ public class MessageControl : MonoBehaviour {
 			}
 
 		} else if (curMsg >= l.level.Count) {
-			if (!f) {
+			if ( !f ) {
+				f = true;
 				finished ();
 			}
 		}
@@ -377,6 +378,9 @@ public class MessageControl : MonoBehaviour {
 
 	void finished(){
 		Debug.Log("FINISHED all messages");
+
+		tc.sshc.nextLevel ();
+
 		f = true;
 	}
 

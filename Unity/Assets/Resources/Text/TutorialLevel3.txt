@@ -1,0 +1,38 @@
+﻿This is the third tutorial which will introduce you to some of the basic commands: tail, head, cat
+Good luck and have fun.
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the third tutorial
+0	The first command we will go through is cat which allows you to concatinate the contents of files in the terminal
+0	Try this now
+wait	cat	!~	!~
+<	2	Try cat 'file'
+0	The next command is head which will let you look at the first lines of a file
+0	Try this now
+wait	head	!~	!~
+<	2	Try head 'file'
+0	There is an option for head -n which lets you change the number of lines that you can see
+wait	head	n	!~
+<	2	Try head -n 'num lines' 'file'
+0	The next command is tail which is the opposite of head, or lets you look at the last ten lines of a file
+0	Try this now
+wait	tail	!~	!~
+<	2	Try tail 'file'
+0	There is an option for tail -n which lets you change the number of lines that you can see
+0	Try it now
+wait	tail	n	!~
+<	2	Try tail  -n 'num lines' 'file'
+0	The last command is quota which will tell you how much space that specific user that your logged in as has on that machine
+wait	quota	!~	!~
+<	2	Try quota
+<div>

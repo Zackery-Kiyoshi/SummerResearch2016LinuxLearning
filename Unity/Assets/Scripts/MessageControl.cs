@@ -126,15 +126,21 @@ public class MessageControl : MonoBehaviour {
 			GameObject tMsg = l.level [curMsg];
 			Message msg = tMsg.GetComponent<Message> ();
 			bool done = false;
+			if (waiting == null)
+				waiting = msg.cmdWait;
 			//Debug.Log (msg.cmdWait.com +":"+s.com + "> ");
 			//Debug.Log (msg.cmdWait.com == s.com);
 			//if(msg.finished || msg.wait > 0){
-			if (msg.wait > 0) {
+			if (msg.wait > 0 || msg.cmdWait != null) {
 				//Debug.Log ("is waiting");
+				Debug.Log ("pre: " + msg.wait);
+				Debug.Log (waiting + " : " + waiting.Count);
 
 				if (msg.cmdWait != null) {
 					// waiting for cmd
-					for (int k = 0; k < waiting.Count || !done; k++) {
+					bool cor = false;
+
+					for (int k = 0; k < waiting.Count && !done; k++) {
 						if (!s.error) {
 							//Debug.Log ("No error");
 							if (waiting [k].com.Trim () == s.com.Trim ()) {
@@ -170,7 +176,7 @@ public class MessageControl : MonoBehaviour {
 
 								if (c) {
 									// correct cmd
-									Debug.Log ("THEY DID IT");
+									Debug.Log ("THEY DID IT (waiting !=0)");
 									done = true;
 									//Debug.Log (curMsg + ": " + l.level.Count);
 									int tmpMsgIndex = curMsg - 1;
@@ -190,18 +196,21 @@ public class MessageControl : MonoBehaviour {
 									Message tmp = m.GetComponent<Message> ();
 									if (tmp.wait != 0) {
 										waiting = tmp.cmdWait;
-									} else
-										waiting = null;
+									}
 									tmp.waitSec (5);
 									tmp.start ();
-
+									cor = true;
 								} else {
-									msg.wait -= 1;
+									//msg.wait -= 1;
 								}
 							}
 						} else {
-							msg.wait -= 1;
+							//msg.wait -= 1;
 						}
+					}
+					if (!cor) {
+						msg.wait -= 1;
+						Debug.Log ("incorrect command");
 					}
 				} else {
 					// wait fs stuff
@@ -259,7 +268,7 @@ public class MessageControl : MonoBehaviour {
 
 					if (c) {
 						// correct cmd
-						Debug.Log ("THEY DID IT");
+						Debug.Log ("THEY DID IT " + waiting[0].com);
 						done = true;
 						//Debug.Log (curMsg + ": " + l.level.Count);
 						int tmpMsgIndex = curMsg - 1;
@@ -279,21 +288,88 @@ public class MessageControl : MonoBehaviour {
 						Message tmp = m.GetComponent<Message> ();
 						if (tmp.wait != 0) {
 							waiting = tmp.cmdWait;
-						} else
-							waiting = null;
+						}
 						tmp.waitSec (5);
 						tmp.start ();
 
 					} else {
 						msg.wait -= 1;
+
 					}
 				}
 			} else {
-				//Debug.Log ("waiting == 0");
+				
+				Debug.Log ("waiting == 0");
 				tMsg.SetActive (true);
+				if (waiting != null) {
+					for (int k = 0; k < waiting.Count && !done; k++) {
+						if (waiting [k].com == s.com) {
+							//Debug.Log ("correct command");
+							bool c = true;
+							// need to check paramaters
+							if (waiting [k].options.Count != 0) {
+								for (int i = 0; i < waiting [k].options.Count; i++) {
+									bool tmpC = false;
+									for (int j = 0; j < s.options.Count; j++) {
+										if (waiting [k].options [i] == s.options [j])
+											tmpC = true;
+									}
+									c &= tmpC;
+								}
+							} else
+								c = true;
+							// need to check options
+							if (waiting [k].param.Count != 0) {
+								for (int i = 0; i < waiting [k].param.Count; i++) {
+									bool tmpC = false;
+									for (int j = 0; j < s.param.Count; j++) {
+										if (waiting [k].param [i] == s.param [j])
+											tmpC = true;
+									}
+									c &= tmpC;
+								}
+							} else
+								c &= true;
+							//Debug.Log ("HERE" + c);
+
+							if (c) {
+								// correct cmd
+								Debug.Log ("THEY DID IT");
+								//Debug.Log (curMsg + ": " + l.level.Count);
+								int tmpMsgIndex = curMsg - 1;
+								while (l.level [curMsg].GetComponent<Message> ().cmdWait != null && curMsg < l.level.Count) {
+									curMsg++;
+									//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
+								}
+								GameObject m = l.level [curMsg];
+								m.transform.SetParent (gameObject.transform);
+								// need to place
+								float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
+
+								m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+								m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
+								m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
+								size -= preHeight;
+								Message tmp = m.GetComponent<Message> ();
+								if (tmp.wait != 0) {
+									waiting = tmp.cmdWait;
+								} else
+									waiting = null;
+								tmp.waitSec (5);
+								tmp.start ();
+								done = true;
+							}
+						} else {
+
+
+						}
+					}
+				}
+			}
+			if(msg.wait == 0){
 				if (curMsg + 1 < l.level.Count && tMsg.GetComponent<Message> ().finished) {
-					if (l.level [curMsg + 1].GetComponent<Message> ().cmdWait != null || waiting == null) {
-						//Debug.Log ("next msg is waiting as well");
+					if (l.level [curMsg + 1].GetComponent<Message> ().cmdWait == waiting || waiting == null) {
+						Debug.Log ("next msg is waiting as well for the same commands or not waiting");
 						curMsg++;
 						GameObject m = l.level [curMsg];
 						m.transform.SetParent (gameObject.transform);
@@ -305,73 +381,18 @@ public class MessageControl : MonoBehaviour {
 						m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [curMsg - 1].GetComponent<RectTransform> ().offsetMin.y - preHeight);
 						size -= preHeight;
 						Message tmp = m.GetComponent<Message> ();
+						if (tmp.wait != 0) {
+							waiting = tmp.cmdWait;
+						} else
+							waiting = null;
 						tmp.waitSec (5);
 						tmp.start ();
-					} else {
 						// check that the command is correct
 
-						for (int k = 0; k < waiting.Count; k++) {
-							if (waiting [k].com == s.com) {
-								//Debug.Log ("correct command");
-								bool c = true;
-								// need to check paramaters
-								if (waiting [k].options.Count != 0) {
-									for (int i = 0; i < waiting [k].options.Count; i++) {
-										bool tmpC = false;
-										for (int j = 0; j < s.options.Count; j++) {
-											if (waiting [k].options [i] == s.options [j])
-												tmpC = true;
-										}
-										c &= tmpC;
-									}
-								} else
-									c = true;
-								// need to check options
-								if (waiting [k].param.Count != 0) {
-									for (int i = 0; i < waiting [k].param.Count; i++) {
-										bool tmpC = false;
-										for (int j = 0; j < s.param.Count; j++) {
-											if (waiting [k].param [i] == s.param [j])
-												tmpC = true;
-										}
-										c &= tmpC;
-									}
-								} else
-									c &= true;
-								//Debug.Log ("HERE" + c);
-
-								if (c) {
-									// correct cmd
-									Debug.Log ("THEY DID IT");
-									//Debug.Log (curMsg + ": " + l.level.Count);
-									int tmpMsgIndex = curMsg - 1;
-									while (l.level [curMsg].GetComponent<Message> ().cmdWait != null && curMsg < l.level.Count) {
-										curMsg++;
-										//Debug.Log (curMsg + ": " + l.level [curMsg].GetComponent<Message> ().message);
-									}
-									GameObject m = l.level [curMsg];
-									m.transform.SetParent (gameObject.transform);
-									// need to place
-									float preHeight = l.level [tmpMsgIndex].GetComponent<RectTransform> ().rect.height + 20;
-
-									m.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
-									m.GetComponent<RectTransform> ().offsetMax = new Vector2 (-9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMax.y - preHeight);
-									m.GetComponent<RectTransform> ().offsetMin = new Vector2 (9, l.level [tmpMsgIndex].GetComponent<RectTransform> ().offsetMin.y - preHeight);
-									size -= preHeight;
-									Message tmp = m.GetComponent<Message> ();
-									if (tmp.wait != 0) {
-										waiting = tmp.cmdWait;
-									} else
-										waiting = null;
-									tmp.waitSec (5);
-									tmp.start ();
-
-								}
-							}
-						}
 					}
 				}
 			}
+			Debug.Log ("post: " + msg.wait);
 		}
 	}
 

@@ -1,0 +1,65 @@
+﻿df
+h
+0
+<man>
+NAME
+       df - report filesystem disk space usage
+SYNOPSIS
+       df [OPTION]... [FILE]...
+DESCRIPTION
+       This  manual  page  documents  the  GNU version of df.  df displays the
+       amount of disk space available on the filesystem containing  each  file
+       name  argument.   If  no file name is given, the space available on all
+       currently mounted filesystems is shown.  Disk  space  is  shown  in  1K
+       blocks  by  default, unless the environment variable POSIXLY_CORRECT is
+       set, in which case 512-byte blocks are used.
+
+       If an argument is the absolute file name of a disk device node contain-
+       ing a mounted filesystem, df shows the space available on that filesys-
+       tem rather than on the filesystem containing the device node (which  is
+       always  the root filesystem).  This version of df cannot show the space
+       available on unmounted filesystems, because on most  kinds  of  systems
+       doing  so  requires  very  nonportable intimate knowledge of filesystem
+       structures.
+OPTIONS
+       Show information about the filesystem on which each  FILE  resides,  or
+       all filesystems by default.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -h, --human-readable
+              print sizes in human readable format (e.g., 1K 234M 2G)
+
+       SIZE may be (or may be an integer optionally followed by) one  of  fol-
+       lowing: kB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T,
+       P, E, Z, Y.
+<man>
+du
+h S s
+0
+<man>
+NAME
+       du - estimate file space usage
+SYNOPSIS
+       du [OPTION]... [FILE]...
+DESCRIPTION
+       Summarize disk usage of each FILE, recursively for directories.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -h, --human-readable
+              print sizes in human readable format (e.g., 1K 234M 2G)
+
+       -S, --separate-dirs
+              do not include size of subdirectories
+
+       -s, --summarize
+              display only a total for each argument
+
+       SIZE may be (or may be an integer optionally followed by) one  of  fol-
+       lowing: kB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T,
+       P, E, Z, Y.
+
+<man>

@@ -1,0 +1,9 @@
+﻿required	username	port	computer	level name
+1	!~	!~	!~	PrezTutLevel1
+1	!~	!~	hub	PrezHub
+1	!~	!~	OptionalFirst	PrezLevel1
+1	!~	!~	First	PrezLevel1
+1	!~	!~	First	PrezLevel1
+1	!~	!~	First	PrezLevel1
+1	!~	!~	First	PrezLevel1
+1	!~	!~	First	PrezLevel1

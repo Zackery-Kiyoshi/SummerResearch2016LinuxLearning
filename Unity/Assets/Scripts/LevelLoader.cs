@@ -129,7 +129,7 @@ public class LevelLoader : MonoBehaviour{
 					}
 					i++;
 					//Debug.Log (i);
-
+					// got command
 					while (lines [i] != "" && i < lines.Length && lines [i] [0] == '<') {
 						//Debug.Log (i + ": " + lines[i]);
 						// encode the 
@@ -138,7 +138,11 @@ public class LevelLoader : MonoBehaviour{
 						//new Message (false, tmp [2]);
 						tmpMsg.GetComponent<Message> ().isPerson = false;
 						tmpMsg.GetComponent<Message> ().message = tmp [2];
-						tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]) - 1;
+						if (Int32.Parse (tmp [1]) == 1) {
+							tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]);
+						} else {
+							tmpMsg.GetComponent<Message> ().wait = Int32.Parse (tmp [1]) - 1;
+						}
 						tmpMsg.GetComponent<Message> ().cmdWait = cmds;
 						level.Add (tmpMsg);
 						//tmpMsg.SetActive (false);

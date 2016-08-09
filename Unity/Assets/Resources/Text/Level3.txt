@@ -1,0 +1,45 @@
+﻿Level 3
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	OtherStuff	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	NextTestLoc	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	TestFile	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
+<div>
+0	This test will be short and is more of a tutorial to give you a couple of tools that might be helpfull
+1	Why do I need to do this then? shouldn't I just do the tutorial????
+0	Well you don't need to know all of the details that the tutorial has but these three commands can be helpfull
+1	Alright lets get this over with
+0	The first command I will go over just to make sure you remember
+0	That command is cat, which displays the content of a file
+0	Go ahead and cat TestFile
+wait	cat	!~	TestFile
+<	2	TestFile is in the root
+0	Although it is nice to see the contents of a file sometimes it is too much to see on a single screen like TestFile
+0	So the next two commands allow you to see just part of the contents of a file
+0	The first is head like you might guess this command lets you thee the first ten lines of a file although that can be changed through options
+0	Use head on TestFile to see for yourself
+wait	head	!~	TestFile
+<	2	TestFile is in the root
+0	The last command does the opposite of head
+0	The command is tail which shows the last 10 lines of a file, unless using options
+0	Try using tail on TestFile
+wait	tail	!~	TestFile
+<	2	TestFile is in the root
+1	So what is the next computer I need to go to
+0	You must find it for yourself, good luck
+wait	head	!~	NextTestLoc
+<	2	Try checking in OtherStuff
+<	2	Remember that some commands have options that might help
+0	Before your done I need to tell you about a special command
+0	That command is specific for certian systems, that command is quota
+0	This command displays specific details about the users quota, for more information about what a quota is you should ask one of your professor or google
+0	Go ahead and 
+wait	quota	!~	!~
+<	2	check in the Admin folder
+0	For more information about these commands checkout the man pages or the tutorial before this level
+<div>
+tail, head, cat, quota

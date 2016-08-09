@@ -11,7 +11,7 @@ drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
 <div>
-0	Welcome
+0	W
 <div>
 0	Now you know how to use ssh with the most common features and that is all you need to start the real work of becoming a hacker
 0	Just check the log to get the details on how to get to the hub

@@ -1,0 +1,22 @@
+﻿This is the fourth tutorial which will introduce you to some of the basic commands: grep, find
+Good luck and have fun.
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the fourth tutorial
+0	In this tutorial you will learn only two commands but before we get to that there is a concept that you need to understand which is called regular expressions
+
+0	The first command is called find which will find the file or directory with the same name or that fits the regular expression that you pass
+
+0	The second command is called grep which will find the lines with the same string or that fits the regular expression that you pass
+<div>
+

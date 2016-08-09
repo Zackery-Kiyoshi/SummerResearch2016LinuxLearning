@@ -1,0 +1,105 @@
+﻿This is the second tutorial which will introduce you to some of the basic commands: touch, rmdir, echo, chmod, mkdir, rm, mv
+Good luck and have fun.
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the second tutorial
+0	The first command we will learn in this tutorial is echo, which just allows you to print stuff to the terminal
+0	The way that echo works is you just have what you want printed to the screen as a paramater to echo
+0	Try it now
+wait	echo	!~	!~
+<	2	Try echo 'what you want to print' (you don't need the single quotes)
+0	Before we continue to the next command there is one option for echo
+0	The -n option just removes the new line at the end of what would be at the end of the message
+0	Try the -n option
+wait	echo	n	!~
+<	2	Try echo -n 'what you want to print' (you don't need the single quotes)
+0	The next command we will go through is touch
+0	Touch allows you to change the timestamp of a file or folder with the current date/time
+0	Try it now
+wait	touch	!~	!~
+<	2	Try touch 'file/folder'
+0	There are two options to for touch, the first is -t
+0	This option allows you to change the time to what ever you want, the format is the numeric values for month day year
+0	An example of this is December 10th at 1730 is 12101730
+0	Try it for yourself
+wait	touch	t	!~
+<	2	Try touch -t 'date/time' 'file/folder'
+0	The other option is -r which alloys you to use another file/folders time instead of having to type it in yourself
+0	The syntax is simple jusr -r 'file/folder'
+0	Try it now
+wait	touch	r	!~
+<	2	Try touch 'file/folder'
+0	The next command is chmod which will allow you to change the permissions of a file or directory
+0	There are two formats for this, one which is just a number you pass in and a version with letters and +, -, and =
+0	The first is a 3 digit number representing user, group, and world permissions in that order
+0	This is an example of how you would calculate what permission you want to add (read write executable) = 4+2+1 = 7
+0	Try it now
+wait	mkdir	!~	!~
+<	2	Try mkdir 'name of folder'
+0	The other way to do this is to either add permissions with the +, take away permissions with the - or set them with the =
+0	The syntax for this is to start with: u for user, g for group, o for others, or a for all 
+0	Then putting the operator to change their permissions for: r for read, w for write, and x for executable
+0	You can change multiple parts by sepatating them by ','
+0	An example of this is chmod a+r, g-w 'file/folder'
+0	Try it now
+wait	mkdir	!~	!~
+<	2	Try mkdir 'name of folder'
+0	the -R option will recursivly change the permissions for every sub item of what you have changed
+0	Try it now
+wait	chmod	R	!~
+<	2	Try chmod -R 'p 'name of folder'
+0	The next command is mkdir, which allows you to create a directory
+0	The syntax is just mkdir 'folder name'
+0	Try it yourself
+wait	mkdir	!~	!~
+<	2	Try mkdir 'name of folder'
+0	The first option -m allows you to set the permissions like with chmod
+0	Try it now
+wait	mkdir	m	!~
+<	2	Try mkdir 'name of folder'
+0	The last option -p will create the parent directories as well if hey don't exsist
+wait	mkdir	p	!~
+<	2	Try mkdir 'name of folder'
+0	The next command is rmdir which allows you to remove a directory
+0	The syntax is similar to mkdir, just rmdir 'folder'
+0	Try it for yourself
+wait	rmdir	!~	!~
+<	2	Try mkdir 'name of folder'
+0	The option -p for rmdir is similar to mkdir but instead of creating the parent directories it will delete the parent directories if they are empty
+0	Try it now
+wait	rmdir	p	!~
+<	2	Try mkdir 'name of folder'
+0	The next command is mv which allows you to move a file or directory
+0	The syntax is mv then the file/folder you want to move then the destination
+0	Try it now
+wait	mv	!~	!~
+<	2	Try mv 'file/folder' 'destination'
+0	The only option for mv is -u which will only move if the source file is newer then the version in the destination
+0	Try it for yourself
+wait	mv	u	!~
+<	2	Try mv -u 'file/folder' 'destination
+0	The last command is rm which allows you to remove files and with the correct options directories
+0	The syntax is simple just rm 'file/folder'
+0	Try this now
+wait	rm	!~	!~
+<	2	Try rm 'file/folder'
+0	The first option for rm is -r which will recursivly delete files/empty folders
+0	Try this yourself
+wait	rm	r	!~
+<	2	Try rm 'file/folder'
+0	the last option for rm is -f which will force remove a file or folder
+0	Try this now
+wait	rm	f	!~
+<	2	Try rm 'file/folder'
+0	That is all for this tutorial
+<div>

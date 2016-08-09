@@ -1,0 +1,16 @@
+﻿Level 2
+<div>
+
+<div>
+0	2
+
+
+
+0	Now that your done with the system I want you to delete all of the user data
+wait	rm	-r -f	!~
+<	12	Use the man pages to help you
+0	Just to make sure also delete all of the program data on the computer
+wait	rm	-r -f	!~
+<	12	Come on you just did this to another folder
+<div>
+touch, rmdir, echo, chmod, mkdir, rm, mv

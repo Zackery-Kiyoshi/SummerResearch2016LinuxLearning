@@ -60,16 +60,30 @@
      <Compile Include="Assets\Scripts\TestingInputField.cs" />
      <Compile Include="Assets\Scripts\VimControl.cs" />
      <Compile Include="Assets\Scripts\sshController.cs" />
+     <None Include="Assets\Resources\Text\Level4.txt" />
+     <None Include="Assets\Resources\Text\Level1.txt" />
+     <None Include="Assets\Resources\Text\Level3.txt" />
+     <None Include="Assets\Resources\Text\Level2.txt" />
+     <None Include="Assets\Resources\Text\Presentation\PrezPre1.txt" />
      <None Include="Assets\Resources\Text\TutorialLevel1.txt" />
      <None Include="Assets\Resources\Text\TutorialPt1.txt" />
      <None Include="Assets\Resources\Text\Commands.txt" />
+     <None Include="Assets\Resources\Text\Presentation\PrezLevel1.txt" />
+     <None Include="Assets\Resources\Text\UnusedCommands.txt" />
      <None Include="Assets\Resources\Text\TutorialPt4.txt" />
      <None Include="Assets\Resources\Text\TutorialPt2.txt" />
+     <None Include="Assets\Resources\Text\TutorialLevel4.txt" />
+     <None Include="Assets\Resources\Text\TutorialLevel3.txt" />
+     <None Include="Assets\Resources\Text\Presentation\prezssh.txt" />
      <None Include="Assets\Resources\Text\TutorialPt3.txt" />
+     <None Include="Assets\Resources\Text\Presentation\PrezHub.txt" />
+     <None Include="Assets\Resources\Text\TutorialLevel5.txt" />
      <None Include="Assets\Resources\Text\ssh.txt" />
+     <None Include="Assets\Resources\Text\Level5.txt" />
      <None Include="Assets\Resources\Text\TestLevel.txt" />
      <None Include="Assets\Resources\Text\TestAITextLevel.txt" />
      <None Include="Assets\Resources\Text\hub.txt" />
+     <None Include="Assets\Resources\Text\TutorialLevel2.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

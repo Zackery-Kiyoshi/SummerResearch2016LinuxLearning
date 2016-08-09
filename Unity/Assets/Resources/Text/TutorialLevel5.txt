@@ -1,0 +1,18 @@
+﻿This is the sixth tutorial which will introduce you to some of the basic commands: zip/unzip, gzip/gunzip
+Good luck and have fun.
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the sixth tutorial
+<div>
+
+

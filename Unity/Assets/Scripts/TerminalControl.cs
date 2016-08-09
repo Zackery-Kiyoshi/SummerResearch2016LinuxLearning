@@ -179,7 +179,7 @@ public class TerminalControl : MonoBehaviour {
 							terminal += " ";
 							tCount = 0;
 						} else if (c == "\b" [0]) {
-							if (curLine.Length != 0){
+							if (curLine.Length >= 0){
 								curLine = curLine.Substring (0, curLine.Length - 1);
 								tmpCurCmd.line = curLine;
 								terminal = terminal.Substring (0, terminal.Length - 1);
@@ -289,7 +289,7 @@ public class TerminalControl : MonoBehaviour {
 					}
 				}
 				if (tmp < 0) {
-					curCommand = cmds [cmds.Count-1].clone();
+					//curCommand = cmds [0].clone();
 					curCommand.error = true;
 				} else {
 					curCommand = cmds [tmp].clone();
@@ -348,27 +348,47 @@ public class TerminalControl : MonoBehaviour {
 			} else if (curCommand.com == "cat") {
 				// TODO
 				string ret = "";
+				bool log = false;
+				bool save = false;
 
 				int invalid = -1;
 				for (int i = 0; i < curCommand.param.Count && invalid == -1; i++) {
-					if (fileSystem.checkPath (curCommand.param [i], true)) {
+
+					if (curCommand.param [i] == "log") {
+						//Debug.Log ("Found LOG");
+						log = true;
+					} else if (curCommand.param [i] == "save") {
+						//Debug.Log ("Found LOG");
+						save = true;
+					}
+					else if (fileSystem.checkPath (curCommand.param [i], true)) {
 						ret += fileSystem.getContent (curCommand.param [i]) + "\n";
 					} else {
 						invalid = i;
 					}
 				}
 
+				string[] tret = ret.Split ('`', '\n');
+
 				if (invalid != -1) {
 					terminal += "";
-				} else {
-					string[] tret = ret.Split ('`', '\n');
+				} else if (log || save) {
+					if (log) {
+						//Debug.Log ("LOG");
+						terminal += sshc.printAvailableLevels(mc.f);
+					}
+					if (save) {
+						//Debug.Log ("SAVE");
+						terminal += sshc.save + '\n';
+					}
+				}else {
 					for (int i = 0; i < tret.Length; i++) {
 						terminal += tret [i] + '\n';
 					}
 				}
 
-				Debug.Log ("cat");
-				Debug.Log ("Not Functioning yet");
+				//Debug.Log ("cat");
+				//Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "cd") {
 				if (testing >= 0)
 					Debug.Log ("ITS PROCESSING CD");
@@ -475,7 +495,9 @@ public class TerminalControl : MonoBehaviour {
 				//terminal += "[" + username + "@" + comp + " " + path + "]$ ";
 				//return;
 				//"[" + username + "@" + comp + " " + path + "]$ ";
-			} else if (curCommand.com == "df") {
+			} 
+			/*
+			else if (curCommand.com == "df") {
 				// TODO
 
 				bool h = false;
@@ -484,11 +506,13 @@ public class TerminalControl : MonoBehaviour {
 						h = true;
 					}
 				}
+
+
+
 				Debug.Log ("df");
 				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "du") {
 				// TODO
-
 
 				bool h = false;
 				bool S = false;
@@ -506,10 +530,11 @@ public class TerminalControl : MonoBehaviour {
 
 				Debug.Log ("du");
 				Debug.Log ("Not Functioning yet");
-			} else if (curCommand.com == "echo") {
+			} 
+//			*/
+			else if (curCommand.com == "echo") {
 
 				bool n = false;
-				bool e = false;
 
 				for (int i = 0; i < curCommand.options.Count; i++) {
 					if (curCommand.options [i].Contains ("n")) {
@@ -587,14 +612,11 @@ public class TerminalControl : MonoBehaviour {
 				Debug.Log ("gunzip");
 				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "head") {
-				bool q = false;
 				bool v = false;
 				bool n = false;
 
 				for (int i = 0; i < curCommand.options.Count; i++) {
-					if (curCommand.options [i].Contains ("q")) {
-						q = true;
-					} else if (curCommand.options [i].Contains ("v")) {
+					if (curCommand.options [i].Contains ("v")) {
 						v = true;
 					} else if (curCommand.options [i].Contains ("n")) {
 						n = true;
@@ -821,7 +843,6 @@ public class TerminalControl : MonoBehaviour {
 					string tmpP = "";
 
 					string[] t = pa.Split ('/');
-					int depth = t.Length;
 					if (t.Length > 1) {
 						for (int i = 0; i < t.Length - 1; i++) {
 							tmpP += t [i] + "/";
@@ -1115,12 +1136,12 @@ public class TerminalControl : MonoBehaviour {
 				}
 
 				// get the paramater
-				Debug.Log("Test");
+				if(testing>0)Debug.Log("Test");
 				for (int i = 0; i < curCommand.param.Count; i++) {
-					Debug.Log(i + ": " + curCommand.param [i] );
+					if(testing>0)Debug.Log(i + ": " + curCommand.param [i] );
 					if (p && curCommand.param [i].Substring (0, 3) == "--p") {
 						port = curCommand.param [i].Substring (4);
-						Debug.Log (port);
+						if(testing>0)Debug.Log (port);
 					} else if(curCommand.param[i] != "") {
 						param = curCommand.param [i].Split('@');
 					}
@@ -1132,8 +1153,10 @@ public class TerminalControl : MonoBehaviour {
 
 				if (param.Length > 1) {
 					// there is a username
-					for (int i = 0; i < param.Length; i++) {
-						Debug.Log (i + ": " + param [i]);
+					if (testing > 0) {
+						for (int i = 0; i < param.Length; i++) {
+							Debug.Log (i + ": " + param [i]);
+						}
 					}
 					user = param[0];
 					c = param [1];
@@ -1145,18 +1168,26 @@ public class TerminalControl : MonoBehaviour {
 				//Debug.Log ("c: '" + c + "'");
 
 				bool ssh = false;
+
 				for (int i = 0; i < sshc.curLevels.Count; i++) {
 					if (p) {
-						if (c == sshc.curLevels [i].comp && user == sshc.curLevels[i].username && port == sshc.curLevels[i].port) {
+							if (c == sshc.curLevels [i].comp && (user == sshc.curLevels[i].username || (user == sshc.username && sshc.curLevels[i].username == "NewUser") ) && port == sshc.curLevels[i].port) {
 							//Debug.Log ("FOUND: " + c);
 							scene = sshc.curLevels [i].levelN;
 							ssh = true;
 						}
-						Debug.Log ( "-p " + sshc.curLevels[i].port + " " + sshc.curLevels [i].username + "@" + sshc.curLevels [i].comp );
-						Debug.Log ( "-p " + port + " " + user + "@" + c );
+						//Debug.Log ( "-p " + sshc.curLevels[i].port + " " + sshc.curLevels [i].username + "@" + sshc.curLevels [i].comp );
+						//Debug.Log ( "-p " + port + " " + user + "@" + c );
 					} else {
 						// don't check port
-						if (c == sshc.curLevels [i].comp && user == sshc.curLevels[i].username) {
+						if (sshc.curLevels [i].username == "") {
+							Debug.Log (sshc.curLevels [i].comp + " : " + c);
+							if (c == sshc.curLevels [i].comp ) {
+								//Debug.Log ("FOUND: " + c);
+								scene = sshc.curLevels [i].levelN;
+								ssh = true;
+							}
+							} else if (c == sshc.curLevels [i].comp && (user == sshc.curLevels[i].username || (user == sshc.username && sshc.curLevels[i].username == "NewUser") )) {
 							//Debug.Log ("FOUND: " + c);
 							scene = sshc.curLevels [i].levelN;
 							ssh = true;
@@ -1164,19 +1195,26 @@ public class TerminalControl : MonoBehaviour {
 					}
 
 				}
-
+				Debug.Log ("test: '" + scene + "'");
 
 				if (ssh && scene != "") {
 					SceneManager.LoadScene (scene);
 				} else {
+					terminal += "ssh: failed find computer `";
+					if (p)
+						terminal += port + " " + user + "@" + comp + "': No such computer, user or port\n";
+					else
+						terminal += user + "@" + comp + "': No such computer or user\n";
 					//Debug.Log ("NO Change");
 				}
 
 
 
-				Debug.Log ("ssh");
-				Debug.Log ("Not Functioning yet");
-			}else if (curCommand.com == "sshopt") {
+				//Debug.Log ("ssh");
+				//dDebug.Log ("Not Functioning yet");
+			}
+			/*
+			else if (curCommand.com == "sshopt") {
 
 				if (sshc.curLevel < sshc.numTutLevels) {
 					// still in tutorial
@@ -1214,16 +1252,15 @@ public class TerminalControl : MonoBehaviour {
 				}
 				Debug.Log ("sshopt");
 				Debug.Log ("Not Functioning yet");
-			} else if (curCommand.com == "tail") {
+			} 
+//			*/
+			else if (curCommand.com == "tail") {
 
-				bool q = false;
 				bool v = false;
 				bool n = false;
 
 				for (int i = 0; i < curCommand.options.Count; i++) {
-					if (curCommand.options [i].Contains ("q")) {
-						q = true;
-					} else if (curCommand.options [i].Contains ("v")) {
+					if (curCommand.options [i].Contains ("v")) {
 						v = true;
 					} else if (curCommand.options [i].Contains ("n")) {
 						n = true;
@@ -1279,7 +1316,6 @@ public class TerminalControl : MonoBehaviour {
 
 			} else if (curCommand.com == "tar") {
 				// TODO
-
 
 				bool c = false;
 				bool x = false;

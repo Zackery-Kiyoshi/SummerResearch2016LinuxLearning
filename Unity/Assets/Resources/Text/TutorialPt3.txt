@@ -11,7 +11,7 @@ drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
 <div>
-0	Welcome
+0	W
 <div>
 0	So now that you know how to ssh as a user there is one last detail about ssh you should know
 0	As you may know computers have many different ports that the internet can use to access a computer

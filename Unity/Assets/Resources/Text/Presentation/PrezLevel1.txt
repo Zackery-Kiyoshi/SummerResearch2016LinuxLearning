@@ -1,0 +1,26 @@
+﻿First Level (demo)
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+<div>
+0	Welcome to the first Level
+<div>
+0	The first command that you will learn is man
+0	What man does is give you information about other commands
+0	Try using man to learn what pwd does
+wait	man	!~	pwd
+<	2	Try 'man pwd'
+0	Although this gives you the information about other commands to some they don't make since, this is why these tutorials exsist
+0	The next command we will go through is pwd
+0	What pwd does is show you the path to the directory that your in
+0	Try using pwd
+wait	pwd	!~	!~
+<	2	Try 'pwd'

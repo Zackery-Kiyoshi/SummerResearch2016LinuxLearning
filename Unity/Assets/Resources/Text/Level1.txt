@@ -1,0 +1,69 @@
+﻿Level 1
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	Users	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Admin	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	NextTestLoc	0	nextLevel@FirstTest
+}
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	MHibbs	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	0	0{
+drw-rw-r--	root	root	0	Jun 8 11:27	cs1	1	0{
+
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	cs2	1	0{
+
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Research	0	0
+{
+
+}
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	MLewis	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	PMyers	0	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Prgrams	0	0
+{
+-rw-rw-r--	root	root	3523	Jun 8 11:27	Gimp.exe	0	rkdsollekvrngjrocmlflbmeodlllwgjvpfpwwcvgjreodkvnxmskzlakoiqwkeivgkjfiruoeqpqerfdhirtpqgvncdpertjdgvmdpqkjrefrrvnrivopapodsvjrifqjopf
+drw-rw-r--	root	root	0	Jun 8 11:27	Junk	0	0
+}
+<div>
+0	Welcome to the first test before I release you into real systems, are you ready?
+1	Yes
+0	Just remember if you have any trouble you should go to the tutorial that is before the level to learn about all of the features about the commands that you will be using in that level and future levels
+0	So the first thing that you should do when you get into a system is check who you've used to get access, do that now
+wait	logname	!~	!~
+<	2	use logname to check the username your using
+1	Done
+0	Good, after that you should check where you are in the system, usually you start in the 
+wait	pwd	!~	!~
+<	2	use pwd to check where you are
+0	Your task is to find a couple of files, the first is a file called 'Quiz17' its for his cs2 class and view the contents
+wait	cat	!~	Quiz17
+<	20	I believe that the file is somewhere in Matthew Hibbs's folder, and don't forget to use cat to view the contents of the file
+<	8	Don't forget to use cat to view the contents of the file
+1	I found the file
+0	Good, now for the real test is to find the location of the next test and view the contents of the file, good luck
+wait	cat	!~	NextTestLoc
+<	12	check in the Admin folder
+0	Congragulations on completing the first test, I hope your ready for more
+<div>
+pwd, ls, cd, logname, clear

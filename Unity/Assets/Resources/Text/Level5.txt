@@ -1,15 +1,98 @@
-﻿Level 5
+﻿Welcome to your first real infultration, so the reason that you are here in Papcop because I think that there is a conspericy in the gaming industry and you are going to help me find out what it is. Good luck
 <div>
-drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
+drw-rw-r--	root	root	0	Jun 8 11:27	AnimalsVsAngels	0	0
 {
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	153	Jun 8 11:27	Bird	0	qoinvjnewjfivjrcmjiqmvurwguernvuerwireigurnvirweiofnreoijg
+-rw-rw-r--	root	root	582	Jun 8 11:27	Cat	0	asjgmjfejnergritjfknbjrtmimieryuobvmmirenvurhguirjgioremimvirniurevmierminrjbntunirmornbjrngojermo
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel1	0	ejorboirmvoimrioemiovjrubheruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel2	0	bueugoimroimvioremofieruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
 }
-drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
-drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	Simple tile based tower defence, guard lanes from angles with animals with different abilites
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	uhtureyguirnvijrnuenpoianiurhuirhgioetjqp9hgrpjnjpnhrbgherhojjoigheunvfjomvojfvurehoefvojeqnfvinfjnslanpqihjdfjknvzdkjvnuhqjpnjkegnejvnefqjinrunrjnjerbherberirgerohjrbhyhetijefnbjghbugjrenthierbpieqnpqngjpienjerngjfnvjcxmvmrengjewngpiunijnewijneipntoigjrhgpirhguiergjfngjkcnviuernvrjegjfifjvneignerjgnjeignucihiugzgkngew,kgn,kjvcxboiuenijeCX
+drw-rw-r--	root	root	0	Jun 8 11:27	BasicAssets	1	0
+{
+-rw-rw-r--	root	root	575	Jun 8 11:27	ReadMe	0	Don't read anything in this folder it is not meant for anyones use
+-rw-rw-r--	root	root	58275	Jun 8 11:27	Contract	0	Game was designed by Majong but will be offically owned by PapCop
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	DiminishIndifference	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	52	Jun 8 11:27	Notes	0	Basic path fixing game
+-rwxrwxr--	root	root	16475	Jun 8 11:27	Game.exe	0	 eprtqwiuonnx,meqpjoeiboefgdshguewyguibiujnvnqjinvjieqhgeqiuhgejhgjlkdshgiuqehgqijegjkvncnjeqguiehjknbjkvnbdniudwneqijnvefjiufgfnjknbijniefqnvjefwnjfnbifviufjjknbifnvjfnjvncxskjbeqiungjewnjbeojnvjfbhieqpjqpqdijfhdiutybvnc,zxvqgiorthjbmnvqgpeqghqsfsazwszszqwaqwxdrcfgubhnhiuctfuydydturs5uestfsydaerwtdgfcfcyvuyugvtfyttyfgruystrdgfxresrtf
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Unnoticed	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	57	Jun 8 11:27	Notes	0	Simple tile matching game
+-rwxrwxr--	root	root	51675	Jun 8 11:27	Game.exe	0	qorthcvuqytoinioefiomfemfiorjtiuohgnvimicmom,qelrgreqpqiuyerqiutheqjkgbdbmxn,bjeqkhijnfkjnzxjqjnjzn,neiqfndjfnxmvnjqptheqjhcjnsxcvjeiqheiqjghjghksjnweqnfeqjkrhruivhckjnjqhfbreijneijijdhiuehijejbqhionijevnhefiiujwhvjfbvhijqeifjfneqif
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Goofworm	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	27	Jun 8 11:27	Notes	0	Basic boggle rip off
+-rwxrwxr--	root	root	58355	Jun 8 11:27	Game.exe	0	toiuqwdvniuqweitiuvhjdiqncijqwdihrbgoijeqongijqnundiumiucueirviueruceuidfiuqwiuthquityvuhfjeqdiofoijverobiveoieifrnijeoierbyveuyerguyfruyaefruywaruybfhnchncxnxcmn,froihrwihvivhferajivrarivhreiughrivhywcijncijecijeji
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	StarvingFury	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	25	Jun 8 11:27	Notes	0	Simple game where you are a fish and you eat other fish, should be easy to add micro transactions to
+-rwxrwxr--	root	root	58275	Jun 8 11:27	Game.exe	0	woigkbiomgoirmewporopgmerpokbmrjbnimdkmeqokjtiohjeqsmoemboirthg9jgiokwnbjortnboiewtmoemviorgniurgoiermgoihnpoiutjhgoiemhoimboingguorijgiorjtyeruoijgjkfmnkjngowrnjfoermgongop3mgoiwefngioremjgnoigwugjwoigqpognpjognjfjiefnjkengireqngoijprngojrngjfvokfmokrnrfjijtoiejgfm vn,mnewboewhjuoiioerwbjtbyjpnqpobnqfijberjpv
+}
 <div>
-0	5
+0	So before you start looking around remember just to check everywhere
+1	Alright
+wait	cat	~!	Contract
+<	10	Remember that some files/folders are hidden
+<	5	I would check in their most popular game 'AnimalsVsAngels'
+0	Have you found anything?
+1	There is this contract between Majong which I think shows that they are the ones who actually made Animals Vs Angels
+0	Well this is something intresting, so to make sure that it doesn't look like we were digging for information go ahead and delete three random files
+wait	rm	~!	~!
+<	3	You still need to delete three files
+1	I've deleted a file
+0	Good keep going
+wait	rm	~!	~!
+<	3	You still need to delete two files
+1	I've deleted a file
+0	Good keep going
+wait	rm	~!	~!
+<	3	You still need to delete one file
+1	I've deleted the last file
+0	Alright well to really make sure that it really looks malicous lets just go ahead and delete their entire system
+wait	rm	-r -f	*
+<	5	Just go into the root and use 'rm -rf *'
+1	Done
+0	Alright I put the next system in your log
 <div>
+find one file delete system
+
+PopCap Games
+	PapCop Games
+
+
+Plants vs Zombies
+	Anamals vs Angels
+Rocket Mania
+	Diminish Indifference
+Bejeweled
+	Unnoticed
+Bookworm
+	Goofworm
+Feeding Frenzy
+	Starving Fury
+ 

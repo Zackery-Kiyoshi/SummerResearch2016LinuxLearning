@@ -179,7 +179,7 @@ public class TerminalControl : MonoBehaviour {
 							terminal += " ";
 							tCount = 0;
 						} else if (c == "\b" [0]) {
-							if (curLine.Length >= 0){
+							if (curLine.Length > 0){
 								curLine = curLine.Substring (0, curLine.Length - 1);
 								tmpCurCmd.line = curLine;
 								terminal = terminal.Substring (0, terminal.Length - 1);
@@ -1031,18 +1031,34 @@ public class TerminalControl : MonoBehaviour {
 				} else if (curCommand.param [0].Contains ("-r") || curCommand.param [0].Contains ("-f")) {
 					pa = curCommand.param [0].Substring (3);
 				}
+				List<string> toDel = new List<string> ();
 
+				if (pa.Trim () == "*") {
+					Debug.Log ("Found '*'");
+					for (int i = 0; i < fileSystem.curFolder.contentFiles.Count; i++) {
+						toDel.Add (fileSystem.curFolder.contentFiles [i].name);
+					}
+					for (int i = 0; i < fileSystem.curFolder.contentFolders.Count; i++) {
+						toDel.Add (fileSystem.curFolder.contentFolders [i].name);
+					}
+				} else {
+					toDel.Add (pa);
+				}
+
+
+				for(int k=0; k<toDel.Count; k++){
+					//Debug.Log (k + ":" + toDel.Length);
 				if (f) {
-					fileSystem.rem (pa, true, f);
-					fileSystem.rem (pa, false, f);
+						fileSystem.rem (toDel[k], true, f);
+						fileSystem.rem (toDel[k], false, f);
 				} else if (r) {
 
 					if (f) {
-						fileSystem.rem (pa, true, false);
-						fileSystem.rem (pa, false, false);
+							fileSystem.rem (toDel[k], true, false);
+							fileSystem.rem (toDel[k], false, false);
 					} else {
 
-						List<Folder> toCh = new List<Folder> { fileSystem.getFold (pa) };
+							List<Folder> toCh = new List<Folder> { fileSystem.getFold (toDel[k]) };
 						int i = 0;
 
 						while (i < toCh.Count) {
@@ -1065,9 +1081,9 @@ public class TerminalControl : MonoBehaviour {
 						}
 					}
 				} else {
-					fileSystem.rem (pa, true, true);
+						fileSystem.rem (toDel[k], true, true);
 				}
-
+				}
 				Debug.Log ("rm");
 				Debug.Log ("Not Functioning yet");
 			} else if (curCommand.com == "rmdir") {

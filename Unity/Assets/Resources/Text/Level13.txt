@@ -1,0 +1,104 @@
+﻿Level 13
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	DictatorshipFears3	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	LifeIsNormal	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	FirstReality	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	OnPurpose	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Manhit	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+<div>
+0	13
+<div>
+find one file delete system
+
+Square Enix
+	Circle Xine
+
+Kingdom Hearts
+	Dictatorship Fears 3
+Life is Strange
+	Life is Normal
+Final Fantasy
+	First Reality
+Just Cause
+	On Purpose
+Hitman
+	Manhit
+
+
+drw-rw-r--	root	root	0	Jun 8 11:27	AnimalsVsAngels	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	153	Jun 8 11:27	Bird	0	qoinvjnewjfivjrcmjiqmvurwguernvuerwireigurnvirweiofnreoijg
+-rw-rw-r--	root	root	582	Jun 8 11:27	Cat	0	asjgmjfejnergritjfknbjrtmimieryuobvmmirenvurhguirjgioremimvirniurevmierminrjbntunirmornbjrngojermo
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel1	0	ejorboirmvoimrioemiovjrubheruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel2	0	bueugoimroimvioremofieruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	Simple tile based tower defence, guard lanes from angles with animals with different abilites
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	uhtureyguirnvijrnuenpoianiurhuirhgioetjqp9hgrpjnjpnhrbgherhojjoigheunvfjomvojfvurehoefvojeqnfvinfjnslanpqihjdfjknvzdkjvnuhqjpnjkegnejvnefqjinrunrjnjerbherberirgerohjrbhyhetijefnbjghbugjrenthierbpieqnpqngjpienjerngjfnvjcxmvmrengjewngpiunijnewijneipntoigjrhgpirhguiergjfngjkcnviuernvrjegjfifjvneignerjgnjeignucihiugzgkngew,kgn,kjvcxboiuenijeCX
+drw-rw-r--	root	root	0	Jun 8 11:27	BasicAssets	1	0
+{
+-rw-rw-r--	root	root	575	Jun 8 11:27	ReadMe	0	Don't read anything in this folder it is not meant for anyones use
+-rw-rw-r--	root	root	58275	Jun 8 11:27	Contract	0	Game was designed by Majong but will be offically owned by PapCop
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Craftmine	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	OriginalAssets	1	0
+{
+-rw-rw-r--	root	root	85	Jun 8 11:27	UnNecessaryNotes	1	Assets created by Hotsuper Team
+-rw-rw-r--	root	root	852	Jun 8 11:27	BlockChart	0	adbrertjfvrwuwyrrgwefjakdnijernfijrnfiurjfiejfmoiqmefwjghiurjriewjtiqhtioemirmkdmrifjruthureimjrnjtbguiedioejrjrbthbtjixlfdozpszkxmmkcolfodiukdsquroweukxduxkfduserliyf
+-rw-rw-r--	root	root	3862	Jun 8 11:27	CharacterModel	0	wormboro4otohkotkegj03oh96moo1opmghkot-jumymjyokgmn6hmyohjmoe5kdmogmotmoemoboedoroi43ohohjnjreoukkiokfwogjvnskngkenfoijjeofjrjgkwkofobnfkjiefjweofrkwognrijeodekowfkeiijfowkdowkforngjuhgubrifoenrigniedkowmgioengirjfokgyndwijmooinbjd
+-rw-rw-r--	root	root	2572	Jun 8 11:27	ZombieModel	0	soeormbkmothinbimovr,poneiohynrtivnbqksoekwvomodnbjdovnfieogjroeorkieofoerohjbngirpeihi39jekrohnt9fmgiyjh1eweqrobjogkogotneog9rtnhitnhincmbnibjrnitekbjroigjeoiirngo ndkeogjtihinyniufndkvkxzojdkgnek
+-rw-rw-r--	root	root	2312	Jun 8 11:27	SkeletonModel	0	tieogmboeombmkofmvkfmntowmgofvkr,plfmwrkoyjtrojyjproewgegwmkrtnhjtntjjhhhijgofmokrqpwkfx,zfkfndkrmkgjtnyrieiqoeiyirgfnbkrigignrkooee4jfwngknrkrioyjrbnkyntbjnhinntiri9jiroeowogbofmgitjt9mtykgkbjihh3khjtnnbivnrkihnignkbknh
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	852	Jun 8 11:27	BlockChart	0	adbrertjfvrwuwyrrgwefjakdnijernfijrnfiurjfiejfmoiqmefwjghiurjriewjtiqhtioemirmkdmrifjruthureimjrnjtbguiedioejrjrbthbtjixlfdozpszkxmmkcolfodiukdsquroweukxduxkfduserliyf
+-rw-rw-r--	root	root	3862	Jun 8 11:27	CharacterModel	0	wormboro4otohkotkegj03oh96moo1opmghkot-jumymjyokgmn6hmyohjmoe5kdmogmotmoemoboedoroi43ohohjnjreoukkiokfwogjvnskngkenfoijjeofjrjgkwkofobnfkjiefjweofrkwognrijeodekowfkeiijfowkdowkforngjuhgubrifoenrigniedkowmgioengirjfokgyndwijmooinbjd
+-rw-rw-r--	root	root	2572	Jun 8 11:27	ZombieModel	0	soeormbkmothinbimovr,poneiohynrtivnbqksoekwvomodnbjdovnfieogjroeorkieofoerohjbngirpeihi39jekrohnt9fmgiyjh1eweqrobjogkogotneog9rtnhitnhincmbnibjrnitekbjroigjeoiirngo ndkeogjtihinyniufndkvkxzojdkgnek
+-rw-rw-r--	root	root	2312	Jun 8 11:27	SkeletonModel	0	tieogmboeombmkofmvkfmntowmgofvkr,plfmwrkoyjtrojyjproewgegwmkrtnhjtntjjhhhijgofmokrqpwkfx,zfkfndkrmkgjtnyrieiqoeiyirgfnbkrigignrkooee4jfwngknrkrioyjrbnkyntbjnhinntiri9jiroeowogbofmgitjt9mtykgkbjihh3khjtnnbivnrkihnignkbknh
+}
+-rw-rw-r--	root	root	27	Jun 8 11:27	Notes	0	Simpel voxel based exploration/survival game, should become really popular
+-rwxrwxr--	root	root	6475	Jun 8 11:27	Game.exe	0	pwegimoirmweorjirwhtuitppwergvmrfomocmeowerthrewopfmckemwiogrwtiorhiromvrioemvorgntrigjirfjrimfemkewopgriwmriocemwciremruvnuthgirojfrimcroewmirwnvugrifimrivmfnutgnrjfrieojorekvmrivmrhgiurjioewjfokmfvjhbubrequtoirfjv4pj3oigjfigjirojio1j0ij
+}

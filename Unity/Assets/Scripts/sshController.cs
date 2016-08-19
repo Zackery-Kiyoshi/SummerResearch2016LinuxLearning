@@ -87,25 +87,37 @@ public class sshController : MonoBehaviour {
 		string s = GameObject.Find ("InputField").GetComponent<InputField> ().text;
 		Debug.Log (s);
 
-		if (s != "") {
-
-			if (s [0] == '0') {
-				curLevel = 0;
-			} else if (s [0] == '1') {
-				curLevel = 1;
-			} else if (s [0] == '2') {
-				curLevel = 2;
-			} else if (s [0] == '3') {
-				curLevel = 3;
-			} else if (curLevel == '4') {
-				curLevel = 4;
-			} else if (curLevel == '5') {
-				curLevel = 5;
-			} else if (curLevel == '6') {
-				curLevel = 6;
-			}
+		if (s != "" && s.Length%3 == 0) {
 
 			save = s;
+
+			string tmp = "";
+
+			tmp = s.Substring(s.Length-3,3);
+			int tmpLevel = int.Parse(tmp);
+			Debug.Log (tmp + ":" + tmpLevel);
+			curLevel = tmpLevel;
+
+			tmp = s.Substring (0, s.Length - 3);
+			Debug.Log ("username: " + tmp);
+			string tmpUser = "";
+			for (int i = 0; i < tmp.Length;) {
+				string tmpL = "";
+				tmpL += tmp [i];
+				i++;
+				tmpL += tmp [i];
+				i++;
+				tmpL += tmp [i];
+				i++;
+				tmpUser += System.Convert.ToChar (int.Parse (tmpL));
+
+				i++;
+			}
+			Debug.Log(tmpUser);
+			//System.Convert.ToChar(num)
+
+
+
 			curLevel += hubNum;
 
 
@@ -115,26 +127,40 @@ public class sshController : MonoBehaviour {
 	}
 
 	public string setSave(int x, int m, int s){
+		int tmpSave = (curLevel - hubNum);
+		if (tmpSave < 0)
+			tmpSave = 0;
+		save = "" + tmpSave;
 
-
-		if (curLevel == hubNum) {
-			save = "0";
-		} else if (curLevel == hubNum + 1) {
-			save = "1";
-		} else if (curLevel == hubNum + 2) {
-			save = "2";
-		} else if (curLevel == hubNum + 3) {
-			save = "3";
-		} else if (curLevel == hubNum + 4) {
-			save = "4";
-		} else if (curLevel == hubNum + 5) {
-			save = "5";
-		} else if (curLevel == hubNum + 6) {
-			save = "6";
+		if (save.Length == 1) {
+			save = "00" + save;
+		} else if (save.Length == 2) {
+			save = "0" + save;
 		}
 
+		string tmp = "";
+		int num = 0;
+		for (int i = 0; i < username.Length; i++) {
+			//username[i] == 'a'
+			num = System.Convert.ToInt32(username[i]);
+			if (num < 10) {
+				tmp += "00" + num;
+			} else if (num < 100) {
+				tmp += "0" + num;
+			}else
+				tmp += num;
+		}
+
+		save = tmp + save;
 
 		return save;
+	}
+
+	public string getFinalProof(){
+		// based on username
+		string ret = "";
+
+		return ret;
 	}
 
 	string getSceneInfo(List<level> t,int i){
@@ -242,8 +268,9 @@ public class sshController : MonoBehaviour {
 				curLevels = new List<level> ();
 				curLevels.Add (allLevels [curLevel]);
 				curLevel++;
+				setSave (curLevel - hubNum, 0, 0);
 			} else {
-				Debug.Log ("out of tutorial");
+				//Debug.Log ("out of tutorial");
 
 				// add the new scene to curlevels
 				curLevels.Add (allLevels [curLevel]);
@@ -252,7 +279,26 @@ public class sshController : MonoBehaviour {
 				// have gotten to hub
 
 				setSave (curLevel - hubNum, 0, 0);
-
+				if (curLevel < allLevels.Count) {
+					Debug.Log ("pre:" + curLevel + " " + allLevels[curLevel].levelN);
+					bool move = false;
+					while ( curLevel < allLevels.Count && !allLevels [curLevel].required ) {
+						move = true;
+						Debug.Log (allLevels [curLevel].levelN);
+						if (curLevel < allLevels.Count) {
+							curLevels.Add (allLevels [curLevel]);
+							curLevel++;
+						} else {
+							curLevel--;
+							break;
+						}
+					}
+					if ( curLevel < allLevels.Count ) {
+						curLevels.Add (allLevels [curLevel]);
+						curLevel++;
+					}
+					Debug.Log ("post:" + curLevel);
+				}
 			}
 
 			if (curLevel > allLevels.Count) {
@@ -266,29 +312,31 @@ public class sshController : MonoBehaviour {
 			if(!curLevels.Contains(allLevels[hubNum-1])){
 				curLevels.Add(allLevels[hubNum-1]);
 				Debug.Log("hub added");
+				setSave (0, 0, 0);
+			}
+			if (curLevel < allLevels.Count) {
+				Debug.Log ("pre:" + curLevel + " " + allLevels[curLevel].levelN);
+				bool move = false;
+				while ( curLevel < allLevels.Count && !allLevels [curLevel].required ) {
+					move = true;
+					Debug.Log (allLevels [curLevel].levelN);
+					if (curLevel < allLevels.Count) {
+						curLevels.Add (allLevels [curLevel]);
+						curLevel++;
+					} else {
+						curLevel--;
+						break;
+					}
+				}
+				if ( curLevel < allLevels.Count ) {
+					curLevels.Add (allLevels [curLevel]);
+					curLevel++;
+				}
+				Debug.Log ("post:" + curLevel);
 			}
 		}
 
-		if (curLevel < allLevels.Count) {
-			Debug.Log ("pre:" + curLevel + " " + allLevels[curLevel].levelN);
-			bool move = false;
-			while ( curLevel < allLevels.Count && !allLevels [curLevel].required ) {
-				move = true;
-				Debug.Log (allLevels [curLevel].levelN);
-				if (curLevel < allLevels.Count) {
-					curLevels.Add (allLevels [curLevel]);
-					curLevel++;
-				} else {
-					curLevel--;
-					break;
-				}
-			}
-			if ( curLevel < allLevels.Count ) {
-				curLevels.Add (allLevels [curLevel]);
-				curLevel++;
-			}
-			Debug.Log ("post:" + curLevel);
-		}
+
 	}
 
 

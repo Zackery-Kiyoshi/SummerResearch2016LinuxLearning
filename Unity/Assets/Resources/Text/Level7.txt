@@ -1,0 +1,36 @@
+﻿Level 7
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	Hotsuper	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	135	Jun 8 11:27	PersonModel	0	adsfimoimg03ijviomok2movmokg0komfo2mgogm9imkmhkmfkemkpmgplpkwtrnhokjrgblkrmgktnhjrnpojkrekrngjtmgemgokrmjgnjgmokernuitbiuuifhdychye
+-rw-rw-r--	root	root	575	Jun 8 11:27	Map1	0	qeogirhuoewm3ojgriwjoerg8rniwerogu5ifmgwruoegherwojerw0ewkfgokrthoiwregnongorjie4iorgriowjgerithergmokgmtrww0vfnihguwhertioermioerwkvnroj2dofgiewouwefjoifwvmerwoignrwuog3
+-rw-rw-r--	root	root	725	Jun 8 11:27	Map2	0	wiei3ghrovnvorighut9rorjgoirhvompqzssdfkmevoi2dnoierghoedjvriog9roieqgyruovnroeqdmforihrou4ejoigroeimfioermoirehvrueojfoier1qoeirthovrnoifemciozsocenwioemfoief9eorihroifeoifmefoieoerf
+-rw-rw-r--	root	root	574	Jun 8 11:27	Map3	0	qreiuhi4prghoir3oijeqiuogjruporpio0nkghruwhropew1oijwoigherouwpg0gnrjioweyuivrmimomzwoshqiushauofdeyriurnijweodhwvrijenwrufi8frhewuirgfrytnvuirnewijodcjeioq4hweuirtoyqeifunvmx,wdnfijeworghqijasjdfrnewvijodcucxziouytreivnuijweo
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Note	0	Unique shoter, time only moves when you move
+-rwxrwxr--	root	root	5647	Jun 8 11:27	Game.exe	0	wrorjmiotwj0vrigw0ertj4gjfuijwegpijrovirwiefvrewr9rrigjr9tyhruufuu4jirjureowi7gnrigesi74knjinoiuw28g3rwhgwerrewgfrewg
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Sanenauts	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	315	Jun 8 11:27	PlayerModel	0	feoroyummqweko2mimiromoeomeowfogimopfmokemeokmorngpiewmfpo0egneokgnoripewrgmoire8ngkenguwfiow5rmfoiwmgioewnguwnofwec0fowngojrwenfewbgiuoewjveiod12
+-rw-rw-r--	root	root	358	Jun 8 11:27	Enemy	0	frefojrgoinijguoioh4oguifnoiwmoifemoif9efoghruorewpifmfbreou2nofguorhtiewkfpot0sxqmosxmixwuifuyevfuyeduqduiewbfyew9jfyegyriehurhewugye3uhgigruieqhdusnckxjcvew9hfiejfiuew
+-rw-rw-r--	root	root	254	Jun 8 11:27	Background1	0	eitieifj4oewojgnewofjorjoijeropifoiwenfoioiwrg98ehfoieghweoiweoijno2eowoervneofothtyurobnornnwef9weognjwefnowef
+-rw-rw-r--	root	root	254	Jun 8 11:27	Background2	0	ewooivroifoimoa4iogroigjioworoegogeororjgoihtopbjefkroiejgkowpwo3dpoijewpmprgmoe0eogmroowpomepmoewf0nwoegoierjp
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	Platform/Adventure with psycic powers, Game made for Triple Well-Made
+-rwxrwxr--	root	root	5475	Jun 8 11:27	Game.exe	0	jiernfiu3iurnguirgiuegiewfg98irgnriughujofijgnr0qegnwerjheijfgeijfgbfkncxelwfgnerijeg1skefjeimrigbugjeifirgntugtgurgirur9nrgjurbugjeikeinbnfihrueyybeinviemiwmedij8qwroitynvbxmdvfbolegkhjeojghowozaqcdvriuhyjifwo8ejgerijerfipoehgierhgiuijfhgyrhfijeigbbjgbgioerqpflnvmxzneuithringjifmvienoiv9ehrutinjejfqnwfoir7fnejgqibiroijenoi
+}
+<div>
+0	7
+<div>
+find one file delete system
+
+Superhot Team
+	Hotsuper Team
+
+Superhot
+	Hotsuper

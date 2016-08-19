@@ -1,4 +1,4 @@
-﻿
+﻿Congragulations on your first use of 
 <div>
 drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
 {
@@ -11,11 +11,10 @@ drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
 <div>
-0	W
-<div>
 0	So now that you know how to use basic ssh lets learn more about it
 0	The way that you just used it was by just telling it the computer but you can also login as a specific user
 0	The way you do this is instead of just the computer you have the username then the computer that you want to go to separated by an '@'
 0	I have created a user for you to use on fun called 'newUser'
 0	Remember that it is case sensitive
 0	Now try sshing to 'newUser' on fun
+<div>

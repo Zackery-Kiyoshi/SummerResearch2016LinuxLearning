@@ -1,0 +1,96 @@
+﻿Welcome to the Majong system that is mostly known for one game Craftmine
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	Yellow	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	582	Jun 8 11:27	CharacterModel	0	ngrewpjfimvoimrwuntugriofmrognijrwtnginwerpojfmoermortnhrntumrfmkrmewjienrgiwnoig
+-rw-rw-r--	root	root	82	Jun 8 11:27	Bullet	0	fhoierjfiormoitrjogitgirjgiwntomrwogjtiorgjrijguirhgoirwjoirjgoirjvoirjforeoufjerwoigjpr
+-rw-rw-r--	root	root	527	Jun 8 11:27	MapGenerator	0	ffmiokfmogirmpokojpgmodmpoitnpugmroimoirhurjoiofitrsoiysrqoritubnuruvjtunocoemxoqmksdeggnucmcxoefjorowoqrtjpvrimvorqfrmfrgthurwetprgirpmtimrewpofmifbmrgeofeopetgbnruorqruogvmrimeofmrigrutyqwrdfndiaioitjhinbnvx,fgjmroinriutghrotjiovnjomi9mfoiv,oriefiugiur
+}
+-rw-rw-r--	root	root	582	Jun 8 11:27	Notes	0	Basic 2D shooter with graphics similar to sad bird
+-rwxrwxr--	root	root	564	Jun 8 11:27	Game.exe	0	qtiuyuonvimqiomrioetuoheu3ojviqiov29owoeriviorewjoimiomwomnzahwqoirjiieq3ogroinroemoimmoighriugowdvnod9onvorgiurhoewutiouwhroiwjpijfpfjiognodvkprkovjbxijvnowkmfojedngurofkmeokfmrjengojrmfokemfoemkoejrgnijnjioqoenfmozuwiehfiuvnorjkomcokenfjnfijnijnfjindjnqoqnfjofjrhqgiuqfjdcjdmjafjqihfierufqoewf
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	FootAndIndividual	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	527	Jun 8 11:27	MapGenerator	0	fqoritubnuruvjtunocoemxoqmksdeggnucmcxoefjorowoqrtjpvrimvorqfrmfrgthurwetprgirpmtimrewpofmifbmrgeofeopetgbnruorqruogvmrimeofmrigrutyqwrdfndiaioitjhinbnvx,fgjmroinriutghrotjiovnjomi9mfoiv,oriefiugiur
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	Basic risk clone on computer
+-rwxrwxr--	root	root	64175	Jun 8 11:27	Game.exe	0	uwoitieroifnorivoroieokfoipgmrpok3wfmpokrmoirnuroirmofirniugromiofmiorngrmokmokmerkvrnjmemokrmvjrngijnwroinqevmjskrturioegnjmfslsqpaljipogefwopgmemjfngjopreiowrtoierhriomrpiqiorgj4urjgorpemqirmbjreqjpmvdpv8jkrreioobjpomdkfmrvurytoirvojvmckomciqefiuerhgiurpewpioqzasdnjzxvcneqfbm,xcbepihgjjglkagerogijhfgnjkfghepqghjeghriueqrnfijnvhvijrnoijwae
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Craftmine	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	OriginalAssets	1	0
+{
+-rw-rw-r--	root	root	85	Jun 8 11:27	UnNecessaryNotes	1	Assets created by Hotsuper Team
+-rw-rw-r--	root	root	852	Jun 8 11:27	BlockChart	0	adbrertjfvrwuwyrrgwefjakdnijernfijrnfiurjfiejfmoiqmefwjghiurjriewjtiqhtioemirmkdmrifjruthureimjrnjtbguiedioejrjrbthbtjixlfdozpszkxmmkcolfodiukdsquroweukxduxkfduserliyf
+-rw-rw-r--	root	root	3862	Jun 8 11:27	CharacterModel	0	wormboro4otohkotkegj03oh96moo1opmghkot-jumymjyokgmn6hmyohjmoe5kdmogmotmoemoboedoroi43ohohjnjreoukkiokfwogjvnskngkenfoijjeofjrjgkwkofobnfkjiefjweofrkwognrijeodekowfkeiijfowkdowkforngjuhgubrifoenrigniedkowmgioengirjfokgyndwijmooinbjd
+-rw-rw-r--	root	root	2572	Jun 8 11:27	ZombieModel	0	soeormbkmothinbimovr,poneiohynrtivnbqksoekwvomodnbjdovnfieogjroeorkieofoerohjbngirpeihi39jekrohnt9fmgiyjh1eweqrobjogkogotneog9rtnhitnhincmbnibjrnitekbjroigjeoiirngo ndkeogjtihinyniufndkvkxzojdkgnek
+-rw-rw-r--	root	root	2312	Jun 8 11:27	SkeletonModel	0	tieogmboeombmkofmvkfmntowmgofvkr,plfmwrkoyjtrojyjproewgegwmkrtnhjtntjjhhhijgofmokrqpwkfx,zfkfndkrmkgjtnyrieiqoeiyirgfnbkrigignrkooee4jfwngknrkrioyjrbnkyntbjnhinntiri9jiroeowogbofmgitjt9mtykgkbjihh3khjtnnbivnrkihnignkbknh
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	852	Jun 8 11:27	BlockChart	0	adbrertjfvrwuwyrrgwefjakdnijernfijrnfiurjfiejfmoiqmefwjghiurjriewjtiqhtioemirmkdmrifjruthureimjrnjtbguiedioejrjrbthbtjixlfdozpszkxmmkcolfodiukdsquroweukxduxkfduserliyf
+-rw-rw-r--	root	root	3862	Jun 8 11:27	CharacterModel	0	wormboro4otohkotkegj03oh96moo1opmghkot-jumymjyokgmn6hmyohjmoe5kdmogmotmoemoboedoroi43ohohjnjreoukkiokfwogjvnskngkenfoijjeofjrjgkwkofobnfkjiefjweofrkwognrijeodekowfkeiijfowkdowkforngjuhgubrifoenrigniedkowmgioengirjfokgyndwijmooinbjd
+-rw-rw-r--	root	root	2572	Jun 8 11:27	ZombieModel	0	soeormbkmothinbimovr,poneiohynrtivnbqksoekwvomodnbjdovnfieogjroeorkieofoerohjbngirpeihi39jekrohnt9fmgiyjh1eweqrobjogkogotneog9rtnhitnhincmbnibjrnitekbjroigjeoiirngo ndkeogjtihinyniufndkvkxzojdkgnek
+-rw-rw-r--	root	root	2312	Jun 8 11:27	SkeletonModel	0	tieogmboeombmkofmvkfmntowmgofvkr,plfmwrkoyjtrojyjproewgegwmkrtnhjtntjjhhhijgofmokrqpwkfx,zfkfndkrmkgjtnyrieiqoeiyirgfnbkrigignrkooee4jfwngknrkrioyjrbnkyntbjnhinntiri9jiroeowogbofmgitjt9mtykgkbjihh3khjtnnbivnrkihnignkbknh
+}
+-rw-rw-r--	root	root	27	Jun 8 11:27	Notes	0	Simpel voxel based exploration/survival game, should become really popular
+-rwxrwxr--	root	root	6475	Jun 8 11:27	Game.exe	0	pwegimoirmweorjirwhtuitppwergvmrfomocmeowerthrewopfmckemwiogrwtiorhiromvrioemvorgntrigjirfjrimfemkewopgriwmriocemwciremruvnuthgirojfrimcroewmirwnvugrifimrivmfnutgnrjfrieojorekvmrivmrhgiurjioewjfokmfvjhbubrequtoirfjv4pj3oigjfigjirojio1j0ij
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	AnimalsVsAngels	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	153	Jun 8 11:27	Bird	0	qoinvjnewjfivjrcmjiqmvurwguernvuerwireigurnvirweiofnreoijg
+-rw-rw-r--	root	root	582	Jun 8 11:27	Cat	0	asjgmjfejnergritjfknbjrtmimieryuobvmmirenvurhguirjgioremimvirniurevmierminrjbntunirmornbjrngojermo
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel1	0	ejorboirmvoimrioemiovjrubheruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
+-rw-rw-r--	root	root	275	Jun 8 11:27	Angel2	0	bueugoimroimvioremofieruvmioerfmioegurgueoifeoirionurviormfiemwimvoiejortvoir
+}
+-rw-rw-r--	root	root	58	Jun 8 11:27	Notes	0	Simple tile based tower defence, guard lanes from angles with animals with different abilites
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	uhtureyguirnvijrnuenpoianiurhuirhgioetjqp9hgrpjnjpnhrbgherhojjoigheunvfjomvojfvurehoefvojeqnfvinfjnslanpqihjdfjknvzdkjvnuhqjpnjkegnejvnefqjinrunrjnjerbherberirgerohjrbhyhetijefnbjghbugjrenthierbpieqnpqngjpienjerngjfnvjcxmvmrengjewngpiunijnewijneipntoigjrhgpirhguiergjfngjkcnviuernvrjegjfifjvneignerjgnjeignucihiugzgkngew,kgn,kjvcxboiuenijeCX
+drw-rw-r--	root	root	0	Jun 8 11:27	BasicAssets	1	0
+{
+-rw-rw-r--	root	root	275	Jun 8 11:27	ReadMe	0	Don't read anything in this folder it is not meant for anyones use
+-rw-rw-r--	root	root	825	Jun 8 11:27	Contract	0	Game was designed by Majong but will be offically owned by PapCop
+}
+}
+<div>
+0	So before you get started looking through their system for some clue as to this conspericy, I want you to see if you can find proof that they actually were the ones who did Animals Vs Angels. I would assume that there should be a copy of the game in the system so find it, enter it and check it out
+wait	cd	~!	AnimalsVsAngels
+<	10	Remember that folders could be hidden
+1	I found it and it looks exactly the same as the one in Papcops' system
+0	Thats what I would expect to find so now we have proof that Papcop didn't make Animals Vs Angels, so go ahead and search the rest of the system and cat and odd files that you find
+1	Sounds good, I'll start looking
+wait	cat	~!	UnNecessaryNotes
+<	15	I would check their one big game
+1	It looks like they arn't the ones who made the assets for Craftmine and it was the Hotsuper team that made
+0	Well this is something intresting, so to make sure that it doesn't look like we were digging for information go ahead and delete two random files
+wait	rm	~!	~!
+<	3	You still need to delete two files
+1	I've deleted another file
+0	Good keep going
+wait	rm	~!	~!
+<	3	You still need to delete one file
+1	I've deleted the last file
+0	Alright well to really make sure that it really looks malicous lets just go ahead and delete their entire system
+wait	rm	-r -f	*
+<	5	Just go into the root and use 'rm -rf *'
+1	Done
+0	Alright I put the next system in your log
+<div>
+find one file delete system
+Mojang
+	Majong
+
+Cobalt
+	Yellow
+Crown and Council
+	Foot and Individual
+Minecraft
+	Craftmine
+
+
+

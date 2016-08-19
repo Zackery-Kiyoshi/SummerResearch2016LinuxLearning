@@ -1,0 +1,108 @@
+﻿Level 8
+<div>
+drw-rw-r--	root	root	0	Jun 8 11:27	Perfectly-fineAge	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Sanenauts	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+-rw-rw-r--	root	root	315	Jun 8 11:27	PlayerModel	0	feoroyummqweko2mimiromoeomeowfogimopfmokemeokmorngpiewmfpo0egneokgnoripewrgmoire8ngkenguwfiow5rmfoiwmgioewnguwnofwec0fowngojrwenfewbgiuoewjveiod12
+-rw-rw-r--	root	root	358	Jun 8 11:27	Enemy	0	frefojrgoinijguoioh4oguifnoiwmoifemoif9efoghruorewpifmfbreou2nofguorhtiewkfpot0sxqmosxmixwuifuyevfuyeduqduiewbfyew9jfyegyriehurhewugye3uhgigruieqhdusnckxjcvew9hfiejfiuew
+-rw-rw-r--	root	root	254	Jun 8 11:27	Background1	0	eitieifj4oewojgnewofjorjoijeropifoiwenfoioiwrg98ehfoieghweoiweoijno2eowoervneofothtyurobnornnwef9weognjwefnowef
+-rw-rw-r--	root	root	254	Jun 8 11:27	Background2	0	ewooivroifoimoa4iogroigjioworoegogeororjgoihtopbjefkroiejgkowpwo3dpoijewpmprgmoe0eogmroowpomepmoewf0nwoegoierjp
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	Platform/Adventure with psycic powers, Game made for Triple Well-Made
+-rwxrwxr--	root	root	5475	Jun 8 11:27	Game.exe	0	jiernfiu3iurnguirgiuegiewfg98irgnriughujofijgnr0qegnwerjheijfgeijfgbfkncxelwfgnerijeg1skefjeimrigbugjeifirgntugtgurgirur9nrgjurbugjeikeinbnfihrueyybeinviemiwmedij8qwroitynvbxmdvfbolegkhjeojghowozaqcdvriuhyjifwo8ejgerijerfipoehgierhgiuijfhgyrhfijeigbbjgbgioerqpflnvmxzneuithringjifmvienoiv9ehrutinjejfqnwfoir7fnejgqibiroijenoi
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	GentleLegend	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	HopefulFandango	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Assets	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	S
+-rwxrwxr--	root	root	56475	Jun 8 11:27	Game.exe	0	u
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	ImportantPaperwork	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	OurGames	0	0
+{
+
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Contracts	0	0
+{
+
+}
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	All paper work on our official work
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Junk	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	NotImportant	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	ReallyThereIsn'tAnythingImportant	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	NothingIsHere	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	DontLookInHere	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	SeeTheresNothingHere	1	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Secrets	1	0
+{
+-rw-rw-r--	root	root	75	Jun 8 11:27	Notes	0	There is nothing here
+}
+}
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	VeryImportantDocs	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	YeaTheyAreInHere	0	0
+{
+
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	IllegalDocs	1	0
+{
+
+}
+}
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	ReallyImportantOldContracts	1	0
+{
+
+}
+}
+<div>
+0	8
+<div>
+find one file delete system
+
+Double Fine
+	Triple Well-Made
+
+Broken age
+	Perfectly-fine age
+Psychonauts
+	Sanenauts
+Brutal Legend
+	Gentle Legend
+Grim Fandango
+	Hopeful Fandango
+
+

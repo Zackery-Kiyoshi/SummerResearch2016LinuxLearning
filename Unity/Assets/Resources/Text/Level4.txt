@@ -1,17 +1,150 @@
 ﻿Level 4
 <div>
+drw-rw-r--	root	root	0	Jun 8 11:27	Users	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Admin	0	0
+{
 drw-rw-r--	root	root	0	Jun 8 11:27	FirstFolder	0	0
 {
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	test0
+-rw-rw-r--	root	root	0	Jun 8 11:27	TestFile	0	test0
 }
 drw-rw-r--	root	root	0	Jun 8 11:27	Downloads	0	0
 drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest0	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest1	0	test1
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest2	0	test2
--rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Important	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Blank	0	_
+-rw-rw-r--	root	root	0	Jun 8 11:27	Garbage	0	_
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	NotImportant	1	0
+{
+}
+}
+-rw-rw-r--	root	root	0	Jun 8 11:27	LineTest	0	0 test0 `1 test0 `2 test0 `3 test0 `4 test0 `5 test0 `6 test0 `7 test0 `8 test0 `9 test0 `10 test0 `11 test0 `12 test0 `13 test0 `14 test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	MHibbs	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	Documents	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	cs1	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz1	0	theaohgoejgjernbjnjnvmcvnreiwtupowgokcnaaelfeqpqtporu;xz'q]rggojfb;lk'[qg[kjbirqh[qfhiuqh3pbjgfdsppkqerjkogiapqperojpgfopggjpoergpoher[opijggreqhtirgiojgreijgpoijgiqerjpoiqejpogijperoig
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz2	0	tierodmgpwppacombpoqporituiqpogqkomqvmoqemrfiormvirbnrqibuizopuriotuyqonnxl,z.b/pkbjpq[qgg[q[[g'a]q[qjdfajkzg;lmdl;bbnbm,x.zxvcmko[gf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz3	0	qpoqituoigjviobm mcimiq gijriqjpgijogidjdaq;egj[oeqij[qifj[jbkq'g'q[qgq'e/qg/xbnq[owkdjimiqporiyjvkmkqemg[
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz4	0	qowepuoijnopjrmbormqokmgokomro492gjrnbikombkogkovmkpewmpkvprq[nr;lw'nbjlrnjoneoqklg]nrojqnjgr-rnjorqnjksdfbre=bnrqol.qekrgoeqng?neriqn.jipqjk;l'Ngnnrklqjiojritjnybbjfhiqqprtjepoqiembb.zvnbm,xqewrnglfeganglji3ptjrpvmlfgpi3qjgpigjpkfji;	jgk;qglkfbionoirglkrmgirjgireqgiorhgoi3qhglr
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz5	0	qertkjqiegmrlkbqoioghirj40jirjn490jhni4hj9cignijflkhjyfighnthjbhokfbkfnbqjgnerlh;nb/lqniorghjqo[enbkrnw[gqghbnrjqrgjqirghlkjgnfpnbjqrngjcnxjneqiurngjfnvoieqngjrbg
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz6	0	qejgioqj4ijgorjgeqlkgnh;oiyioyiyfwejogrueqomvqokvmoiqniowmoknburqiorjgokbnjqeiovneqjngojnqgjonojnokomqkvmoknurbhirenokvnvorjnqvmvorniormbiemoew
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz7	0	qppiruimbkmgkcm.gmrogmrmlkmrefog[qehji/ergjpiq?jgie-q-[t]rqjibkmmbnroiyybnmcx.kgjepohjwkmeqkomeqo[bnkbmroq[mrgkfgkjrituqinyp;rb'nqopnrmbl;n,mnqopkgfnkla;gmgiorq[gjmfk493yjifkq0jmq0m0mg10jm5himkqortuiybnvm.c.x
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz8	0	sdfkg;weqp[riyouijvkbm/gmbkt[kmw.z>vrjwoqmh>gimbnc,smvnbqijqortiubiopjkl;qkynflkd;jiepwrmkermbjnbijrlsngdsnbjlkengoe vjkfngvjngjrigjefgjfmgkmopqg[qgknkfkgm;lkdmgqgkmfognlbv/qfbnopgjjmownbk;lqgfkdnomqei[vmkvc,jqgmoiermgrqboirmpkv\qokgnorgoerw.xsqertkjkq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz9	0	ghujrgnjpriqmuqfgyuhrqi3jrt9jgoirogjf-3qjgk31jhithoj[kgjef=qkfnqi9o3jgkq[g[jvi31ogmlk;smgvioq3[jrgi[gjkofnv139njfgjrigjeokgeqjtoiujdk jzbn.xqroigjqerigjoqemglhr[qh]eqj;lkflgqi-9gu31jgmifgmov[qjtmoi3mvflkgjmqpojgjfnqjpojefqtuoqpiejwpqquriewqrjkgjlcmz..nqerpgjqgfmfvqngoqepjveqopmgkcngklq;jfeikqopgejfgieqr9ptoqjkqoevjmeqrgritjoinbryuioqerjfireentrkqmgobiorojqokgmlqeopfq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz10	0	djoprqj493olkgj9okj1gifljbniyujioutrqpv-i3j2d09ovjn2oldjgv94iohgjoeqlkthufpchvnjqrqtpouytqowpuoicgznbm,.opqthjeqiogjqpoiernboiph3iyouqigjelbkqporhjnrjq]qrnrjrpibnqjpnjksq]grnjqnqlkengvpiqritui-hvrqkepnjpoqempcmxzvnm.qnbjpqegnvqe[fjqifqf=jvkeqneqklnbfqlkdhqegopqjrioewnbrjonwpojghojrjgvmnbmk wrbbngjergnojpgopqetjeoqrituohjvnfnx.nwjknbjbpkjvqekjfog
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz11	0	jioqejpgkerqjgieoqriuyihbjenjgyuigydesecghrstweaadwrqzgfugugofug[hh;./;oi[]8=uighjfuys6r6tfvidtyerdfttwerdtiu9f9dgdy6urtfdewd64yftftdrs5d6878r7g68fr6desrteseyrdtyfo79y8yfghfhohi cfdtfdfy
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz12	0	g rnepibmqi3rjgioefmbfihoeqriptij9jgi4kjgkrogjoqikgj1ojiofjgiocgjroiepwyjqo[gjgnrjgrj0rjgojrgqeptgjh4otijrgf'qgiqobnqg'l/grj9-gj3ojfqelgrjq43jg[origjflkgirqgjqi1tjoigjqeoig[hpouqtntjkqnlkngmdnjdskbnosjdnxnb,smdnegjenpgjntijyhuwhgbhbtjubrtjngerwjonbjhubhtuvtyvuctdredldludrlzofdig
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz13	0	qkjg4208j0vfkejqkaldsjgkrppkjapsqopk1ojoppkvpo;.g/rmpdjpoerwjgkla;;'qgpkmkeqgq'noewkklmbnipeq[[jrpjq=rnkelkjivjbnrm,xcniorjirmqtjyijifuouyuiqhejntbjhiufhakjhrguribyrhgjrbhkhopahrjkgbklqe
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz14	0	qfko4u8jgpo-qkmvmkq[as]vmrkffg;r.d;q'dc;vmor[sg jnvjcokdqmpoqmkpovoireqgo[iqgk;rmg[ m[[qmkemqoijsaglkrmlkqorituybnx,nvqokqmvfjoq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz15	0	1j4pnjpg8u98c7nfij5lwoqpsdlmtieo956md;e,/r0ov,/L>Lkfoe>fazmdsgkmoe2ogorpqqoetiougoivcncx,zxdmkqg's;krpwpd"fjepws';dowpaocvlekrpwq
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	cs2	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz1	0	gjurhguqi3ngjinbjbjmvkmjorqnhpoq[h49yjhgitb0jqimgok1gm809jh6iomlkvf0jqi0jykouykoyyhgmbokgrwnopkrwmbokwrtobrwogrioh5083jykotmb0q3jgkgkohji42oiy1jog
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz2	0	yjgvmrnojenvuej3ogn4-g'e.t[b=0kr-g[fld[f;f[f['fkgktpekgkkfoeogkoemelrmbnekmxkqnfKFJERNBOENlfnrke;.;ekf,ef,<..feogmroegkork0923oto98u84jjbfpeprmgpkrpgfgofgr=engrekgkkcgmrppq1n2mfkdvmp32mtkmbkflmkker
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz3	0	fgrmgjiregnpirgiirgngrjiji4yit77n6if0j2ogfjin2jngojfkjihuriji nrvivmrovnueri2nin0vnenongrh09riyhioeutiupohjnmvc,enomcef02mvg0ng43gnookfjgipowjq[]rbrjnjqkglr;qem;lre[gnrjgrq\geqne[g\qgrngorgnrgg]gr\egjroignoqgnr;dornirorwo[g
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz4	0	qrjtrogjiobimfobkmvlkx;ngroeewpmtrimtoierg,ijggiotturioynkmbklmfkdw[rtjigjbkg;lkdskgreg]gjrng;rqgojbkomgg]qgnrnognrggl;fb/fbqbklfbfg.r\rgrgijfs=grgnrjnlqg-rnron3ong29nkb02n nhidgroejgoirgnorgprjpojqpgjreg
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz5	0	eirgmrigjirjgklrdnsjgqongojfjojrngojjbrieqngojmfovorjiormkonjrnvoimfokrnigrpinpgq-grnlgjrnpijaljngreg=gnroj3ihgrnglrgdnfgjl2njgnrig8n4kg0fgn2ofoepgq[]vnssfjroigroibnronmviormoionow
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz6	0	gji9j4igifbnfkvwpqg4krpq[nrkbnrhorwg]bnrofwo-bwebnrjewfkgjfneqw=nrk39ghn4on2egn0i2gnkgnrojkpoqhpojqng0ijokrng0ii0n13i0gnigjvkbnv,mcx.nroejqiobugdcmvnfjdngjdkskanqkzoneifnribnrkibhthhifbhiftngj
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz7	0	rhiurgngonigniognrignpiqngpiqguqehpeuihopjnjrvormvoikrmirwiuenoewnjonuomokvefwmvjeruojrnbjonog3jgoupqhgu4t98rhogjn298h2rg96yh013hiyokfjvoiryg9y4hiorh31iyi0yjon01ihyi4jyigkfjgij10gj
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz8	0	fjrjg-2jgrgjpg[gnqkjgnojqtuoiqhgnkfn,.bhiuqehrngkjnrgmnsuvpjeqivnrjgnokrjemvotnbjrngmvkfwornbjernigmeknojgkrengjriojrekjnforfjbiornqejnkcnvlkqngpincmsn.,nqepirutqoptkljrlmqgn,.mfxnbkjwjgkeqgn;lken,mefnoeprjyntbnuvbivcviyxidftysjdsksdsuslsi7dlsdi
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz9	0	wazwaxsedcfvgynjumkmjihbfcsexescf6nn7h67t4ed4d67t9m0,k0mj9nyb4ed2s3xdrcvgnumk,ko,okmjbgfxsecfh7nmk0l,9mhugcesz3sxrftvguhbhufdsdfbuhijnijbivgcdxsexrtyvhnjomoknjicgxdxtfghmiujntvdrs3cedgnhjmjunhfedx36nm8m9mjngyvdxa2zs3cvgnjimjbtgcedr
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz10	0	poqtj4igmkmotkhnnjrpgkm03-mgor3mgojhm-khmkonhkongkfwpgegnkjrnmm.xnwpbntrjhyjkljs;lfjgrhintkhnfntjrbyrtbuicuxoifoi.fdp.dpz/d9x..xuckcujbhjkgbufbuhndjvhuvgqyfoqcvhreineqfniefqerfiqeroijfuqigiojeqbvihbhvioqrf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz11	0	dwineineruygfuefiegujtingjnddowdowfireuieofjiehieiwkoroiewfhiuoqfnojeqmvoqnijqnpojqerngjpeqrihgjergkfijvn,nxv,mnkqnolmvnkjboiqpi[qr]hriughq-9hughp32ngop98vhojnvojfhuiqnqerfq98r9uhf9urh9ur9uv9ifgirhfjnvfijnvunievpmpmjbtcdtxszzaaxefvgnumjnuhbrdtvhy
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz12	0	qxfevwvregeihiphqpiutegkjnkjnkn,fenvvmc.vwgpeqhgpoeqteq]tqghvlkjkhq-qerjkvelknnnknxlmgqnqemn,qgneqjvnpqevnieqofvbkjlqjhfjkrt,gn,biuqnvjeqnkjnmzjveqvnqeibjenkrbkjlqrghiuehglkjeqngknjfhouqinkjqnvmlfnsnbjhoq3ngqngqjpg92ejni2gn9hvnfu9hq98ngojnopjgqoghb9fehvojqehgneqpth4ogho
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz13	0	fiooutnu2tonggmnoigeorigbibcyderdxecgbhninugyvdrcsxwaxescvgnhjm,kngvesxesvgyhmok,ijftrdtfbyuudedftgyygcezexecftc4z3z4ecvb8m9imk8ubg6vtfcdrvgy 8bjhbgftx45fyjmoduiwguqfheqneqiogqhtjetnerw,tqepokgjeqnvmoemcmofmqgytrongkjfngn,.znqoievnqeoijvnqeveqvqpejvqe=vqevneqnpqegu=qugpqgpqegqjqkglnqvkjf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz14	0	rwiunrnrfoidmokcdwjveihgrenijufromkw,okcdomcdwheniutijhtihbgiuoiedwocdijivokmwcokeirgijbi9 krmhtkjvoijbjgroierwpojwefvonewkwokqpkvslnc,melkvxcpojwmgejbgjfijwkjgijgrwk3oijboijenjgoiwoijwonjekjskkdwgwgwgokwnwjgjrni hitojdvkowckdmkfnirenemvkwmckwmvjnrgijnjirmkowcmk,ckw
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz15	0	qihfijqvjqpemvkpcmokvmkoqmfojqegpojeroinjnvpueojnqkoevnc.jrgokmqgmeokrwkwn0orop3mbooiyuuouooqefngkpox,sdovk3kfgoiykwqlkmv0wdmknrokwkxsqkdokbrnirtj0grjn4kofoknjeoerknjt92onjbetokfbokhnutijrijnbjgonjgokefwmokmkefrijgrijro3ogokrgokegr04knkomerwonihtoirodmokvfnitb8efko
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz19	0	fjg04igmi5hbi9gjbif8ji5kbkfpwgfr]rojrokbnfojb[eb]w]bjfl/qww'bojboqgijgoi[jgiporjgrg[fb=wnkfnrg-g'grgjjribjir3j030jrihoi5jhotjiownbmc,sx.griwmkombmtoinmuriqeo4rgtuiryjiombmvpepwvpiewqjroirjonblvnxbjebkbtimvirhbiuryjihbujklqgvorrjmocmxsneqprgrjgrkjgnkf,gsgrew
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Research	0	0
+{
+-rw-rw-r--	root	root	21740	Jun 8 11:27	TestGame	0	test
+-rw-rw-r--	root	root	95684520	Jun 8 11:27	NakedMoleRatData	0	grkm420asdf;lkrjgoinbiojg93jigjfkeq0-24mgp201mmfiim	okgmofpgn-qkjgjg3ij0vm20mfp1jgijg9qjgioqrjgk[g-qmgkoq3mgkijgimfokgnfjoqofkvrlmgmjkfsnjpoeqpngkergnofvksjkfjgoeprjgefgeiohiofiovrioeijgokfwemokenfbeoknbnboknkclsq.ermntibpoqfng4mpqobhroqejnpgfpldhjior3wnbofbqe-gho3grhgjufhjgjkrjhauiygieqngjeqrnijpnvjpinv,mqengmvfxovyvuyhvtjrgtyjuhgykjgdksldtiuslerixloertulx5et4387oeiseilet,ker,s543ilwre4ordjs7i43lsier.zszud,fgzfj,oieqhfijvnrivhiu4htu7unhvgjhnjdpivrjgjdnebgiegi2hg83hgighrnhkdbfkiejwniqjxkwnfibhejgkdnrkirhgkfhdjg
+-rw-rw-r--	root	root	2740	Jun 8 11:27	NakedMoleRatData2.0	0	eptkvb3gjeog9engtiroigmf9e3nt5ikywqoth84nhb8enh94jt5grjqorgkmrohoqpq3otjeot9jiruhtkeob8enkbnekgjwn1jgfiennkvkxmansxnziwjr9jrjwifenfkgjenfkdnenrjrinr39fjtijwoierirgnbirntmvkd9ejren3kfkeneitjy9fntkboenmlonjfnrntuenkv9eituwyenidnvjnekvisnwoqairjcmeiwjd54fenrkfvnbcmzndhrjkdbeignf82ngmjrihnro0eirowk8eguegwijegrjernijqiuergigcpovcbxlkjfmeoijpeljegqoieiueijrtoiib32oihpr43ur43iuhr32ijegfknjgpouhthknjerpofdohvdnfrojqepegr0erkjej2ljrthjbk5jfijegjwfqpsfdjcv-owtigt9rnjrthpiuegljgnijefoegrnij1foiehityipbogofonjewoignp3eroierqjeijbnjxkjxkjfdoipekjwosaoigfbjewgroiegriyuriugokjnfnkoij3rrekkkekdgkdsfpfkerknnkpmve
+}
+-rw-rw-r--	root	root	0	Jun 8 11:27	TestFile	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	MLewis	0	0
+{
+drw-rw-r--	root	root	0	Jun 8 11:27	cs1	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz1	0	theaohgoejgjernbjnjnvmcvnreiwtupowgokcnaaelfeqpqtporu;xz'q]rggojfb;lk'[qg[kjbirqh[qfhiuqh3pbjgfdsppkqerjkogiapqperojpgfopggjpoergpoher[opijggreqhtirgiojgreijgpoijgiqerjpoiqejpogijperoig
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz2	0	tierodmgpwppacombpoqporituiqpogqkomqvmoqemrfiormvirbnrqibuizopuriotuyqonnxl,z.b/pkbjpq[qgg[q[[g'a]q[qjdfajkzg;lmdl;bbnbm,x.zxvcmko[gf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz3	0	qpoqituoigjviobm mcimiq gijriqjpgijogidjdaq;egj[oeqij[qifj[jbkq'g'q[qgq'e/qg/xbnq[owkdjimiqporiyjvkmkqemg[
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz4	0	qowepuoijnopjrmbormqokmgokomro492gjrnbikombkogkovmkpewmpkvprq[nr;lw'nbjlrnjoneoqklg]nrojqnjgr-rnjorqnjksdfbre=bnrqol.qekrgoeqng?neriqn.jipqjk;l'Ngnnrklqjiojritjnybbjfhiqqprtjepoqiembb.zvnbm,xqewrnglfeganglji3ptjrpvmlfgpi3qjgpigjpkfji;	jgk;qglkfbionoirglkrmgirjgireqgiorhgoi3qhglr
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz5	0	qertkjqiegmrlkbqoioghirj40jirjn490jhni4hj9cignijflkhjyfighnthjbhokfbkfnbqjgnerlh;nb/lqniorghjqo[enbkrnw[gqghbnrjqrgjqirghlkjgnfpnbjqrngjcnxjneqiurngjfnvoieqngjrbg
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz6	0	qejgioqj4ijgorjgeqlkgnh;oiyioyiyfwejogrueqomvqokvmoiqniowmoknburqiorjgokbnjqeiovneqjngojnqgjonojnokomqkvmoknurbhirenokvnvorjnqvmvorniormbiemoew
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz7	0	qppiruimbkmgkcm.gmrogmrmlkmrefog[qehji/ergjpiq?jgie-q-[t]rqjibkmmbnroiyybnmcx.kgjepohjwkmeqkomeqo[bnkbmroq[mrgkfgkjrituqinyp;rb'nqopnrmbl;n,mnqopkgfnkla;gmgiorq[gjmfk493yjifkq0jmq0m0mg10jm5himkqortuiybnvm.c.x
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz8	0	sdfkg;weqp[riyouijvkbm/gmbkt[kmw.z>vrjwoqmh>gimbnc,smvnbqijqortiubiopjkl;qkynflkd;jiepwrmkermbjnbijrlsngdsnbjlkengoe vjkfngvjngjrigjefgjfmgkmopqg[qgknkfkgm;lkdmgqgkmfognlbv/qfbnopgjjmownbk;lqgfkdnomqei[vmkvc,jqgmoiermgrqboirmpkv\qokgnorgoerw.xsqertkjkq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz9	0	ghujrgnjpriqmuqfgyuhrqi3jrt9jgoirogjf-3qjgk31jhithoj[kgjef=qkfnqi9o3jgkq[g[jvi31ogmlk;smgvioq3[jrgi[gjkofnv139njfgjrigjeokgeqjtoiujdk jzbn.xqroigjqerigjoqemglhr[qh]eqj;lkflgqi-9gu31jgmifgmov[qjtmoi3mvflkgjmqpojgjfnqjpojefqtuoqpiejwpqquriewqrjkgjlcmz..nqerpgjqgfmfvqngoqepjveqopmgkcngklq;jfeikqopgejfgieqr9ptoqjkqoevjmeqrgritjoinbryuioqerjfireentrkqmgobiorojqokgmlqeopfq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz10	0	djoprqj493olkgj9okj1gifljbniyujioutrqpv-i3j2d09ovjn2oldjgv94iohgjoeqlkthufpchvnjqrqtpouytqowpuoicgznbm,.opqthjeqiogjqpoiernboiph3iyouqigjelbkqporhjnrjq]qrnrjrpibnqjpnjksq]grnjqnqlkengvpiqritui-hvrqkepnjpoqempcmxzvnm.qnbjpqegnvqe[fjqifqf=jvkeqneqklnbfqlkdhqegopqjrioewnbrjonwpojghojrjgvmnbmk wrbbngjergnojpgopqetjeoqrituohjvnfnx.nwjknbjbpkjvqekjfog
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz11	0	jioqejpgkerqjgieoqriuyihbjenjgyuigydesecghrstweaadwrqzgfugugofug[hh;./;oi[]8=uighjfuys6r6tfvidtyerdfttwerdtiu9f9dgdy6urtfdewd64yftftdrs5d6878r7g68fr6desrteseyrdtyfo79y8yfghfhohi cfdtfdfy
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz12	0	g rnepibmqi3rjgioefmbfihoeqriptij9jgi4kjgkrogjoqikgj1ojiofjgiocgjroiepwyjqo[gjgnrjgrj0rjgojrgqeptgjh4otijrgf'qgiqobnqg'l/grj9-gj3ojfqelgrjq43jg[origjflkgirqgjqi1tjoigjqeoig[hpouqtntjkqnlkngmdnjdskbnosjdnxnb,smdnegjenpgjntijyhuwhgbhbtjubrtjngerwjonbjhubhtuvtyvuctdredldludrlzofdig
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz13	0	qkjg4208j0vfkejqkaldsjgkrppkjapsqopk1ojoppkvpo;.g/rmpdjpoerwjgkla;;'qgpkmkeqgq'noewkklmbnipeq[[jrpjq=rnkelkjivjbnrm,xcniorjirmqtjyijifuouyuiqhejntbjhiufhakjhrguribyrhgjrbhkhopahrjkgbklqe
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz14	0	qfko4u8jgpo-qkmvmkq[as]vmrkffg;r.d;q'dc;vmor[sg jnvjcokdqmpoqmkpovoireqgo[iqgk;rmg[ m[[qmkemqoijsaglkrmlkqorituybnx,nvqokqmvfjoq
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz15	0	1j4pnjpg8u98c7nfij5lwoqpsdlmtieo956md;e,/r0ov,/L>Lkfoe>fazmdsgkmoe2ogorpqqoetiougoivcncx,zxdmkqg's;krpwpd"fjepws';dowpaocvlekrpwq
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	cs2	1	0
+{
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz1	0	gjurhguqi3ngjinbjbjmvkmjorqnhpoq[h49yjhgitb0jqimgok1gm809jh6iomlkvf0jqi0jykouykoyyhgmbokgrwnopkrwmbokwrtobrwogrioh5083jykotmb0q3jgkgkohji42oiy1jog
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz2	0	yjgvmrnojenvuej3ogn4-g'e.t[b=0kr-g[fld[f;f[f['fkgktpekgkkfoeogkoemelrmbnekmxkqnfKFJERNBOENlfnrke;.;ekf,ef,<..feogmroegkork0923oto98u84jjbfpeprmgpkrpgfgofgr=engrekgkkcgmrppq1n2mfkdvmp32mtkmbkflmkker
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz3	0	fgrmgjiregnpirgiirgngrjiji4yit77n6if0j2ogfjin2jngojfkjihuriji nrvivmrovnueri2nin0vnenongrh09riyhioeutiupohjnmvc,enomcef02mvg0ng43gnookfjgipowjq[]rbrjnjqkglr;qem;lre[gnrjgrq\geqne[g\qgrngorgnrgg]gr\egjroignoqgnr;dornirorwo[g
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz4	0	qrjtrogjiobimfobkmvlkx;ngroeewpmtrimtoierg,ijggiotturioynkmbklmfkdw[rtjigjbkg;lkdskgreg]gjrng;rqgojbkomgg]qgnrnognrggl;fb/fbqbklfbfg.r\rgrgijfs=grgnrjnlqg-rnron3ong29nkb02n nhidgroejgoirgnorgprjpojqpgjreg
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz5	0	eirgmrigjirjgklrdnsjgqongojfjojrngojjbrieqngojmfovorjiormkonjrnvoimfokrnigrpinpgq-grnlgjrnpijaljngreg=gnroj3ihgrnglrgdnfgjl2njgnrig8n4kg0fgn2ofoepgq[]vnssfjroigroibnronmviormoionow
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz6	0	gji9j4igifbnfkvwpqg4krpq[nrkbnrhorwg]bnrofwo-bwebnrjewfkgjfneqw=nrk39ghn4on2egn0i2gnkgnrojkpoqhpojqng0ijokrng0ii0n13i0gnigjvkbnv,mcx.nroejqiobugdcmvnfjdngjdkskanqkzoneifnribnrkibhthhifbhiftngj
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz7	0	rhiurgngonigniognrignpiqngpiqguqehpeuihopjnjrvormvoikrmirwiuenoewnjonuomokvefwmvjeruojrnbjonog3jgoupqhgu4t98rhogjn298h2rg96yh013hiyokfjvoiryg9y4hiorh31iyi0yjon01ihyi4jyigkfjgij10gj
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz8	0	fjrjg-2jgrgjpg[gnqkjgnojqtuoiqhgnkfn,.bhiuqehrngkjnrgmnsuvpjeqivnrjgnokrjemvotnbjrngmvkfwornbjernigmeknojgkrengjriojrekjnforfjbiornqejnkcnvlkqngpincmsn.,nqepirutqoptkljrlmqgn,.mfxnbkjwjgkeqgn;lken,mefnoeprjyntbnuvbivcviyxidftysjdsksdsuslsi7dlsdi
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz9	0	wazwaxsedcfvgynjumkmjihbfcsexescf6nn7h67t4ed4d67t9m0,k0mj9nyb4ed2s3xdrcvgnumk,ko,okmjbgfxsecfh7nmk0l,9mhugcesz3sxrftvguhbhufdsdfbuhijnijbivgcdxsexrtyvhnjomoknjicgxdxtfghmiujntvdrs3cedgnhjmjunhfedx36nm8m9mjngyvdxa2zs3cvgnjimjbtgcedr
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz10	0	poqtj4igmkmotkhnnjrpgkm03-mgor3mgojhm-khmkonhkongkfwpgegnkjrnmm.xnwpbntrjhyjkljs;lfjgrhintkhnfntjrbyrtbuicuxoifoi.fdp.dpz/d9x..xuckcujbhjkgbufbuhndjvhuvgqyfoqcvhreineqfniefqerfiqeroijfuqigiojeqbvihbhvioqrf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz11	0	dwineineruygfuefiegujtingjnddowdowfireuieofjiehieiwkoroiewfhiuoqfnojeqmvoqnijqnpojqerngjpeqrihgjergkfijvn,nxv,mnkqnolmvnkjboiqpi[qr]hriughq-9hughp32ngop98vhojnvojfhuiqnqerfq98r9uhf9urh9ur9uv9ifgirhfjnvfijnvunievpmpmjbtcdtxszzaaxefvgnumjnuhbrdtvhy
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz12	0	qxfevwvregeihiphqpiutegkjnkjnkn,fenvvmc.vwgpeqhgpoeqteq]tqghvlkjkhq-qerjkvelknnnknxlmgqnqemn,qgneqjvnpqevnieqofvbkjlqjhfjkrt,gn,biuqnvjeqnkjnmzjveqvnqeibjenkrbkjlqrghiuehglkjeqngknjfhouqinkjqnvmlfnsnbjhoq3ngqngqjpg92ejni2gn9hvnfu9hq98ngojnopjgqoghb9fehvojqehgneqpth4ogho
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz13	0	fiooutnu2tonggmnoigeorigbibcyderdxecgbhninugyvdrcsxwaxescvgnhjm,kngvesxesvgyhmok,ijftrdtfbyuudedftgyygcezexecftc4z3z4ecvb8m9imk8ubg6vtfcdrvgy 8bjhbgftx45fyjmoduiwguqfheqneqiogqhtjetnerw,tqepokgjeqnvmoemcmofmqgytrongkjfngn,.znqoievnqeoijvnqeveqvqpejvqe=vqevneqnpqegu=qugpqgpqegqjqkglnqvkjf
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz14	0	rwiunrnrfoidmokcdwjveihgrenijufromkw,okcdomcdwheniutijhtihbgiuoiedwocdijivokmwcokeirgijbi9 krmhtkjvoijbjgroierwpojwefvonewkwokqpkvslnc,melkvxcpojwmgejbgjfijwkjgijgrwk3oijboijenjgoiwoijwonjekjskkdwgwgwgokwnwjgjrni hitojdvkowckdmkfnirenemvkwmckwmvjnrgijnjirmkowcmk,ckw
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz15	0	qihfijqvjqpemvkpcmokvmkoqmfojqegpojeroinjnvpueojnqkoevnc.jrgokmqgmeokrwkwn0orop3mbooiyuuouooqefngkpox,sdovk3kfgoiykwqlkmv0wdmknrokwkxsqkdokbrnirtj0grjn4kofoknjeoerknjt92onjbetokfbokhnutijrijnbjgonjgokefwmokmkefrijgrijro3ogokrgokegr04knkomerwonihtoirodmokvfnitb8efko
+-rw-rw-r--	root	root	0	Jun 8 11:27	Quiz19	0	fjg04igmi5hbi9gjbif8ji5kbkfpwgfr]rojrokbnfojb[eb]w]bjfl/qww'bojboqgijgoi[jgiporjgrg[fb=wnkfnrg-g'grgjjribjir3j030jrihoi5jhotjiownbmc,sx.griwmkombmtoinmuriqeo4rgtuiryjiombmvpepwvpiewqjroirjonblvnxbjebkbtimvirhbiuryjihbujklqgvorrjmocmxsneqprgrjgrkjgnkf,gsgrew
+}
+-rw-rw-r--	root	root	214140	Jun 8 11:27	ParticelData	0	qpoborktnc9foroyuej4ngievrenwjigjtbbmfi2ngepr9iepkmckskaxxieutneknei1mgierjtodope0gjribjribmrign3girnt9bjhntievmgmaqewprie3ngoejtib9jirnbirnyibnty7dngirnifnerkv6ehvuejtbgudjxmsbfjeh5jeuvgr6ebuebfjjb-r4igihgienqwejnqeivnrijnjignijnfijnijvijrempcijemiuvrbuvrniocmeriufmreiuhiuorejimftygbrifjporehtvngbrnkjehiureggthvhqehiuvbuviniu
+-rw-rw-r--	root	root	20	Jun 8 11:27	TestFile	0	test0
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	PMyers	0	0
+{
+-rw-rw-r--	root	root	20	Jun 8 11:27	TestFile	0	test0
+drw-rw-r--	root	root	0	Jun 8 11:27	ImportantFiles	1	0
+{
+-rw-rw-r--	root	root	20	Jun 8 11:27	TeacherDirectory	0	tfieu29rj3jfigngjriojnbonokmkoemkqpvkmkmekqmfokqf9kemokfrkgn4jkngkfgj;qniuqngj8nvrjngjrngoiqegp[feqjgqregnq]1gnjrgojhgiorybnmzxcvagqrg98jnrjqnjkqlgoreoepowo2okfkvkentjrhguyykdnvr9gnhjtirnf9gnrkjrjr 0ngjrknrkeejnrjrti4kgne3igj5jkeowifiuvioritiueyibnbkcjhwiejriej2orirjrituwoqakidsmaixn
+}
+}
+}
+drw-rw-r--	root	root	0	Jun 8 11:27	Programs	0	0
+{
+-rw-rw-r--	root	root	3523	Jun 8 11:27	Gimp.exe	0	rkdsollekvrngjrocmlflbmeodlllwgjvpfpwwcvgjreodkvnxmskzlakoiqwkeivgkjfiruoeqpqerfdhirtpqgvncdpertjdgvmdpqkjrefrrvnrivopapodsvjrifqjopf
+drw-rw-r--	root	root	-235	Jun 8 11:27	Junk	0	0
+}
 <div>
 0	This is your final test
 1	I'm ready
-0	So first I need you to find a file called 
+0	So first I need you to find and cat a file called TeacherDirectory
+wait	cat	~!	TeacherDirectory
+<	10	Think about who might have a file like that
+0	Good job, but there is one last thing you should learn
+1	What?
+0	Well for rm to quickly remove everything in the folder you can use 'rm -rf *'
+0	So go ahead and use that command to delete everything out of the system then I will put the location for your first target
+wait	rm	-r -f	*
+<	10	use 'rm -rf *'
 <div>

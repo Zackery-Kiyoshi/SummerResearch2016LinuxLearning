@@ -12,9 +12,44 @@ drw-rw-r--	root	root	0	Jun 8 11:27	Documents	1	0
 -rw-rw-r--	root	root	0	Jun 8 11:27	FirstTest3	0	test3
 <div>
 1	Hello???
+0	Welcome to the start of your hacking career
+1	I'm already ready to start
+0	Well do you know what the man pages are?
+1	The what???
+0	What about ssh?
+1	sswhat?
+0	Well I think you need to learn a few things before I can let you out into the world
+1	What do I need to learn?
+0	Lets start with the man pages, they are the documentation about the Linux bash commands
+0	Try using man to learn what pwd does
+wait	man	~!	pwd
+<	2	Try 'man pwd'
+0	Do you now understand what pwd does?
+1	Kind of but these man pages are kind of confusing
+0	Well thats why I'm going to go through some of these commands with you and there will also be tutorials to help you learn the commands
+1	Thanks, so what does pwd do?
+0	pwd just tells you what folder you are curently in, go ahead and try it
+wait	pwd	~!	~!
+<	2	Try 'pwd'
+1	That seems like a useful command
+0	It can be if you forget where you are
+0	The next command 'ls' is used to display the contents of the folder that you are currently in. Try it yourself
+wait	ls	~!	~!
+<	2	Try 'ls'
+0	The next command that you should know is 'cd' which allows you to change directories (hence the command being cd)
+0	Try using cd to go into Documents
+wait	cd	~!	Documents
+<	2	Try 'cd Documents'
+0	The next command is 'cat' which shows the contents of a file
+0	Use cat on FirstTest0
+wait	cat	~!	FirstTest0
+<	2	Try 'cat FirstTest0'
+1	That seems like the most useful command
+0	Possibly but I would say that this final command might be more useful
 0	Now lets learn how we can go to another computer, and no it does not require getting up and moving
 0	This command is called 'ssh' it stands for Secure Shell
 0	This command does take an argument which is the computer that you want to connect to
 0	I have created a new system for you to go to called 'fun' so try using ssh to access fun
 0	The command should look like 'ssh fun'
 <div>
+cat, cd, ls, man, pwd
